@@ -1,10 +1,8 @@
-const url = "https://raw.githubusercontent.com/fredsmit/hello-world/master/t01.ts"
+const url = "https://raw.githubusercontent.com/fredsmit/hello-world/master/data.json";
 
-const promise = fetch(url)
-  .then(response => response.json())
-  .catch(err => alert(err))
+const promise = fetch(url);
 
-  promise.then(async response => {
+promise.then(async response => {
 
     const dvHead = document.getElementById("dvHead");
     if (dvHead && dvHead.tagName === "H1") {
@@ -16,7 +14,10 @@ const promise = fetch(url)
 
     div.innerText = JSON.stringify(json, null, 2);
     document.body.append(div);
+    throw new Error("BUM");
+}, (reason: any) => {
+    console.log("reason:", reason);
 }).catch(error => {
-    console.log(error);
+    console.log("ERROR:", error);
 });
 
