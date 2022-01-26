@@ -1,0 +1,49 @@
+{
+    "compilerOptions": {
+      "strict": true,
+      "strictNullChecks": true,
+      "module": "es2022",
+      //"module": "es2015",
+      //"module": "CommonJS",
+      //"moduleResolution": "classic",
+      "moduleResolution": "node",
+      "noImplicitAny": true,
+  
+      "noImplicitReturns": true,
+      //"noUnusedLocals":true,
+      //"noUnusedParameters":true,
+      "noFallthroughCasesInSwitch": true,
+  
+      "removeComments": false,
+      "sourceMap": false,
+      //
+      "preserveConstEnums": false,
+  
+      //"lib": ["es2015", "DOM"],
+      //"noLib": true,
+  
+      //"target": "esNext",
+      //"target": "es2021",
+      //"target": "es2020",
+      //"target": "es2019",
+      //"target": "es2018",
+      //"target": "es2017",
+      //"target": "es2016",
+      "target": "es2015",
+      //"target": "es5",
+      //"target": "es3",
+      "alwaysStrict": true,
+      "downlevelIteration": true,
+      "noEmitOnError": false,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+    //   "baseUrl": "/home/freda173/hello-world",
+    //   "paths": {
+    //     "typescript": ["./node_modules/typescript/lib"]
+    //   }
+    },
+    "files": [
+      "t01.ts"
+    ]
+  }
+  
