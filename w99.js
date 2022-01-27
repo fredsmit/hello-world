@@ -1,4 +1,10 @@
-"use strict";
+if (globalThis.window) {
+    window.addEventListener('unhandledrejection', function (ev) {
+        ev.preventDefault();
+        console.log("PromiseRejectionEvent.promise:", ev.promise);
+        console.log("PromiseRejectionEvent.reason)", ev.reason);
+    });
+}
 const url = "https://raw.githubusercontent.com/fredsmit/hello-world/master/data.json";
 function getData1(url) {
     url = (url ?? "").trim();
@@ -68,3 +74,4 @@ getData(url).then((data) => {
 }).catch(reason => {
     console.log("Data processing failed. Reason:", reason);
 });
+export {};
