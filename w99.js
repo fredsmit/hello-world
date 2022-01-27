@@ -37,7 +37,6 @@ function getData(url) {
         if (response.status === 200) {
             const json = await response.json();
             if ("user" in json && json.user === "fredsmit") {
-                throw "lolo";
                 return { name: json.user };
             }
             else {
@@ -52,9 +51,14 @@ function getData(url) {
     });
 }
 getData(url).then((data) => {
-    const dvHead = document.getElementById("dvHead");
-    if (dvHead && dvHead.tagName === "H1") {
-        dvHead.innerText = "Cool, the data is loaded.";
+    const dvH1Id = "dvH1";
+    const dvH1 = document.getElementById(dvH1Id);
+    if (dvH1 && dvH1.tagName === "H1") {
+        dvH1.innerText = "Cool, the data is loaded.";
+    }
+    else {
+        const msg = `Missing HTML element: ${dvH1Id}`;
+        throw Error(msg);
     }
     const div = document.createElement('code');
     div.innerText = JSON.stringify(data, null, 2);
@@ -62,5 +66,5 @@ getData(url).then((data) => {
 }, (reason) => {
     console.log("Promise rejected. Reason:", reason);
 }).catch(reason => {
-    console.log("Promise processing failed. Reason:", reason);
+    console.log("Data processing failed. Reason:", reason);
 });
