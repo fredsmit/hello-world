@@ -2,7 +2,7 @@ const url = "https://raw.githubusercontent.com/fredsmit/hello-world/master/data.
 
 type TData = { name: string };
 
-function getData(url: string): Promise<TData> {
+function getData1(url: string): Promise<TData> {
 
     url = (url ?? "").trim();
     if (url.length === 0) {
@@ -17,7 +17,7 @@ function getData(url: string): Promise<TData> {
                 if ("user" in json && json.user === "fredsmit") {
                     resolve({ name: json.user });
                 } else {
-                    throw Error("Invalid data.");
+                    reject(Error("Invalid data."));
                 }
             } else {
                 const statusText = (response.statusText ?? "").trim();
@@ -26,6 +26,29 @@ function getData(url: string): Promise<TData> {
             }
         } catch (error) {
             reject(error);
+        }
+    });
+}
+
+function getData(url: string): Promise<{ name: any; }> {
+
+    url = (url ?? "").trim();
+    if (url.length === 0) {
+        return Promise.reject(Error("Invalid argument: url"));
+    }
+
+    return fetch(url).then(async (response: Response) => {
+        if (response.status === 200) {
+            const json = await response.json();
+            if ("user" in json && json.user === "fredsmit") {
+                return { name: json.user };
+            } else {
+                throw Error("Invalid data.");
+            }
+        } else {
+            const statusText = (response.statusText ?? "").trim();
+            const msg = statusText.length > 0 ? statusText : `HTTP response status: ${response.status}`;
+            throw Error(msg);
         }
     });
 }

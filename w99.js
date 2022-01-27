@@ -1,6 +1,6 @@
 "use strict";
 const url = "https://raw.githubusercontent.com/fredsmit/hello-world/master/data.json";
-function getData(url) {
+function getData1(url) {
     url = (url ?? "").trim();
     if (url.length === 0) {
         return Promise.reject(Error("Invalid argument: url"));
@@ -14,7 +14,7 @@ function getData(url) {
                     resolve({ name: json.user });
                 }
                 else {
-                    throw Error("Invalid data.");
+                    reject(Error("Invalid data."));
                 }
             }
             else {
@@ -28,6 +28,29 @@ function getData(url) {
         }
     });
 }
+function getData(url) {
+    url = (url ?? "").trim();
+    if (url.length === 0) {
+        return Promise.reject(Error("Invalid argument: url"));
+    }
+    return fetch(url).then(async (response) => {
+        if (response.status === 200) {
+            const json = await response.json();
+            if ("user" in json && json.user === "fredsmit") {
+                throw "lolo";
+                return { name: json.user };
+            }
+            else {
+                throw Error("Invalid data.");
+            }
+        }
+        else {
+            const statusText = (response.statusText ?? "").trim();
+            const msg = statusText.length > 0 ? statusText : `HTTP response status: ${response.status}`;
+            throw Error(msg);
+        }
+    });
+}
 getData(url).then((data) => {
     const dvHead = document.getElementById("dvHead");
     if (dvHead && dvHead.tagName === "H1") {
@@ -35,8 +58,6 @@ getData(url).then((data) => {
     }
     const div = document.createElement('code');
     div.innerText = JSON.stringify(data, null, 2);
-    if (div.innerText.includes("name"))
-        throw "yes";
     document.body.append(div);
 }, (reason) => {
     console.log("Promise rejected. Reason:", reason);
