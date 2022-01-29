@@ -46,6 +46,7 @@ function getData(url: string): Promise<{ name: any; }> {
     }
 
     return fetch(url).then(async (response: Response) => {
+
         if (response.status === 200) {
             const json = await response.json();
             if ("user" in json && json.user === "fredsmit") {
@@ -58,6 +59,7 @@ function getData(url: string): Promise<{ name: any; }> {
             const msg = statusText.length > 0 ? statusText : `HTTP response status: ${response.status}`;
             throw Error(msg);
         }
+
     });
 }
 
