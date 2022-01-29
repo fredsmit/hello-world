@@ -1,23 +1,17 @@
-
-
 const buffer_LENGTH = 64;
 const buffer = new Uint8Array(buffer_LENGTH);
-
 // let elements = document.querySelectorAll('ul > li:last-child');
-
 refillBuffer(buffer);
-
-function getCellId(id: string | null | undefined): number | null | undefined {
+function getCellId(id) {
     if (id && id.startsWith("td-")) {
         return +id.substring(3);
     }
     return void 0;
 }
-
-function isCellId(id: unknown): id is number {
+function isCellId(id) {
     return typeof id === "number" && Number.isInteger(id) && id >= 0 && id < buffer_LENGTH;
 }
-const mouseenterListener = function mouseenterListener(this: HTMLTableCellElement, ev: MouseEvent): void {
+const mouseenterListener = function mouseenterListener(ev) {
     //console.log("mouseenter", this, ev);
     const id = getCellId(this.id);
     if (isCellId(id)) {
@@ -25,18 +19,16 @@ const mouseenterListener = function mouseenterListener(this: HTMLTableCellElemen
         buffer[id] = 0;
         this.style.backgroundColor = "yellow";
     }
-}
-
-const mouseleaveListener = function mouseleaveListener(this: HTMLTableCellElement, ev: MouseEvent): void {
+};
+const mouseleaveListener = function mouseleaveListener(ev) {
     //console.log("mouseleave", this, ev);
     const id = getCellId(this.id);
     if (isCellId(id)) {
         //console.log("leave td-id:", id);
         this.style.backgroundColor = "brown";
     }
-}
-
-const clickListener = function clickListener(this: HTMLTableCellElement, ev: MouseEvent): void {
+};
+const clickListener = function clickListener(ev) {
     const id = getCellId(this.id);
     if (isCellId(id)) {
         //console.log("click td-id:", id);
@@ -44,9 +36,7 @@ const clickListener = function clickListener(this: HTMLTableCellElement, ev: Mou
         this.removeEventListener("mouseenter", mouseenterListener);
         this.removeEventListener("mouseleave", mouseleaveListener);
     }
-}
-
-
+};
 const table = document.createElement("table");
 for (let rowIdx = 0; rowIdx < 8; rowIdx++) {
     const tr = document.createElement("tr");
@@ -68,8 +58,7 @@ for (let rowIdx = 0; rowIdx < 8; rowIdx++) {
 }
 table.style.cursor = "none";
 document.body.appendChild(table);
-
-function refillBuffer(buffer: Uint8Array, force = false): number {
+function refillBuffer(buffer, force = false) {
     let changeCount = 0;
     for (let idx = 0; idx < buffer.length; idx++) {
         if (force || buffer[idx] % 2 === 0) {
@@ -79,36 +68,32 @@ function refillBuffer(buffer: Uint8Array, force = false): number {
     }
     return changeCount;
 }
-
-function repaintTable(table: HTMLTableElement) {
+function repaintTable(table) {
     const cells = Array.from(table.children)
         .filter(row => {
-            //return Object.prototype.toString.call(row) === "[object HTMLTableRowElement]";
-            return row instanceof HTMLTableRowElement;
-        })
+        //return Object.prototype.toString.call(row) === "[object HTMLTableRowElement]";
+        return row instanceof HTMLTableRowElement;
+    })
         .flatMap(row => {
-            const cells: HTMLCollectionOf<HTMLTableCellElement> = (row as HTMLTableRowElement).cells;
-            return Array.from(cells);
-        }).filter(cell => {
-            const id = cell.id;
-            return id.startsWith("td-");
-        }).map(cell => {
-            const id = cell.id;
-            const cellIdx = +id.substring(3);
-            return [cellIdx, cell] as [typeof cellIdx, typeof cell];
-        });
-
+        const cells = row.cells;
+        return Array.from(cells);
+    }).filter(cell => {
+        const id = cell.id;
+        return id.startsWith("td-");
+    }).map(cell => {
+        const id = cell.id;
+        const cellIdx = +id.substring(3);
+        return [cellIdx, cell];
+    });
     cells.forEach(([idx, cell]) => {
         //console.log(idx, cell);
         const byte = buffer[idx];
         cell.innerText = String(byte).padStart(3, "0");
-        const backgroundColor: string = byte % 2 === 0 ? "red" : "lime";
+        const backgroundColor = byte % 2 === 0 ? "red" : "lime";
         cell.style.backgroundColor = backgroundColor;
     });
 }
-
-
-function repaint(buffer: Uint8Array, table: HTMLTableElement) {
+function repaint(buffer, table) {
     repaintTable(table);
     refillBuffer(buffer);
     let refillCount = 0;
@@ -119,15 +104,13 @@ function repaint(buffer: Uint8Array, table: HTMLTableElement) {
             ++refillCount;
             if (refillCount > 2) {
                 //clearInterval(timerId);
-            } else {
+            }
+            else {
                 refillBuffer(buffer, true);
             }
         }
         repaintTable(table);
     }, 1000);
 }
-
 repaint(buffer, table);
-
-export { }
-
+export {};

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>test</title>
+    <script type="module" src="t04.js"></script>
+</head>
+
+<body>
+    <pre>
+I spent hours pouring over this mystery, before giving up.
+At which point, I remembered "Live collections"! Aha! Problem solved!
+Posting to a dead element
+-- beating a dead horse, so to speak --
+has no effect on the screen.
+    </pre>
+    <form name="search">
+        <label>Search the site:
+            <input type="text" name="search" value="Dude, you are a jerk. ==> Drauge, tu durnas. ">
+        </label>
+        <input type="submit" value="Search!">
+    </form>
+    <hr>
+
+    <form name="search-person">
+        Search the visitors:
+        <table id="age-table">
+            <tr>
+                <td>Age:</td>
+                <td id="age-list">
+                    <label>
+                        <input type="radio" name="age" value="young">less than 18</label>
+                    <label>
+                        <input type="radio" name="age" value="mature">18-50</label>
+                    <label>
+                        <input type="radio" name="age" value="senior">more than 50</label>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Additionally:</td>
+                <td>
+                    <input type="text" name="info[0]">
+                    <input type="text" name="info[1]">
+                    <input type="text" name="info[2]">
+                </td>
+            </tr>
+
+        </table>
+
+        <input type="submit" value="Search!">
+    </form>
+</body>
+
+</html>
