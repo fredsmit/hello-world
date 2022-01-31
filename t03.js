@@ -1,5 +1,8 @@
+import { getCommonColors } from "./commonColors.js";
 const buffer_LENGTH = 64;
 const buffer = new Uint8Array(buffer_LENGTH);
+const commonColors = getCommonColors();
+const commonColors_LENGTH = commonColors.length;
 class DataSet {
     constructor(htmlElement) {
         this.htmlElement = htmlElement;
@@ -53,15 +56,15 @@ const mouseleaveListener = function mouseleaveListener(ev) {
         this.style.backgroundColor = "brown";
     }
 };
-const clickListener = function clickListener(ev) {
+//const clickListener = async function clickListener(this: HTMLTableCellElement, ev: MouseEvent): void {
+const clickListener = async function clickListener(ev) {
     const dataSet = DataSet.of(this);
     const idx = dataSet.idx;
     if (isCellIdx(idx)) {
         const clickCount = dataSet.click;
         dataSet.click = (clickCount ?? 0) + 1;
-        if (clickCount === 5)
-            dataSet.click = void 0;
-        this.style.backgroundColor = "skyblue";
+        //if (clickCount === commonColors_LENGTH) dataSet.click = void 0;
+        //this.style.backgroundColor = "skyblue";
         //this.removeEventListener("mouseenter", mouseenterListener);
         //this.removeEventListener("mouseleave", mouseleaveListener);
     }
@@ -105,9 +108,17 @@ function repaintCell(idx, cell) {
     cell.innerText = String(byte).padStart(3, "0");
     const dataSet = DataSet.of(cell);
     const clickCount = dataSet.click ?? 0;
-    const backgroundColor = byte % 2 === 0
-        ? "red"
-        : ((clickCount % 2 === 0) ? "lime" : "green");
+    // const backgroundColor: string = byte % 2 === 0
+    //     ? "red"
+    //     : ((clickCount % 2 === 0) ? "lime" : "green");
+    // if (clickCount > 0) {
+    //     const backgroundColor = "#" + commonColors[clickCount].toString(16).padStart(6, "0");
+    //     cell.style.backgroundColor = backgroundColor;
+    // } else {
+    //     const backgroundColor = "#" + commonColors[byte % commonColors_LENGTH].toString(16).padStart(6, "0");
+    //     cell.style.backgroundColor = backgroundColor;
+    // }
+    const backgroundColor = "#" + commonColors[(byte + clickCount) % commonColors_LENGTH].toString(16).padStart(6, "0");
     cell.style.backgroundColor = backgroundColor;
 }
 function repaintTable(table) {
@@ -149,4 +160,3 @@ function repaint(buffer, table) {
     }, 1000);
 }
 repaint(buffer, table);
-export {};

@@ -1,5 +1,6 @@
 {
   "name": "hello-world",
+  "type": "module",
   "version": "1.0.0",
   "description": "think-3 moon-taco moon-kuku",
   "main": "t01.js",

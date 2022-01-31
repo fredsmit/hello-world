@@ -49,6 +49,38 @@ function show() {
         console.log("input.getAttribute('checked'):", input.getAttribute('checked'), typeof input.getAttribute('checked')); // the attribute value is: empty string
         console.log("input.checked:", input.checked, typeof input.checked);
     }
+
+    const el = document.querySelector("div[data-widget-name]");
+    if (el && el instanceof HTMLElement) {
+        console.log("dataset.widgetName:", el.dataset.widgetName);
+    }
+
+    //let links: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');
+    let selector = 'a[href*="://"]:not([href^="http://internal.com"])';
+    let links = document.querySelectorAll(selector) as NodeListOf<HTMLAnchorElement>;
+
+    links.forEach(link => {
+        console.log("---");
+        console.dir(link);
+        console.log("prop:", link.href);
+        console.log("attr:", link.getAttribute("href"));
+        if ((link.getAttribute("href") ?? "").includes("://")) {
+            link.style.color = 'orange';
+        }
+    });
+}
+
+document.body.addEventListener("dblclick", dblclickListener);
+
+function dblclickListener(this: HTMLElement, ev: MouseEvent): void {
+    const div = document.createElement('div');
+    div.className = "alert";
+    div.innerText = "You've read an important message.";
+    //document.body.prepend(div);
+    document.body.append(div);
+    setTimeout(() => {
+        div.insertAdjacentHTML("afterbegin", "<strong>Hi there!&nbsp;</strong>");
+    }, 1000);
 }
 
 export { };
