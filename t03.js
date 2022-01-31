@@ -1,75 +1,73 @@
 const buffer_LENGTH = 64;
 const buffer = new Uint8Array(buffer_LENGTH);
-refillBuffer(buffer);
-// function getCellId(id: string | null | undefined): number | null | undefined {
-//     if (id && id.startsWith("td-")) {
-//         return +id.substring(3);
-//     }
-//     return void 0;
-// }
-function getCellIdx(cell) {
-    const dataSet = cell?.dataset;
-    if (dataSet) {
-        const idx = dataSet.idx;
-        if (idx !== void 0) {
-            return +idx;
+class DataSet {
+    constructor(htmlElement) {
+        this.htmlElement = htmlElement;
+        this._dataset = htmlElement.dataset;
+    }
+    static of(htmlElement) {
+        return new DataSet(htmlElement);
+    }
+    get dataSet() {
+        return this._dataset;
+    }
+    getNumber(key) {
+        const value = this._dataset[key];
+        return value === void 0 ? void 0 : +value;
+    }
+    setNumber(key, value) {
+        if (value === void 0) {
+            this.htmlElement.removeAttribute("data-" + key);
+        }
+        else {
+            this.htmlElement.setAttribute("data-" + key, String(value));
         }
     }
-    return void 0;
+    get idx() { return this.getNumber("idx"); }
+    set idx(value) { this.setNumber("idx", value); }
+    get click() { return this.getNumber("click"); }
+    set click(value) { this.setNumber("click", value); }
 }
+refillBuffer(buffer);
 function isCellIdx(id) {
     return typeof id === "number" && Number.isInteger(id) && id >= 0 && id < buffer_LENGTH;
 }
 const mouseenterListener = function mouseenterListener(ev) {
     //console.log("mouseenter", this, ev);
-    const idx = getCellIdx(this);
+    const dataSet = DataSet.of(this);
+    const idx = dataSet.idx;
     if (isCellIdx(idx)) {
-        //console.log("enter td-id:", id, "data-idx:", this.getAttribute("data-idx"), Reflect.get(this, "id"));
-        // console.log("data-idx:", this.getAttribute("data-idx"), "0:", this.attributes.item(0));
-        // console.dir(this.attributes.item(0));
-        // console.dir(this.attributes.getNamedItem("data-idx"));
-        // console.log("--------");
-        // console.log("id:", (this.attributes as unknown as Record<number, Attr>)[0]);
-        // console.log("id:", (this.attributes as unknown as Record<string, Attr>).id);
-        // console.dir(this.attributes);
-        // console.log(this.attributes);
-        // console.log(Object.getOwnPropertyDescriptors(this.attributes));
-        // for (const entry of Object.getOwnPropertyNames(this.attributes)) {
-        //     console.log("entry:", entry, typeof entry);
-        // }
-        // const attrArray = Array.from(this.attributes);
-        // console.dir(attrArray);
-        // for (const attr of this.attributes) {
-        //     console.dir(attr);
-        // }
-        // console.log("--------");
-        if (ev.ctrlKey) {
-            const dataSet = this.dataset;
-            console.dir(dataSet);
-            console.log("idx:", idx, "click:", dataSet.click);
-        }
         buffer[idx] = 0;
-        this.style.backgroundColor = "yellow";
+        if (ev.ctrlKey) {
+            repaintCell(idx, this);
+        }
+        else {
+            const backgroundColor = "#" + Math.floor((Math.random() * 0x1000000)).toString(16).padStart(6, "0");
+            this.style.backgroundColor = backgroundColor;
+        }
     }
 };
 const mouseleaveListener = function mouseleaveListener(ev) {
-    const idx = getCellIdx(this);
+    const idx = DataSet.of(this).idx;
     if (isCellIdx(idx)) {
         this.style.backgroundColor = "brown";
     }
 };
 const clickListener = function clickListener(ev) {
-    const idx = getCellIdx(this);
+    const dataSet = DataSet.of(this);
+    const idx = dataSet.idx;
     if (isCellIdx(idx)) {
-        const bufferClick = +(this.getAttribute("data-click") ?? "0") + 1;
-        this.setAttribute("data-click", String(bufferClick));
+        const clickCount = dataSet.click;
+        dataSet.click = (clickCount ?? 0) + 1;
+        if (clickCount === 5)
+            dataSet.click = void 0;
         this.style.backgroundColor = "skyblue";
         //this.removeEventListener("mouseenter", mouseenterListener);
-        this.removeEventListener("mouseleave", mouseleaveListener);
+        //this.removeEventListener("mouseleave", mouseleaveListener);
     }
 };
 const dblclickListener = function dblclickListener(ev) {
-    const idx = getCellIdx(this);
+    const idx = DataSet.of(this).idx;
     if (isCellIdx(idx)) {
         buffer[idx] = idx;
         repaintCell(idx, this);
@@ -80,13 +78,7 @@ for (let rowIdx = 0; rowIdx < 8; rowIdx++) {
     const tr = document.createElement("tr");
     for (let colIdx = 0; colIdx < 8; colIdx++) {
         const td = document.createElement("td");
-        const idx = rowIdx * 8 + colIdx;
-        //const byte = buffer[idx];
-        // td.innerText = String(byte).padStart(3, "0");
-        // const backgroundColor: string = byte % 2 === 0 ? "red" : "lime";
-        // td.style.backgroundColor = backgroundColor;
-        td.setAttribute("data-idx", String(idx));
-        td.id = "td-" + String(idx).padStart(2, "0");
+        DataSet.of(td).idx = rowIdx * 8 + colIdx;
         td.style.cursor = "default";
         tr.appendChild(td);
         td.addEventListener("mouseenter", mouseenterListener);
@@ -111,8 +103,11 @@ function refillBuffer(buffer, force = false) {
 function repaintCell(idx, cell) {
     const byte = buffer[idx];
     cell.innerText = String(byte).padStart(3, "0");
-    const dataSet = cell.dataset;
-    const backgroundColor = byte % 2 === 0 ? "red" : ((+(dataSet.click ?? "") % 2 === 0) ? "lime" : "green");
+    const dataSet = DataSet.of(cell);
+    const clickCount = dataSet.click ?? 0;
+    const backgroundColor = byte % 2 === 0
+        ? "red"
+        : ((clickCount % 2 === 0) ? "lime" : "green");
     cell.style.backgroundColor = backgroundColor;
 }
 function repaintTable(table) {
@@ -123,7 +118,7 @@ function repaintTable(table) {
         return Array.from(cells);
     }).map(cell => {
         let ret;
-        const idx = getCellIdx(cell);
+        const idx = DataSet.of(cell).idx;
         if (isCellIdx(idx)) {
             ret = [idx, cell];
         }

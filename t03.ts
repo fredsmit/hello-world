@@ -2,32 +2,49 @@
 const buffer_LENGTH = 64;
 const buffer = new Uint8Array(buffer_LENGTH);
 
-// let elements = document.querySelectorAll('ul > li:last-child');
+class DataSet {
 
-type DataSet = DOMStringMap & {
-    idx?: string | undefined;
-    click?: string | undefined;
-};
+    private readonly _dataset: DOMStringMap & {
+        idx?: string | undefined;
+        click?: string | undefined;
+    };
 
-refillBuffer(buffer);
+    private constructor(private readonly htmlElement: HTMLElement) {
+        this._dataset = htmlElement.dataset;
+    }
 
-// function getCellId(id: string | null | undefined): number | null | undefined {
-//     if (id && id.startsWith("td-")) {
-//         return +id.substring(3);
-//     }
-//     return void 0;
-// }
+    public static of(htmlElement: HTMLElement): DataSet {
+        return new DataSet(htmlElement);
+    }
 
-function getCellIdx(cell: HTMLTableCellElement | null | undefined): number | undefined {
-    const dataSet = cell?.dataset as DataSet | null | undefined;
-    if (dataSet) {
-        const idx = dataSet.idx;
-        if (idx !== void 0) {
-            return +idx;
+    public get dataSet(): typeof this._dataset {
+        return this._dataset;
+    }
+
+    private getNumber(key: string): number | undefined {
+        const value = this._dataset[key];
+        return value === void 0 ? void 0 : +value;
+
+    }
+
+    private setNumber(key: string, value: number | undefined) {
+        if (value === void 0) {
+            this.htmlElement.removeAttribute("data-" + key);
+        } else {
+            this.htmlElement.setAttribute("data-" + key, String(value));
         }
     }
-    return void 0;
+
+    get idx(): number | undefined { return this.getNumber("idx"); }
+
+    set idx(value: number | undefined) { this.setNumber("idx", value); }
+
+    get click(): number | undefined { return this.getNumber("click"); }
+
+    set click(value: number | undefined) { this.setNumber("click", value); }
 }
+
+refillBuffer(buffer);
 
 function isCellIdx(id: number | undefined): id is number {
     return typeof id === "number" && Number.isInteger(id) && id >= 0 && id < buffer_LENGTH;
@@ -35,63 +52,44 @@ function isCellIdx(id: number | undefined): id is number {
 
 const mouseenterListener = function mouseenterListener(this: HTMLTableCellElement, ev: MouseEvent): void {
     //console.log("mouseenter", this, ev);
-    const idx = getCellIdx(this);
+    const dataSet = DataSet.of(this);
+    const idx = dataSet.idx;
     if (isCellIdx(idx)) {
-        //console.log("enter td-id:", id, "data-idx:", this.getAttribute("data-idx"), Reflect.get(this, "id"));
-        // console.log("data-idx:", this.getAttribute("data-idx"), "0:", this.attributes.item(0));
-        // console.dir(this.attributes.item(0));
-        // console.dir(this.attributes.getNamedItem("data-idx"));
-
-        // console.log("--------");
-        // console.log("id:", (this.attributes as unknown as Record<number, Attr>)[0]);
-        // console.log("id:", (this.attributes as unknown as Record<string, Attr>).id);
-        // console.dir(this.attributes);
-        // console.log(this.attributes);
-        // console.log(Object.getOwnPropertyDescriptors(this.attributes));
-
-        // for (const entry of Object.getOwnPropertyNames(this.attributes)) {
-        //     console.log("entry:", entry, typeof entry);
-
-        // }
-        // const attrArray = Array.from(this.attributes);
-        // console.dir(attrArray);
-        // for (const attr of this.attributes) {
-        //     console.dir(attr);
-        // }
-        // console.log("--------");
-
-        if (ev.ctrlKey) {
-            const dataSet: DataSet = this.dataset;
-            console.dir(dataSet);
-            console.log("idx:", idx, "click:", dataSet.click);
-        }
 
         buffer[idx] = 0;
-        this.style.backgroundColor = "yellow";
+
+        if (ev.ctrlKey) {
+            repaintCell(idx, this);
+        } else {
+            const backgroundColor = "#" + Math.floor((Math.random() * 0x1000000)).toString(16).padStart(6, "0");
+            this.style.backgroundColor = backgroundColor;
+        }
     }
 }
 
 const mouseleaveListener = function mouseleaveListener(this: HTMLTableCellElement, ev: MouseEvent): void {
-    const idx = getCellIdx(this);
+    const idx = DataSet.of(this).idx;
     if (isCellIdx(idx)) {
         this.style.backgroundColor = "brown";
     }
 }
 
 const clickListener = function clickListener(this: HTMLTableCellElement, ev: MouseEvent): void {
-    const idx = getCellIdx(this);
+    const dataSet = DataSet.of(this);
+    const idx = dataSet.idx;
     if (isCellIdx(idx)) {
-        const bufferClick = +(this.getAttribute("data-click") ?? "0") + 1;
-        this.setAttribute("data-click", String(bufferClick));
+        const clickCount = dataSet.click;
+        dataSet.click = (clickCount ?? 0) + 1;
+        if (clickCount === 5) dataSet.click = void 0;
 
         this.style.backgroundColor = "skyblue";
         //this.removeEventListener("mouseenter", mouseenterListener);
-        this.removeEventListener("mouseleave", mouseleaveListener);
+        //this.removeEventListener("mouseleave", mouseleaveListener);
     }
 }
 
 const dblclickListener = function dblclickListener(this: HTMLTableCellElement, ev: MouseEvent): void {
-    const idx = getCellIdx(this);
+    const idx = DataSet.of(this).idx;
     if (isCellIdx(idx)) {
         buffer[idx] = idx;
         repaintCell(idx, this);
@@ -103,13 +101,7 @@ for (let rowIdx = 0; rowIdx < 8; rowIdx++) {
     const tr = document.createElement("tr");
     for (let colIdx = 0; colIdx < 8; colIdx++) {
         const td = document.createElement("td");
-        const idx = rowIdx * 8 + colIdx;
-        //const byte = buffer[idx];
-        // td.innerText = String(byte).padStart(3, "0");
-        // const backgroundColor: string = byte % 2 === 0 ? "red" : "lime";
-        // td.style.backgroundColor = backgroundColor;
-        td.setAttribute("data-idx", String(idx));
-        td.id = "td-" + String(idx).padStart(2, "0");
+        DataSet.of(td).idx = rowIdx * 8 + colIdx;
         td.style.cursor = "default";
         tr.appendChild(td);
         td.addEventListener("mouseenter", mouseenterListener);
@@ -136,10 +128,11 @@ function refillBuffer(buffer: Uint8Array, force = false): number {
 function repaintCell(idx: number, cell: HTMLTableCellElement) {
     const byte = buffer[idx];
     cell.innerText = String(byte).padStart(3, "0");
-    const dataSet: DataSet = cell.dataset;
-    const backgroundColor: string = byte % 2 === 0 ? "red" : (
-        (+(dataSet.click ?? "") % 2 === 0) ? "lime" : "green"
-    );
+    const dataSet = DataSet.of(cell);
+    const clickCount = dataSet.click ?? 0;
+    const backgroundColor: string = byte % 2 === 0
+        ? "red"
+        : ((clickCount % 2 === 0) ? "lime" : "green");
     cell.style.backgroundColor = backgroundColor;
 }
 
@@ -152,7 +145,7 @@ function repaintTable(table: HTMLTableElement) {
             return Array.from(cells);
         }).map(cell => {
             let ret: Pair;
-            const idx = getCellIdx(cell);
+            const idx = DataSet.of(cell).idx;
             if (isCellIdx(idx)) {
                 ret = [idx, cell];
             } else {
