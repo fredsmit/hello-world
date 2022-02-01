@@ -91,4 +91,17 @@ function createTree(entry: [string, Record<string, any>], container: HTMLUListEl
     }
 }
 
+const list = document.getElementById("ulAnimals");
+if (list) {
+    countDescendants(list);
+}
+
+function countDescendants(container: HTMLElement): void {
+    const uls = container.querySelectorAll("ul");
+    for (const ul of uls) {
+        const ds = ul.querySelectorAll("ul li");
+        ul.before(`${ds.length}`);
+    }
+}
+
 export { };

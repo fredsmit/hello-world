@@ -76,3 +76,14 @@ function createTree(entry, container) {
         }
     }
 }
+const list = document.getElementById("ulAnimals");
+if (list) {
+    countDescendants(list);
+}
+function countDescendants(container) {
+    const uls = container.querySelectorAll("ul");
+    for (const ul of uls) {
+        const ds = ul.querySelectorAll("ul li");
+        ul.before(`${ds.length}`);
+    }
+}
