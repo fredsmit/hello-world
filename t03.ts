@@ -107,11 +107,11 @@ for (let rowIdx = 0; rowIdx < 8; rowIdx++) {
         const td = document.createElement("td");
         DataSet.of(td).idx = rowIdx * 8 + colIdx;
         td.style.cursor = "default";
-        tr.appendChild(td);
         td.addEventListener("mouseenter", mouseenterListener);
         td.addEventListener("mouseleave", mouseleaveListener);
         td.addEventListener("click", clickListener);
         td.addEventListener("dblclick", dblclickListener);
+        tr.appendChild(td);
     }
     table.appendChild(tr);
 }
@@ -131,7 +131,8 @@ function refillBuffer(buffer: Uint8Array, force = false): number {
 
 function repaintCell(idx: number, cell: HTMLTableCellElement) {
     const byte = buffer[idx];
-    cell.innerText = String(byte).padStart(3, "0");
+    //cell.innerText = String(byte).padStart(3, "0");
+    cell.textContent = byte.toString(16).toUpperCase().padStart(2, "0");
     const dataSet = DataSet.of(cell);
     const clickCount = dataSet.click ?? 0;
     // const backgroundColor: string = byte % 2 === 0
@@ -192,6 +193,8 @@ function repaint(buffer: Uint8Array, table: HTMLTableElement) {
 }
 
 repaint(buffer, table);
+
+console.log("import.meta.url:", import.meta.url);
 
 export { }
 

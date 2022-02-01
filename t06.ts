@@ -28,7 +28,7 @@ document.documentElement.addEventListener("click", (ev: MouseEvent) => {
         input.checked = !input.checked;
     }
 
-    show();
+    //show();
 });
 
 function show() {
@@ -78,9 +78,31 @@ function dblclickListener(this: HTMLElement, ev: MouseEvent): void {
     div.innerText = "You've read an important message.";
     //document.body.prepend(div);
     document.body.append(div);
+
+    const hi = document.createElement("strong");
+    const hiText = document.createTextNode("Hi there!");
+    const hiText2 = document.createTextNode("& there!");
+    hi.appendChild(hiText);
+
     setTimeout(() => {
-        div.insertAdjacentHTML("afterbegin", "<strong>Hi there!&nbsp;</strong>");
+        //div.insertAdjacentHTML("afterbegin", "<strong>Hi there!&nbsp;</strong>");
+        div.append(hi);
     }, 1000);
+    setTimeout(() => {
+        //const hi2 = hi.cloneNode();
+        //hi2.appendChild(document.createElement("li")).appendChild(document.createTextNode("KUKU"));
+        //hi2.appendChild(document.createElement("li")).appendChild(new Text("KUKU"));
+        //div.prepend(hi2);
+        //div.insertAdjacentHTML("beforeend", "<strong>Hi there!&nbsp;</strong>");
+        const text0 = document.createTextNode("<YES>");
+        console.dir(text0);
+        const text1 = new Text("<Kuku>");
+        console.dir(text1);
+        div.prepend(hi.cloneNode().appendChild(new Text("Kuku")).splitText(2));
+        console.log(document.all);
+        
+
+    }, 2000);
 }
 
 export { };

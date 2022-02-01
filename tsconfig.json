@@ -44,10 +44,10 @@
     //   }
   },
   "files": [
-    "commonColors.ts",
+    // "commonColors.ts",
     "t03.ts",
-    //"t06.ts"
-    // "w99.ts",
-    // "w900.ts"
+
+    //"t06.ts",
+    "t08.ts",
   ]
 }

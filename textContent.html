@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Differences between innerText and textContent.
+    </title>
+</head>
+
+<body>
+    <h3>Differences between innerText & textContent.</h3>
+    <p id="demo"> This element has extra spacing and contains
+        <span hidden>a span element</span>.
+    </p>
+
+    <button onclick="getInnerText()">Get innerText</button>
+    <button onclick="getTextContent()">Get textContent</button>
+
+    <p id="demo"></p>
+    <script>
+        function getInnerText() {
+            console.log(document.getElementById("demo").innerText);
+        }
+
+        function getTextContent() {
+            console.log(document.getElementById("demo").textContent);
+        }
+    </script>
+</body>
+
+</html>
