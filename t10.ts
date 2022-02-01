@@ -73,8 +73,17 @@ function sortPeople(sortBy: string = "age") {
             });
 
             type TPerson = { name: string; surname: string; age: string };
-            const byName = (a: TPerson, b: TPerson) => a.name > b.name ? 1 : -1;
-            const bySurname = (a: TPerson, b: TPerson) => a.surname > b.surname ? 1 : -1;
+
+            // const byName = (a: TPerson, b: TPerson) => a.name > b.name ? 1 : -1;
+            // const bySurname = (a: TPerson, b: TPerson) => a.surname > b.surname ? 1 : -1;
+
+            // const byName = (a: TPerson, b: TPerson) => a.name.localeCompare(b.name);
+            // const bySurname = (a: TPerson, b: TPerson) => a.surname.localeCompare(b.surname);
+
+            const collator = new Intl.Collator();
+            const byName = (a: TPerson, b: TPerson) => collator.compare(a.name, b.name);
+            const bySurname = (a: TPerson, b: TPerson) => collator.compare(a.surname, b.surname);
+
             const byAge = (a: TPerson, b: TPerson) => +a.age - +b.age;
 
             switch (sortBy) {
