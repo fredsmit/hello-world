@@ -18,9 +18,14 @@ const commonColorsDefinition = {
 } as const;
 
 const commonColors = Uint32Array.from(Object.values(commonColorsDefinition), entry => entry[0]);
+const commonColorNames = Array.from(Object.values(commonColorsDefinition), entry => entry[1]);
 
 function getCommonColors(): Readonly<Uint32Array> {
     return commonColors.slice();
 }
 
-export { getCommonColors };
+function getCommonColorNames(): readonly string[] {
+    return commonColorNames.slice();
+}
+
+export { getCommonColors, getCommonColorNames };

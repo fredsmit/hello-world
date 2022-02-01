@@ -17,7 +17,11 @@ const commonColorsDefinition = {
     15: [0x00FFFF, "aqua"]
 };
 const commonColors = Uint32Array.from(Object.values(commonColorsDefinition), entry => entry[0]);
+const commonColorNames = Array.from(Object.values(commonColorsDefinition), entry => entry[1]);
 function getCommonColors() {
     return commonColors.slice();
 }
-export { getCommonColors };
+function getCommonColorNames() {
+    return commonColorNames.slice();
+}
+export { getCommonColors, getCommonColorNames };

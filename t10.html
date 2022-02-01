@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>test</title>
+    <style>
+    </style>
+    <script type="module" src="t10.js"></script>
+</head>
+
+<body>
+    <!-- click on this button calls clockStart() -->
+    <input type="button" id="btnStart" onclick="clockStart(this)" value="Start">
+
+    <!-- click on this button calls clockStop() -->
+    <input type="button" id="btnStop" onclick="clockStop(this)" value="Stop">
+
+    <ul id="ul">
+        <li id="one">1</li>
+        <li id="two">4</li>
+    </ul>
+
+    <input type="button" onclick="sortPeople('name')" value="Sort by name">
+    <input type="button" onclick="sortPeople('surname')" value="Sort by surname">
+    <input type="button" onclick="sortPeople('age')" value="Sort by age">
+
+    <table id="sortableTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John</td>
+                <td>Smith</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Pete</td>
+                <td>Brown</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>Ann</td>
+                <td>Lee</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>B</td>
+            </tr>
+            <tr>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
