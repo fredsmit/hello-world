@@ -1,6 +1,7 @@
 import { getRequiredHTMLElements } from "./pageUtils.js";
 
-const ballSrc = "https://en.js.cx/clipart/ball.svg";
+const ballSrc = "./img/ball.svg";
+//const ballSrc = "https://en.js.cx/clipart/ball.svg";
 //const ballSrc = "https://clipground.com/images/orange-free-clipart-8.jpg";
 //const ballSrc = "https://th.bing.com/th/id/R.54908073bcefe489e355d83d7c32ed0b?rik=G%2fTRm1VuAYk8Pw&riu=http%3a%2f%2fclipground.com%2fimages%2fgirasole-clipart-4.jpg&ehk=7YW5jpTWXiyRRP9%2b6z11u7sN80nEBvZOd8cjFNU4W9o%3d&risl=&pid=ImgRaw&r=0";
 //const ballSrc = "https://www.google.lt/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png";
