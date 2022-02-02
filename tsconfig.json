@@ -44,10 +44,11 @@
     //   }
   },
   "files": [
+    "pageUtils.ts",
     //"commonColors.ts",
     //"t03.ts",
 
     //"t06.ts",
-    "t12.ts",
+    "t12.ts"
   ]
 }
