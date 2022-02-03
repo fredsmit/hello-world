@@ -2,16 +2,29 @@ type PositionAt = "default" | 1 | 2 | 3 | 4
     | "top-left" | "top-right" | "bottom-left" | "bottom-right"
     | "left-top" | "right-top" | "left-bottom" | "right-bottom";
 
-function round(rect: DOMRectReadOnly): DOMRectReadOnly {
-    return new DOMRectReadOnly(
-        Math.round(rect.x),
-        Math.round(rect.y),
-        Math.round(rect.width),
-        Math.round(rect.height)
-    );
-}
+// function round(rect: DOMRectReadOnly): DOMRectReadOnly {
+//     return new DOMRectReadOnly(
+//         Math.round(rect.x),
+//         Math.round(rect.y),
+//         Math.round(rect.width),
+//         Math.round(rect.height)
+//     );
+// }
 
 function positionAt(anchor: HTMLElement, note: HTMLElement, position?: PositionAt | null | undefined) {
+
+    function getAnchorCoords(elem: HTMLElement): DOMRectReadOnly {
+        const rect = elem.getBoundingClientRect();
+        // document.documentElement.scrollLeft/scrollTop
+        // ===
+        // window.pageXOffset/pageYOffset
+        return new DOMRectReadOnly(
+            Math.round(rect.x + window.pageXOffset),
+            Math.round(rect.y + window.pageYOffset),
+            Math.round(rect.width),
+            Math.round(rect.height)
+        );
+    }
 
     const copyOfNote = note.cloneNode(true) as HTMLElement;
     copyOfNote.style.position = "absolute";
@@ -19,45 +32,59 @@ function positionAt(anchor: HTMLElement, note: HTMLElement, position?: PositionA
     // console.log(anchor.getBoundingClientRect());
     // console.log(round(anchor.getBoundingClientRect()));
 
-    const scrollTop = Math.round(document.documentElement.scrollTop);
-    const scrollLeft = Math.round(document.documentElement.scrollLeft);
+    // const scrollTop = Math.round(document.documentElement.scrollTop);
+    // const scrollLeft = Math.round(document.documentElement.scrollLeft);
     // console.log("scrollTop:", scrollTop, "scrollLeft:", scrollLeft);
+
+    // const {
+    //     top: anchorTop,
+    //     right: anchorRight,
+    //     bottom: anchorBottom,
+    //     left: anchorLeft
+    // } = round(anchor.getBoundingClientRect());
 
     const {
         top: anchorTop,
         right: anchorRight,
         bottom: anchorBottom,
         left: anchorLeft
-    } = round(anchor.getBoundingClientRect());
+    } = getAnchorCoords(anchor);
 
     const noteStyle: { top: string; left: string } = copyOfNote.style;
-
 
     switch (position ?? 1) {
         default:
         case 1:
         case "top-left":
         case "left-top":
-            noteStyle.top = scrollTop + anchorTop + 2 + "px";
-            noteStyle.left = scrollLeft + anchorLeft + 2 + "px";
+            // noteStyle.top = scrollTop + anchorTop + 2 + "px";
+            // noteStyle.left = scrollLeft + anchorLeft + 2 + "px";
+            noteStyle.top = anchorTop + 2 + "px";
+            noteStyle.left = anchorLeft + 2 + "px";
             break;
         case 2:
         case "top-right":
         case "right-top":
-            noteStyle.top = scrollTop + anchorTop + 2 + "px";
-            noteStyle.left = scrollLeft + anchorRight + 2 + "px";
+            // noteStyle.top = scrollTop + anchorTop + 2 + "px";
+            // noteStyle.left = scrollLeft + anchorRight + 2 + "px";
+            noteStyle.top = anchorTop + 2 + "px";
+            noteStyle.left = anchorRight + 2 + "px";
             break;
         case 3:
         case "bottom-left":
         case "left-bottom":
-            noteStyle.top = scrollTop + anchorBottom + 2 + "px";
-            noteStyle.left = scrollLeft + anchorLeft + 2 + "px";
+            // noteStyle.top = scrollTop + anchorBottom + 2 + "px";
+            // noteStyle.left = scrollLeft + anchorLeft + 2 + "px";
+            noteStyle.top = anchorBottom + 2 + "px";
+            noteStyle.left = anchorLeft + 2 + "px";
             break;
         case 4:
         case "bottom-right":
         case "right-bottom":
-            noteStyle.top = scrollTop + anchorBottom + 2 + "px";
-            noteStyle.left = scrollLeft + anchorRight + 2 + "px";
+            // noteStyle.top = scrollTop + anchorBottom + 2 + "px";
+            // noteStyle.left = scrollLeft + anchorRight + 2 + "px";
+            noteStyle.top = anchorBottom + 2 + "px";
+            noteStyle.left = anchorRight + 2 + "px";
             break;
     }
 
