@@ -72,9 +72,11 @@ function positionAt(anchor, note, position, outside) {
         copyOfNote.textContent = "note\xA0@\xA0" + String(position);
     }
     if (outside) {
-        document.body.append(copyOfNote);
+        //document.body.append(copyOfNote); // Ok
+        anchor.append(copyOfNote);
     }
     else {
+        //document.body.append(copyOfNote); // Ok
         anchor.append(copyOfNote);
         const noteRect = getAnchorCoords(copyOfNote);
         const pos = copyOfNote.dataset["pos"];

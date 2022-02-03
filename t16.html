@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>test</title>
+    <style>
+    </style>
+    <script type="module" src="t16.js"></script>
+</head>
+
+<body>
+    <input type="button" id="btnClick" onclick="f2?.();f3?.();const text='Before'; alert(text);" value="Click me">
+    <script type="module">
+        var f = btnClick.onclick;
+        btnClick.onclick = function (e) { // overwrites the existing handler
+            f?.(e);
+            alert('After'); // only this will be shown
+        };
+
+    </script>
+</body>
+
+</html>

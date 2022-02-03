@@ -100,8 +100,10 @@ function positionAt(
     }
 
     if (outside) {
-        document.body.append(copyOfNote);
+        //document.body.append(copyOfNote); // Ok
+        anchor.append(copyOfNote);
     } else {
+        //document.body.append(copyOfNote); // Ok
         anchor.append(copyOfNote);
         const noteRect = getAnchorCoords(copyOfNote);
         const pos = copyOfNote.dataset["pos"];

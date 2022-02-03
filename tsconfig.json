@@ -20,7 +20,8 @@
     //
     "preserveConstEnums": false,
 
-    //"lib": ["es2015", "DOM"],
+    //"lib": ["dom"],
+    //"lib": ["es2015", "dom"],
     //"noLib": true,
 
     //"target": "esNext",
@@ -49,6 +50,6 @@
     //"t03.ts",
 
     //"t06.ts",
-    "t15.ts"
+    "t16.ts"
   ]
 }
