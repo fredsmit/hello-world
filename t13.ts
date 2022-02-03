@@ -35,9 +35,33 @@ const ballSrc = "./img/ball.svg";
         ball.style.top = top;
         ball.style.left = left;
 
+        console.log("document.body.scrollHeight:", document.body.scrollHeight);
+        console.log("document.documentElement.scrollHeight:", document.documentElement.scrollHeight);
+
+        console.log("document.body.offsetHeight:", document.body.offsetHeight);
+        console.log("document.documentElement.offsetHeight:", document.documentElement.offsetHeight);
+
+        console.log("document.body.clientHeight:", document.body.clientHeight);
+        console.log("document.documentElement.clientHeight:", document.documentElement.clientHeight);
+
+        const message = createMessageUnder(ball, "Ball");
+        document.body.append(message);
+        setTimeout(() => message.remove(), 5000);
+
     } catch (error) {
         console.error("Error:", error);
     }
 })();
+
+function createMessageUnder(elem: HTMLElement, text: string) {
+    const message = document.createElement('div');
+    // better to use a css class for the style here
+    message.style.cssText = "position:fixed; color: red";
+    const coords = elem.getBoundingClientRect();
+    message.style.left = coords.left + "px";
+    message.style.top = coords.bottom + "px";
+    message.textContent = text;
+    return message;
+}
 
 export { };
