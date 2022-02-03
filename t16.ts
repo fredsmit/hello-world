@@ -1,4 +1,4 @@
-/// <reference lib="dom" />
+// <reference lib="dom" />
 
 console.log("f:", (document as any)["f"]);
 (document as any)["f2"] = function () {
