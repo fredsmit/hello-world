@@ -2,8 +2,8 @@
   "compilerOptions": {
     "strict": true,
     "strictNullChecks": true,
-    //"module": "es2022",
-    "module": "es2020",
+    "module": "es2022",
+    //"module": "es2020",
     //"module": "es2015",
     //"module": "CommonJS",
     //"moduleResolution": "classic",
@@ -49,6 +49,6 @@
     //"t03.ts",
 
     //"t06.ts",
-    "t14.ts"
+    "t15.ts"
   ]
 }
