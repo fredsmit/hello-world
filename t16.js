@@ -1,3 +1,4 @@
+/// <reference lib="dom" />
 console.log("f:", document["f"]);
 document["f2"] = function () {
     console.log("document.f2");

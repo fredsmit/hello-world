@@ -44,12 +44,16 @@
     //     "typescript": ["./node_modules/typescript/lib"]
     //   }
   },
+  // "exclude": [
+  //   "node_modules"
+  // ],
   "files": [
-    "pageUtils.ts",
+    //"pageUtils.ts",
     //"commonColors.ts",
     //"t03.ts",
 
     //"t06.ts",
+    //"t14.ts",
     "t16.ts"
   ]
 }

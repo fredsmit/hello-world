@@ -1,3 +1,4 @@
+/// <reference lib="dom" />
 import { getRequiredHTMLElements } from "./pageUtils.js";
 const { field } = getRequiredHTMLElements("field");
 const fw = field.clientWidth;
