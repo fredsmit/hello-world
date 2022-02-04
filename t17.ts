@@ -50,14 +50,14 @@ function getFieldEventListenerObject(field: HTMLElement, ball: HTMLElement): Eve
         );
     }
 
-    function getTranslatedCoords(elemRect: DOMRectReadOnly, anchorRect: DOMRectReadOnly): DOMRectReadOnly {
-        return new DOMRectReadOnly(
-            elemRect.x - anchorRect.x,
-            elemRect.y - anchorRect.y,
-            elemRect.width,
-            elemRect.height
-        );
-    }
+    // function getTranslatedCoords(elemRect: DOMRectReadOnly, anchorRect: DOMRectReadOnly): DOMRectReadOnly {
+    //     return new DOMRectReadOnly(
+    //         elemRect.x - anchorRect.x,
+    //         elemRect.y - anchorRect.y,
+    //         elemRect.width,
+    //         elemRect.height
+    //     );
+    // }
 
     function onDblClick(ev: MouseEvent) {
         extendedField = !extendedField;
@@ -73,11 +73,13 @@ function getFieldEventListenerObject(field: HTMLElement, ball: HTMLElement): Eve
         const pageOffsetX = Math.round(window.pageXOffset);
         const pageOffsetY = Math.round(window.pageYOffset);
 
-        const anchorRect: DOMRectReadOnly = getPageCoords(field);
-
-        const fieldRect: DOMRectReadOnly = getTranslatedCoords(anchorRect, anchorRect);
-        const ballRect = getTranslatedCoords(getPageCoords(ball), anchorRect);
+        // const anchorRect: DOMRectReadOnly = getPageCoords(field);
+        // const fieldRect: DOMRectReadOnly = getTranslatedCoords(anchorRect, anchorRect);
+        // const ballRect = getTranslatedCoords(getPageCoords(ball), anchorRect);
         //console.log("ball (left,top):", ballRect.left, ballRect.top);
+
+        const fieldRect: DOMRectReadOnly = getPageCoords(field);
+        const ballRect: DOMRectReadOnly = getPageCoords(ball);
 
         const borderTop = field.clientTop;
         const borderRight = fieldRect.width - field.clientLeft - field.clientWidth;
@@ -93,9 +95,12 @@ function getFieldEventListenerObject(field: HTMLElement, ball: HTMLElement): Eve
         const ay = ballRect.y - (extendedField ? 0 : borderTop);
         //console.log(ax, ay, extendedField);
 
-        const pointX = ev.clientX - anchorRect.x - borderLeft + pageOffsetX;
-        const pointY = ev.clientY - anchorRect.y - borderTop + pageOffsetY;
+        // const pointX = ev.clientX - anchorRect.x - borderLeft + pageOffsetX;
+        // const pointY = ev.clientY - anchorRect.y - borderTop + pageOffsetY;
+        const pointX = ev.clientX - borderLeft + pageOffsetX;
+        const pointY = ev.clientY - borderTop + pageOffsetY;
         // console.log("pointX, pointY:", pointX, pointY);
+
         const ballLeft = Math.round(pointX - ballRect.width / 2);
         const ballTop = Math.round(pointY - ballRect.height / 2);
         // console.log("ballLeft, ballTop:", ballLeft, ballTop);
