@@ -66,7 +66,10 @@ function getFieldEventListenerObject(field: HTMLElement, ball: HTMLElement): Eve
         field.style.color = fieldBorderColor;
     }
 
-    function onClick(ev: MouseEvent) {
+    async function onClick(ev: MouseEvent) {
+
+        await canMove();
+
         const pageOffsetX = Math.round(window.pageXOffset);
         const pageOffsetY = Math.round(window.pageYOffset);
 
@@ -74,6 +77,7 @@ function getFieldEventListenerObject(field: HTMLElement, ball: HTMLElement): Eve
 
         const fieldRect: DOMRectReadOnly = getTranslatedCoords(anchorRect, anchorRect);
         const ballRect = getTranslatedCoords(getPageCoords(ball), anchorRect);
+        //console.log("ball (left,top):", ballRect.left, ballRect.top);
 
         const borderTop = field.clientTop;
         const borderRight = fieldRect.width - field.clientLeft - field.clientWidth;
@@ -84,6 +88,11 @@ function getFieldEventListenerObject(field: HTMLElement, ball: HTMLElement): Eve
         // console.log("borderRight:", borderRight);
         // console.log("borderBottom:", borderBottom);
         // console.log("borderLeft:", borderLeft);
+
+        const ax = ballRect.x - (extendedField ? 0 : borderLeft);
+        const ay = ballRect.y - (extendedField ? 0 : borderTop);
+        //console.log(ax, ay, extendedField);
+
         const pointX = ev.clientX - anchorRect.x - borderLeft + pageOffsetX;
         const pointY = ev.clientY - anchorRect.y - borderTop + pageOffsetY;
         // console.log("pointX, pointY:", pointX, pointY);
@@ -98,8 +107,59 @@ function getFieldEventListenerObject(field: HTMLElement, ball: HTMLElement): Eve
         const ballTopMax = Math.round(
             field.clientHeight - ballRect.height + (extendedField ? borderBottom : 0));
 
-        ball.style.left = Math.max(ballLeftMin, Math.min(ballLeft, ballLeftMax)) + "px";
-        ball.style.top = Math.max(ballTopMin, Math.min(ballTop, ballTopMax)) + "px";
+        const bx = Math.max(ballLeftMin, Math.min(ballLeft, ballLeftMax));
+        const by = Math.max(ballTopMin, Math.min(ballTop, ballTopMax));
+
+        await moveBall(ball, ax, ay, bx, by);
+    }
+
+    function canMove(): Promise<true> {
+        return new Promise(resolve => {
+            isStopping = true;
+            const timerId = setInterval(() => {
+                if (!isMoving) {
+                    isStopping = false;
+                    clearInterval(timerId);
+                    resolve(true);
+                }
+            }, 20);
+        });
+    }
+
+    let isStopping = false;
+    let isMoving = false;
+
+    async function moveBall(ball: HTMLElement, ax: number, ay: number, bx: number, by: number): Promise<void> {
+        isMoving = true;
+
+        const dx = bx - ax;
+        const dy = by - ay;
+        const len = Math.sqrt(dx * dx + dy * dy);
+        const stepCount = Math.floor(len * 0.573);
+
+        //console.log("move", ax, ay, " --> ", bx, by, "{dx, dy, len}:", dx, dy, len);
+
+        if (stepCount < 20) {
+            ball.style.left = bx + "px";
+            ball.style.top = by + "px";
+        } else {
+            for (let n = 1; n <= stepCount; ++n) {
+                await step(ball, Math.round(ax + dx * n / stepCount), Math.round(ay + dy * n / stepCount));
+                if (isStopping) {
+                    break;
+                }
+            }
+        }
+
+        isMoving = false;
+    }
+
+    function step(ball: HTMLElement, bx: number, by: number): Promise<void> {
+        return new Promise(resolve => {
+            ball.style.left = bx + "px";
+            ball.style.top = by + "px";
+            setTimeout(() => resolve(void 0), 8);
+        });
     }
 
     const fieldClickObject: EventListenerObject = {
