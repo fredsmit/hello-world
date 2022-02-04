@@ -42,8 +42,41 @@
     <li>Honey</li>
   </ul>
 
-  ▶ ▼ Sweeties 3<br>
+  ▶ ▼ Sweeties 4<br>
 
+  <style>
+    .menu ul {
+      margin: 0;
+      list-style: none;
+      padding-left: 20px;
+      display: none;
+    }
+
+    .menu .title::before {
+      content: '▶ ';
+      font-size: 80%;
+      color: green;
+    }
+
+    .menu.open .title::before {
+      content: '▼ ';
+    }
+
+    .menu.open ul {
+      display: block;
+    }
+  </style>
+
+  <div class="menu">
+    <span class="title">Sweeties (click me)!</span>
+    <ul>
+      <li>Cake</li>
+      <li>Donut</li>
+      <li>Honey</li>
+    </ul>
+  </div>
+
+  ▶ ▼ Sweeties 5<br>
 </body>
 
 </html>
