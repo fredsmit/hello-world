@@ -53,12 +53,13 @@ const menu = document.body.querySelector("div.menu");
 if (menu) {
     const className_open = "open";
     menu.addEventListener("click", () => {
-        const classList = menu.classList;
-        if (classList.contains(className_open)) {
-            classList.remove(className_open);
-        } else {
-            classList.add(className_open);
-        }
+        // const classList = menu.classList;
+        // if (classList.contains(className_open)) {
+        //     classList.remove(className_open);
+        // } else {
+        //     classList.add(className_open);
+        // }
+        menu.classList.toggle(className_open);
     });
 }
 
