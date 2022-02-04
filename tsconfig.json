@@ -9,21 +9,17 @@
     //"moduleResolution": "classic",
     "moduleResolution": "node",
     "noImplicitAny": true,
-
     "noImplicitReturns": true,
     //"noUnusedLocals":true,
     //"noUnusedParameters":true,
     "noFallthroughCasesInSwitch": true,
-
     "removeComments": false,
     "sourceMap": false,
     //
     "preserveConstEnums": false,
-
     //"lib": ["dom"],
     //"lib": ["es2015", "dom"],
     //"noLib": true,
-
     //"target": "esNext",
     //"target": "es2021",
     "target": "es2020",
@@ -48,12 +44,11 @@
   //   "node_modules"
   // ],
   "files": [
-    //"pageUtils.ts",
-    //"commonColors.ts",
+    "pageUtils.ts",
+    "commonColors.ts",
     //"t03.ts",
-
     //"t06.ts",
     //"t14.ts",
-    "t16.ts"
+    "t17.ts"
   ]
 }

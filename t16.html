@@ -11,14 +11,12 @@
 </head>
 
 <body>
-    <input type="button" id="btnClick" onclick="f2?.();f3?.();const text='Before'; alert(text);" value="Click me">
+    <div id="dvText">TEXT</div>
+    <input type="button" id="btnClick" onclick="this.hidden=true" value="Click me">
     <script type="module">
-        var f = btnClick.onclick;
-        btnClick.onclick = function (e) { // overwrites the existing handler
-            f?.(e);
-            alert('After'); // only this will be shown
+        btnClick.onclick = (ev) => {
+            dvText.hidden = true;
         };
-
     </script>
 </body>
 

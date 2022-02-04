@@ -1,11 +1,19 @@
-/// <reference lib="dom" />
-console.log("f:", document["f"]);
-document["f2"] = function () {
-    console.log("document.f2");
-};
-window["f3"] = function () {
-    console.log("window.f3");
-};
-console.log(document);
-console.log(window);
+window.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM built");
+});
+window.addEventListener("load", function (ev) {
+    console.log("load");
+});
+document.addEventListener("loadeddata", function (ev) {
+    console.log("loadeddata");
+});
+document.addEventListener("loadedmetadata", function (ev) {
+    console.log("loadedmetadata");
+});
+document.addEventListener("loadstart", function (ev) {
+    console.log("loadstart");
+});
+document.addEventListener('readystatechange', (event) => {
+    console.log(`readystate: ${document.readyState}\n`);
+});
 export {};
