@@ -44,11 +44,11 @@
   //   "node_modules"
   // ],
   "files": [
-    "pageUtils.ts",
-    "commonColors.ts",
+    //"pageUtils.ts",
+    //"commonColors.ts",
     //"t03.ts",
     //"t06.ts",
     //"t14.ts",
-    "t17.ts"
+    "t18.ts"
   ]
 }
