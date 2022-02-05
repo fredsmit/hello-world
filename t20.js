@@ -4,5 +4,4 @@
 //     li.insertAdjacentHTML('beforeend', `<span style="position:absolute;left:0;top:0">${i}</span>`);
 //     i++;
 // }
-
-export { };
+export {};
