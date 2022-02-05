@@ -1,12 +1,21 @@
-const removeButton = getRemoveButton();
-if (removeButton === null)
+const cloneRemoveButton = get_cloneRemoveButton();
+if (cloneRemoveButton === null)
     throw Error("Required 'remove-button' not found.");
 
 const paneHeaderCollection = document.body.querySelectorAll("div.pane h3");
 for (const paneHeader of paneHeaderCollection) {
-    const removeButtonCopy = removeButton.cloneNode(true);
+
+    const removeButtonCopy = cloneRemoveButton();
     removeButtonCopy.addEventListener("click", clickHandler);
     paneHeader.append(removeButtonCopy);
+
+    const pane = paneHeader.parentElement;
+    if (pane) {
+        const removeButtonCopy2 = cloneRemoveButton();
+        removeButtonCopy2.style.float = "right";
+        removeButtonCopy2.addEventListener("click", clickHandler);
+        pane.prepend(removeButtonCopy2);
+    }
 }
 
 function clickHandler(ev: Event): void {
@@ -18,12 +27,16 @@ function clickHandler(ev: Event): void {
     }
 };
 
-function getRemoveButton(): Element | null {
+function get_cloneRemoveButton(): (() => HTMLElement) | null {
     const removeButtonCollection = document.body.getElementsByClassName("remove-button");
     if (removeButtonCollection.length > 0) {
         const removeButton = removeButtonCollection[0];
-        removeButton.remove();
-        return removeButton;
+        if (removeButton instanceof HTMLElement) {
+            removeButton.remove();
+            return () => {
+                return removeButton.cloneNode(true) as HTMLElement;
+            }
+        }
     }
     return null;
 }
