@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" _onclick="alert('html')">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bubling</title>
+    <!-- <link rel="stylesheet" type="text/css" href="t21.css"> -->
+    <style>
+        body {
+            border: 1px solid red;
+            padding: 16px;
+        }
+
+        body * {
+            margin: 10px;
+            border: 1px solid blue;
+        }
+    </style>
+    <script type="module" src="t21.js"></script>
+</head>
+
+<body _onclick="alert('body')">
+
+    <div onclick="alert('The handler!')">
+        <em>If you click on <code>EM</code>, the handler on <code>DIV</code> runs.</em>
+    </div>
+
+    <form onclick="alert('form')">
+        FORM
+        <div onclick="alert('div')">
+            DIV
+            <p onclick="alert('p')">
+                P
+            </p>
+        </div>
+    </form>
+
+
+    <style>
+        form {
+            background-color: green;
+            position: relative;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        div {
+            background-color: blue;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 100px;
+            height: 100px;
+        }
+
+        p {
+            background-color: red;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0;
+        }
+    </style>
+
+    A click shows both <code>event.target</code> and <code>this</code> to compare:
+
+    <form id="dvForm">FORM
+        <div id="dvDiv">DIV
+            <p id="dvP">P</p>
+        </div>
+    </form>
+
+</body>
+
+</html>
