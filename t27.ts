@@ -1,9 +1,7 @@
 
 addTooltipHandler(document.body);
 
-function addTooltipHandler(
-    htmlElement: HTMLElement
-): void {
+function addTooltipHandler(htmlElement: HTMLElement): void {
     const buttons = Array.from(htmlElement.querySelectorAll("button[data-tooltip]")) as HTMLElement[];
     buttons.forEach(button => {
         const tooltipHandler = getTooltipHandler(button);
