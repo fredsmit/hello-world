@@ -6,14 +6,13 @@ function getContentsHandler() {
     return {
         handleEvent(ev) {
             if (ev.type === "click" && ev.target instanceof HTMLElement) {
-                //console.log("handleEvent:", ev.target);
                 const a = ev.target.closest("a");
                 if (a) {
                     console.log(ev.target.textContent, a.href);
                     const prompt = `
 
 Click "OK" to visit this site, otherwise click "Cancel".
-Site: ${ev.target.textContent}  @  ${a.href}
+Site: ${ev.target.textContent}  @  ${a.href} [${a.getAttribute("href")}]
 
 `;
                     if (!window.confirm(prompt)) {
