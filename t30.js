@@ -1,6 +1,6 @@
 import { getRequiredHTMLElements } from "./pageUtils.js";
 const { largeImg, thumbs } = getRequiredHTMLElements("largeImg", "thumbs");
-thumbs.addEventListener("click", getClickHandler());
+//thumbs.addEventListener("click", getClickHandler());
 addFocusHandler(thumbs, largeImg);
 function getClickHandler() {
     return function (ev) {
