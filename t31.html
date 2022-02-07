@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Custom events</title>
+    <style>
+    </style>
+    <script type="module" src="t31.js"></script>
+</head>
+
+<!-- <body onclick="alert('Click.document!');"> -->
+
+<body>
+
+    <!-- <button id="btnAuto" onclick="alert('Click!');">Autoclick</button> -->
+    <button id="btnAuto">Autoclick</button>
+    <script>
+        btnAuto.onclick = function (ev) {
+            let ev2 = new Event("kuku", { bubbles: true });
+            btnAuto.dispatchEvent(ev2);
+        }
+    </script>
+
+    <button id="btnGenerate">Generate custom click event</button>
+
+</body>
+
+</html>
