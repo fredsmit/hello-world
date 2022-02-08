@@ -5,7 +5,8 @@ function addTooltipHandler(htmlElement) {
     document.addEventListener("mouseout", tooltipHandler);
 }
 function getTooltipHandler(htmlElement) {
-    const buttons = Array.from(htmlElement.querySelectorAll("button[data-tooltip]"));
+    //const buttons = Array.from(htmlElement.querySelectorAll("button[data-tooltip]")) as HTMLElement[];
+    const buttons = Array.from(htmlElement.querySelectorAll("*[data-tooltip]"));
     function positionTooltip(target, tooltip) {
         const targetRect = target.getBoundingClientRect();
         htmlElement.append(tooltip);
@@ -54,4 +55,4 @@ function getTooltipHandler(htmlElement) {
         }
     };
 }
-export {};
+export { addTooltipHandler };

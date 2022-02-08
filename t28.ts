@@ -9,7 +9,8 @@ function addTooltipHandler(htmlElement: HTMLElement): void {
 
 function getTooltipHandler(htmlElement: HTMLElement): EventListenerObject {
 
-    const buttons = Array.from(htmlElement.querySelectorAll("button[data-tooltip]")) as HTMLElement[];
+    //const buttons = Array.from(htmlElement.querySelectorAll("button[data-tooltip]")) as HTMLElement[];
+    const buttons = Array.from(htmlElement.querySelectorAll("*[data-tooltip]")) as HTMLElement[];
 
     function positionTooltip(target: HTMLElement, tooltip: HTMLDivElement) {
         const targetRect: DOMRectReadOnly = target.getBoundingClientRect();

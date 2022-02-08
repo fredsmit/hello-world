@@ -25,7 +25,11 @@
             box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
         }
     </style>
-    <script type="module" src="t27.js"></script>
+    <!-- <script type="module" src="t27.js"></script> -->
+    <script type="module">
+        import { addTooltipHandler } from "./t27.js"
+        addTooltipHandler(document.body);
+    </script>
 </head>
 
 <body>
