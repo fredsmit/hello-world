@@ -22,8 +22,10 @@ function addMouseDownListener(ball) {
     const ballParent = ball.parentElement ?? document.body;
     ball.addEventListener("mousedown", mouseDownListener);
     function onMouseMove(ev) {
-        ball.style.left = ev.pageX - ball.offsetWidth / 2 + 'px';
-        ball.style.top = ev.pageY - ball.offsetHeight / 2 + 'px';
+        // ball.style.left = ev.pageX - ball.offsetWidth / 2 + 'px';
+        // ball.style.top = ev.pageY - ball.offsetHeight / 2 + 'px';
+        ball.style.left = ev.pageX - shiftX + 'px';
+        ball.style.top = ev.pageY - shiftY + 'px';
     }
     function onMouseUp(ev) {
         document.removeEventListener("mousemove", onMouseMove);
@@ -38,10 +40,16 @@ function addMouseDownListener(ball) {
             ballParent.append(ball);
         }
     }
+    let shiftX;
+    let shiftY;
     function mouseDownListener(ev) {
         ball.style.position = 'absolute';
         ball.style.zIndex = String(1000);
+        const ballRect = ball.getBoundingClientRect();
+        shiftX = ev.clientX - ballRect.left;
+        shiftY = ev.clientY - ballRect.top;
         document.body.append(ball);
+        onMouseMove.bind(document)(ev);
         ball.addEventListener("dragstart", (ev) => { ev.preventDefault(); }, { once: true });
         document.addEventListener("mousemove", onMouseMove);
         ball.addEventListener("mouseup", onMouseUp, { once: true });

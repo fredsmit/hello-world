@@ -2,7 +2,7 @@ import { getCommonColorNames } from "./commonColors.js"
 //import { getRequiredHTMLElements } from "./pageUtils.js"
 //const { ball, ball2 } = getRequiredHTMLElements("ball", "ball2");
 
-const fields = document.body.querySelectorAll("*[data-field]");
+const fields = document.body.querySelectorAll<HTMLElement>("*[data-field]");
 
 for (const field of fields) {
     const ball = await createBall(field);
@@ -29,8 +29,10 @@ function addMouseDownListener(ball: HTMLElement) {
     ball.addEventListener("mousedown", mouseDownListener);
 
     function onMouseMove(this: Document, ev: MouseEvent): void {
-        ball.style.left = ev.pageX - ball.offsetWidth / 2 + 'px';
-        ball.style.top = ev.pageY - ball.offsetHeight / 2 + 'px';
+        // ball.style.left = ev.pageX - ball.offsetWidth / 2 + 'px';
+        // ball.style.top = ev.pageY - ball.offsetHeight / 2 + 'px';
+        ball.style.left = ev.pageX - shiftX + 'px';
+        ball.style.top = ev.pageY - shiftY + 'px';
     }
 
     function onMouseUp(this: HTMLElement, ev: MouseEvent) {
@@ -47,10 +49,17 @@ function addMouseDownListener(ball: HTMLElement) {
         }
     }
 
+    let shiftX: number;
+    let shiftY: number;
+
     function mouseDownListener(this: HTMLElement, ev: MouseEvent): void {
         ball.style.position = 'absolute';
         ball.style.zIndex = String(1000);
+        const ballRect = ball.getBoundingClientRect();
+        shiftX = ev.clientX - ballRect.left;
+        shiftY = ev.clientY - ballRect.top;
         document.body.append(ball);
+        onMouseMove.bind(document)(ev);
 
         ball.addEventListener("dragstart", (ev: DragEvent) => { ev.preventDefault(); }, { once: true });
         document.addEventListener("mousemove", onMouseMove);
