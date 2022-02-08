@@ -11,24 +11,31 @@ function addTooltipHandler(htmlElement) {
     });
     function getTooltipHandler(htmlElement) {
         function positionTooltip(target, tooltip) {
-            const targetRect = target.getBoundingClientRect();
-            //console.log("targetRect", targetRect);
-            htmlElement.append(tooltip);
-            const tooltipRect = tooltip.getBoundingClientRect();
-            //console.log("tooltipRect:", tooltipRect);
-            if (tooltipRect.height + 5 > targetRect.top) {
-                tooltip.style.top = Math.round(targetRect.bottom + 5) + "px";
-            }
-            else {
-                tooltip.style.top = Math.round(targetRect.top - tooltipRect.height - 5) + "px";
-            }
-            const diffX = targetRect.left + Math.max(tooltipRect.width, targetRect.width) - window.innerWidth;
-            //console.log("diffX:", diffX, window.innerWidth, window.innerHeight);
-            if (diffX > 0) {
-                tooltip.style.left = Math.round(targetRect.left + 5 - diffX) + "px";
-            }
-            else {
-                tooltip.style.left = Math.max(Math.round(targetRect.left + 5), 1) + "px";
+            setTimeout((tooltip) => {
+                if (currentTooltip && currentTooltip === tooltip) {
+                    position();
+                }
+            }, 500, tooltip);
+            function position() {
+                const targetRect = target.getBoundingClientRect();
+                //console.log("targetRect", targetRect);
+                htmlElement.append(tooltip);
+                const tooltipRect = tooltip.getBoundingClientRect();
+                //console.log("tooltipRect:", tooltipRect);
+                if (tooltipRect.height + 5 > targetRect.top) {
+                    tooltip.style.top = Math.round(targetRect.bottom + 5) + "px";
+                }
+                else {
+                    tooltip.style.top = Math.round(targetRect.top - tooltipRect.height - 5) + "px";
+                }
+                const diffX = targetRect.left + Math.max(tooltipRect.width, targetRect.width) - window.innerWidth;
+                //console.log("diffX:", diffX, window.innerWidth, window.innerHeight);
+                if (diffX > 0) {
+                    tooltip.style.left = Math.round(targetRect.left + 5 - diffX) + "px";
+                }
+                else {
+                    tooltip.style.left = Math.max(Math.round(targetRect.left + 5), 1) + "px";
+                }
             }
             //console.log("tooltipRect2:", tooltip.getBoundingClientRect());
             // window.pageXOffset
@@ -77,14 +84,6 @@ function addTooltipHandler(htmlElement) {
                 }
             }
         };
-        // function removeCurrentTooltip(target: HTMLElement) {
-        //     if (target === htmlElement) {
-        //         if (currentTooltip) {
-        //             currentTooltip.remove();
-        //             currentTooltip = null;
-        //         }
-        //     }
-        // }
     }
 }
 export { addTooltipHandler };
