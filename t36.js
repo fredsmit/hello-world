@@ -4,8 +4,8 @@ import { getCommonColorNames } from "./commonColors.js";
 const fields = document.body.querySelectorAll("*[data-field]");
 for (const field of fields) {
     const ball = await createBall(field);
-    addMouseDownListener(ball);
     field.append(ball);
+    addMouseDownListener(ball);
 }
 async function createBall(field) {
     const img = document.createElement("img");
@@ -20,6 +20,9 @@ async function createBall(field) {
 }
 function addMouseDownListener(ball) {
     const ballParent = ball.parentElement ?? document.body;
+    const { top: ballParentTop, left: ballParentLeft } = ballParent.getBoundingClientRect();
+    //const { width: ballRectWidth, height: ballRectHeight } = ball.getBoundingClientRect();
+    //console.log("ballParentTop, ballParentLeft, ballRectWidth, ballRectHeight:", ballParentTop, ballParentLeft, ballRectWidth, ballRectHeight);
     ball.addEventListener("mousedown", mouseDownListener);
     function onMouseMove(ev) {
         // ball.style.left = ev.pageX - ball.offsetWidth / 2 + 'px';
@@ -30,9 +33,19 @@ function addMouseDownListener(ball) {
     function onMouseUp(ev) {
         document.removeEventListener("mousemove", onMouseMove);
         ball.remove();
-        const elUnderBall = document.elementFromPoint(ev.pageX, ev.pageY);
+        //const elUnderBall = document.elementFromPoint(ev.pageX, ev.pageY);
+        //console.log("pageX, pageY, clientX, clientY:", ev.pageX, ev.pageY, ev.clientX, ev.clientY);
+        const elUnderBall = document.elementFromPoint(ev.clientX, ev.clientY);
         if (elUnderBall) {
-            //const field = elUnderBall.closest("*[data-field]") ?? ballParent;
+            const maybeGate = elUnderBall.closest("*.droppable");
+            if (maybeGate) {
+                maybeGate.style.borderColor = "crimson";
+                setTimeout(() => {
+                    maybeGate.style.borderColor = "white";
+                    ball.style.top = Math.round(ballParentTop) + "px";
+                    ball.style.left = Math.round(ballParentLeft) + "px";
+                }, 1000);
+            }
             const field = elUnderBall.closest("*[data-field]") ?? document.body;
             field.append(ball);
         }

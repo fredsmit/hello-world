@@ -6,8 +6,8 @@ const fields = document.body.querySelectorAll<HTMLElement>("*[data-field]");
 
 for (const field of fields) {
     const ball = await createBall(field);
-    addMouseDownListener(ball);
     field.append(ball);
+    addMouseDownListener(ball);
 }
 
 async function createBall(field: HTMLElement): Promise<HTMLImageElement> {
@@ -25,6 +25,10 @@ async function createBall(field: HTMLElement): Promise<HTMLImageElement> {
 function addMouseDownListener(ball: HTMLElement) {
 
     const ballParent = ball.parentElement ?? document.body;
+    const { top: ballParentTop, left: ballParentLeft } = ballParent.getBoundingClientRect();
+    //const { width: ballRectWidth, height: ballRectHeight } = ball.getBoundingClientRect();
+    //console.log("ballParentTop, ballParentLeft, ballRectWidth, ballRectHeight:", ballParentTop, ballParentLeft, ballRectWidth, ballRectHeight);
+
 
     ball.addEventListener("mousedown", mouseDownListener);
 
@@ -39,9 +43,20 @@ function addMouseDownListener(ball: HTMLElement) {
         document.removeEventListener("mousemove", onMouseMove);
         ball.remove();
 
-        const elUnderBall = document.elementFromPoint(ev.pageX, ev.pageY);
+        //const elUnderBall = document.elementFromPoint(ev.pageX, ev.pageY);
+        //console.log("pageX, pageY, clientX, clientY:", ev.pageX, ev.pageY, ev.clientX, ev.clientY);
+
+        const elUnderBall = document.elementFromPoint(ev.clientX, ev.clientY);
         if (elUnderBall) {
-            //const field = elUnderBall.closest("*[data-field]") ?? ballParent;
+            const maybeGate = elUnderBall.closest<HTMLElement>("*.droppable");
+            if (maybeGate) {
+                maybeGate.style.borderColor = "crimson";
+                setTimeout(() => {
+                    maybeGate.style.borderColor = "white";
+                    ball.style.top = Math.round(ballParentTop) + "px";
+                    ball.style.left = Math.round(ballParentLeft) + "px";
+                }, 1000);
+            }
             const field = elUnderBall.closest("*[data-field]") ?? document.body;
             field.append(ball);
         } else {
@@ -66,46 +81,6 @@ function addMouseDownListener(ball: HTMLElement) {
         ball.addEventListener("mouseup", onMouseUp, { once: true });
     }
 }
-
-// ball.onmousedown = function (event) {
-
-//     ball.addEventListener("dragstart", (ev: DragEvent) => { ev.preventDefault(); });
-
-//     // (1) prepare to moving: make absolute and on top by z-index
-//     ball.style.position = 'absolute';
-//     ball.style.zIndex = String(1000);
-
-//     // move it out of any current parents directly into body
-//     // to make it positioned relative to the body
-//     const ballParent = ball.parentElement ?? document.body;
-//     document.body.append(ball);
-
-//     // centers the ball at (pageX, pageY) coordinates
-//     function moveAt(pageX: number, pageY: number) {
-//         ball.style.left = pageX - ball.offsetWidth / 2 + 'px';
-//         ball.style.top = pageY - ball.offsetHeight / 2 + 'px';
-//     }
-
-//     // move our absolutely positioned ball under the pointer
-//     moveAt(event.pageX, event.pageY);
-
-//     function onMouseMove(event: MouseEvent) {
-//         moveAt(event.pageX, event.pageY);
-//     }
-
-//     // (2) move the ball on mousemove
-//     document.addEventListener('mousemove', onMouseMove);
-
-//     // (3) drop the ball, remove unneeded handlers
-//     console.log("add mouseup");
-//     ball.onmouseup = function () {
-//         console.log("remove mousemove");
-//         document.removeEventListener('mousemove', onMouseMove);
-//         ball.onmouseup = null;
-//         ballParent.append(ball);
-//     };
-
-// };
 
 export { };
 
