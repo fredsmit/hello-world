@@ -5,26 +5,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Two sliders</title>
-    <script type="module" src="t37.js"></script>
+    <script type="module" src="t39.js"></script>
     <style>
         .slider {
             border-radius: 5px;
             background: #E0E0E0;
-            background: linear-gradient(left top, #E0E0E0, #EEEEEE);
             width: 310px;
             height: 15px;
             margin: 5px;
+            border-width: 0 10px;
+            border-style: solid;
+            border-color: darkgrey;
         }
 
         .thumb {
-            width: 10px;
+            width: 55px;
             height: 25px;
             border-radius: 3px;
+            border-width: 2px 8px;
+            border-color: coral;
+            border-style: solid;
             position: relative;
-            left: 10px;
-            top: -5px;
+            left: 0px;
+            top: -9px;
             background: blue;
+            color: lime;
             cursor: pointer;
+            padding: 4px 5px;
         }
     </style>
 </head>
@@ -36,23 +43,33 @@
     <p>xhsxhs sxcbshch scbs b</p>
 
     <div class="slider">
-        <div class="thumb"></div>
+        <div class="thumb">
+            <div style="background-color:  rgb(135, 135, 252);">☼ ☼ ☼</div>
+        </div>
     </div>
-    
+
     <p style="border:1px solid gray" onmousemove="
         this.textContent = new Date().toString() +  ' + ' + event.clientX;
     ">Mouse over here to see the date</p>
-    
+
     <p>xhsxhs sxcbshch scbs b</p>
     <p>xhsxhs sxcbshch scbs b</p>
     <p>xhsxhs sxcbshch scbs b</p>
 
     <div class="slider">
-        <div class="thumb"></div>
+        <div class="thumb">
+            <div style="background-color:  rgb(135, 135, 252);">☼ ☼ ☼</div>
+        </div>
     </div>
+
 
     <p>xhsxhs sxcbshch scbs b</p>
     <p>xhsxhs sxcbshch scbs b</p>
+    <div class="slider">
+        <div class="thumb">
+            <div style="background-color:  rgb(135, 135, 252);"><img alt src="https://en.js.cx/clipart/ball.svg"></div>
+        </div>
+    </div>
     <p>xhsxhs sxcbshch scbs b</p>
 </body>
 
