@@ -33,11 +33,19 @@ document.addEventListener('mousedown', function (ev: MouseEvent) {
         const shiftX = clientX - dragElementClientRect.left;
         const shiftY = clientY - dragElementClientRect.top;
 
+        //console.log("1. dragElement.getBoundingClientRect(), dragElement.style.top", dragElement.getBoundingClientRect(), dragElement.style.top);
         dragElement.style.position = 'fixed';
+        // if (!dragElement.style.top) {
+        //     console.log("SET");
+        //     dragElement.style.top = (dragElement.getBoundingClientRect().top - shiftY) + 'px';
+        // }
+        // console.log("2. dragElement.getBoundingClientRect(), dragElement.style.top", dragElement.getBoundingClientRect(), dragElement.style.top);
+
         dragElement.style.zIndex = String(++zIndex);
 
-        function onMouseMove(event: MouseEvent) {
-            moveAt(event.clientX, event.clientY);
+        function onMouseMove(ev: MouseEvent) {
+            //console.log(ev.clientX, ev.clientY, ev.clientX > document.body.getBoundingClientRect().right);
+            moveAt(ev.clientX, ev.clientY);
         }
 
         moveAt(clientX, clientY);
@@ -107,6 +115,7 @@ document.addEventListener('mousedown', function (ev: MouseEvent) {
         }
 
         function onMouseUp(event: MouseEvent): void {
+            console.log("==> UP");
             finishDrag();
         };
 
@@ -134,7 +143,7 @@ document.addEventListener('mousedown', function (ev: MouseEvent) {
                 console.log("dragElement.style.position:", dragElement.style.position, "not supported");
             }
 
-            dragElement.removeEventListener('mouseup', onMouseUp);
+            //dragElement.removeEventListener('mouseup', onMouseUp);
             document.removeEventListener('mousemove', onMouseMove);
         }
 
