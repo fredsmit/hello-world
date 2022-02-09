@@ -22,7 +22,18 @@ function getRequiredHTMLElements<ID extends string>(...ids: ID[]): Readonly<Reco
     return requiredElements;
 }
 
+function findClosestTarget(eventTarget: unknown, htmlElementSelector: string): HTMLElement | null {
+    if (eventTarget instanceof Element) {
+        const closestTarget = eventTarget.closest<Element>(htmlElementSelector);
+        if (closestTarget instanceof HTMLElement) {
+            return closestTarget;
+        }
+    }
+    return null;
+}
+
 export {
     getOptionalHTMLElements,
-    getRequiredHTMLElements
+    getRequiredHTMLElements,
+    findClosestTarget
 };

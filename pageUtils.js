@@ -19,4 +19,13 @@ function getRequiredHTMLElements(...ids) {
         throw Error(`Missing required page elements: ${missingIds.map(id => "'" + id + "'").join(", ")}.`);
     return requiredElements;
 }
-export { getOptionalHTMLElements, getRequiredHTMLElements };
+function findClosestTarget(eventTarget, htmlElementSelector) {
+    if (eventTarget instanceof Element) {
+        const closestTarget = eventTarget.closest(htmlElementSelector);
+        if (closestTarget instanceof HTMLElement) {
+            return closestTarget;
+        }
+    }
+    return null;
+}
+export { getOptionalHTMLElements, getRequiredHTMLElements, findClosestTarget };

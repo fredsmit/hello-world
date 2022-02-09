@@ -44,7 +44,7 @@
   //   "node_modules"
   // ],
   "files": [
-    //"pageUtils.ts",
+    "pageUtils.ts",
     //"commonColors.ts",
     //"t03.ts",
     //"t06.ts",
@@ -54,6 +54,6 @@
     //"t28.ts",
     //
     //"t35.ts",
-    "t37.ts",
+    "t38.ts",
   ]
 }
