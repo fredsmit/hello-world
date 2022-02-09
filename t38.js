@@ -17,7 +17,8 @@ document.addEventListener('mousedown', function (ev) {
     //   move the element position:fixed and a direct child of body
     function startDrag(dragElement, clientX, clientY) {
         isDragging = true;
-        dragElement.addEventListener('mouseup', onMouseUp, { once: true });
+        document.addEventListener('mouseup', onMouseUp, { once: true });
+        //dragElement.addEventListener('mouseup', onMouseUp, { once: true });
         document.addEventListener('mousemove', onMouseMove);
         const dragElementClientRect = dragElement.getBoundingClientRect();
         const shiftX = clientX - dragElementClientRect.left;
@@ -87,7 +88,7 @@ document.addEventListener('mousedown', function (ev) {
             dragElement.style.top = newY + 'px';
         }
         function onMouseUp(event) {
-            console.log("==> UP");
+            //console.log("==> UP");
             finishDrag();
         }
         ;
@@ -104,8 +105,11 @@ document.addEventListener('mousedown', function (ev) {
                 // console.log("top + window.scrollY = absTop:", Math.round(parseFloat(top)), " + " + Math.round(window.scrollY), " = ", absTop);
                 const fixedY = dragElement.getBoundingClientRect().y;
                 const absTop = Math.round(window.scrollY + fixedY);
+                const fixedX = dragElement.getBoundingClientRect().x;
+                const absLeft = Math.round(window.scrollX + fixedX);
                 //console.log("window.scrollY + clientRect.y = absTop:", window.scrollY, " + " + dragElement.getBoundingClientRect().y, " = ", absTop);
                 dragElement.style.top = absTop + 'px';
+                dragElement.style.left = absLeft + 'px';
                 dragElement.style.position = 'absolute';
             }
             else {

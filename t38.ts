@@ -26,7 +26,8 @@ document.addEventListener('mousedown', function (ev: MouseEvent) {
     function startDrag(dragElement: HTMLElement, clientX: number, clientY: number) {
 
         isDragging = true;
-        dragElement.addEventListener('mouseup', onMouseUp, { once: true });
+        document.addEventListener('mouseup', onMouseUp, { once: true });
+        //dragElement.addEventListener('mouseup', onMouseUp, { once: true });
 
         document.addEventListener('mousemove', onMouseMove);
         const dragElementClientRect = dragElement.getBoundingClientRect();
@@ -115,7 +116,7 @@ document.addEventListener('mousedown', function (ev: MouseEvent) {
         }
 
         function onMouseUp(event: MouseEvent): void {
-            console.log("==> UP");
+            //console.log("==> UP");
             finishDrag();
         };
 
@@ -135,9 +136,13 @@ document.addEventListener('mousedown', function (ev: MouseEvent) {
                 const fixedY = dragElement.getBoundingClientRect().y;
                 const absTop = Math.round(window.scrollY + fixedY);
 
+                const fixedX = dragElement.getBoundingClientRect().x;
+                const absLeft = Math.round(window.scrollX + fixedX);
+
                 //console.log("window.scrollY + clientRect.y = absTop:", window.scrollY, " + " + dragElement.getBoundingClientRect().y, " = ", absTop);
 
                 dragElement.style.top = absTop + 'px';
+                dragElement.style.left = absLeft + 'px';
                 dragElement.style.position = 'absolute';
             } else {
                 console.log("dragElement.style.position:", dragElement.style.position, "not supported");
