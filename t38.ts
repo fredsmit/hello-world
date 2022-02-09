@@ -18,11 +18,15 @@ document.addEventListener('mousedown', function (ev: MouseEvent) {
 
     dragElement.ondragstart = function () { return false; };
 
+    //console.log("ev.clientX, ev.clientY, ev.offsetX, ev.offsetY:", ev.clientX, ev.clientY, ev.offsetX, ev.offsetY);
+
+    //startDrag(dragElement, ev.clientX, ev.clientY, ev.offsetX, ev.offsetY);
     startDrag(dragElement, ev.clientX, ev.clientY);
 
     // on drag start:
     //   remember the initial shift
     //   move the element position:fixed and a direct child of body
+    //function startDrag(dragElement: HTMLElement, clientX: number, clientY: number, offsetX: number, offsetY: number) {
     function startDrag(dragElement: HTMLElement, clientX: number, clientY: number) {
 
         isDragging = true;
@@ -31,8 +35,13 @@ document.addEventListener('mousedown', function (ev: MouseEvent) {
 
         document.addEventListener('mousemove', onMouseMove);
         const dragElementClientRect = dragElement.getBoundingClientRect();
+
         const shiftX = clientX - dragElementClientRect.left;
         const shiftY = clientY - dragElementClientRect.top;
+        //const shiftX = offsetX;
+        //const shiftY = offsetY;
+
+        //console.log("shiftX,shiftY:", shiftX, shiftY);
 
         //console.log("1. dragElement.getBoundingClientRect(), dragElement.style.top", dragElement.getBoundingClientRect(), dragElement.style.top);
         dragElement.style.position = 'fixed';
