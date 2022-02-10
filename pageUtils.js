@@ -19,6 +19,9 @@ function getRequiredHTMLElements(...ids) {
         throw Error(`Missing required page elements: ${missingIds.map(id => "'" + id + "'").join(", ")}.`);
     return requiredElements;
 }
+function queryElements(parentNode, tagName, attributeSelector) {
+    return parentNode.querySelectorAll(`${tagName}[${attributeSelector}]`);
+}
 function findClosestTarget(eventTarget, htmlElementSelector) {
     if (eventTarget instanceof Element) {
         const closestTarget = eventTarget.closest(htmlElementSelector);
@@ -28,4 +31,4 @@ function findClosestTarget(eventTarget, htmlElementSelector) {
     }
     return null;
 }
-export { getOptionalHTMLElements, getRequiredHTMLElements, findClosestTarget };
+export { getOptionalHTMLElements, getRequiredHTMLElements, queryElements, findClosestTarget };

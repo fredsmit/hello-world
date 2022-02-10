@@ -22,6 +22,14 @@ function getRequiredHTMLElements<ID extends string>(...ids: ID[]): Readonly<Reco
     return requiredElements;
 }
 
+function queryElements<TagName extends keyof HTMLElementTagNameMap>(
+    parentNode: ParentNode,
+    tagName: TagName,
+    attributeSelector: string
+): NodeListOf<HTMLElementTagNameMap[TagName]> {
+    return parentNode.querySelectorAll<HTMLElementTagNameMap[TagName]>(`${tagName}[${attributeSelector}]`)
+}
+
 function findClosestTarget(eventTarget: unknown, htmlElementSelector: string): HTMLElement | null {
     if (eventTarget instanceof Element) {
         const closestTarget = eventTarget.closest<Element>(htmlElementSelector);
@@ -35,5 +43,6 @@ function findClosestTarget(eventTarget: unknown, htmlElementSelector: string): H
 export {
     getOptionalHTMLElements,
     getRequiredHTMLElements,
+    queryElements,
     findClosestTarget
 };
