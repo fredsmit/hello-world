@@ -22,17 +22,18 @@ function addDragListener(thumb) {
         };
     }
     function onPointerDown(ev) {
+        ev.preventDefault();
+        thumb.setPointerCapture(ev.pointerId);
         thumb.style.zIndex = String(1000);
         shiftX = ev.clientX - thumb.getBoundingClientRect().x;
-        thumb.setPointerCapture(ev.pointerId);
-        thumb.addEventListener("dragstart", (ev) => {
-            //console.log("default.dragstart");
-            ev.preventDefault();
-        }, { once: true });
-        document.addEventListener("selectstart", (ev) => {
-            //console.log("document.default.selectstart");
-            ev.preventDefault();
-        }, { once: true });
+        // thumb.addEventListener("dragstart", (ev: DragEvent) => {
+        //     //console.log("default.dragstart");
+        //     ev.preventDefault();
+        // }, { once: true });
+        // document.addEventListener("selectstart", (ev: Event) => {
+        //     //console.log("document.default.selectstart");
+        //     ev.preventDefault();
+        // }, { once: true });
         const onPointerMove = get_onPointerMove();
         slider.addEventListener("pointermove", onPointerMove);
         slider.addEventListener("pointerup", get_onPointerUp(onPointerMove), { once: true });
