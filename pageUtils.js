@@ -19,8 +19,24 @@ function getRequiredHTMLElements(...ids) {
         throw Error(`Missing required page elements: ${missingIds.map(id => "'" + id + "'").join(", ")}.`);
     return requiredElements;
 }
+function getRequiredNamedForm(name) {
+    const form = document.forms.namedItem(name);
+    if (form === null)
+        throw Error(`Missing required named form: '${name}'.`);
+    return form;
+}
 function queryElements(parentNode, tagName, attributeSelector) {
     return parentNode.querySelectorAll(`${tagName}[${attributeSelector}]`);
+}
+function queryElement(parentNode, tagName, idSelector) {
+    return parentNode.querySelector(`${tagName}#${idSelector}`);
+}
+function queryRequiredElement(parentNode, tagName, idSelector) {
+    const selector = `${tagName}#${idSelector}`;
+    const htmlElement = parentNode.querySelector(selector);
+    if (htmlElement === null)
+        throw Error(`Missing required HTML element '${selector}'.`);
+    return htmlElement;
 }
 function findClosestTarget(eventTarget, htmlElementSelector) {
     if (eventTarget instanceof Element) {
@@ -31,4 +47,16 @@ function findClosestTarget(eventTarget, htmlElementSelector) {
     }
     return null;
 }
-export { getOptionalHTMLElements, getRequiredHTMLElements, queryElements, findClosestTarget };
+function maxZIndex() {
+    let maxZ = 0;
+    for (const element of document.body.querySelectorAll("*")) {
+        const zIndex = window.getComputedStyle(element).zIndex;
+        if (zIndex === "auto")
+            continue;
+        const z = window.parseFloat(zIndex);
+        if (Number.isFinite(z) && z > maxZ)
+            maxZ = z;
+    }
+    return maxZ;
+}
+export { getOptionalHTMLElements, getRequiredHTMLElements, getRequiredNamedForm, queryElements, queryRequiredElement, findClosestTarget, maxZIndex };

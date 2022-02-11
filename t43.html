@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Forms</title>
+    <script type="module" src="t43.js"></script>
+    <style>
+        .error {
+            background: red;
+        }
+
+        form.focused {
+            outline: 2px dashed green;
+        }
+
+        div:focus {
+            outline: 1px dashed green;
+        }
+
+        .view,
+        .edit {
+            height: 150px;
+            width: 400px;
+            font-family: sans-serif;
+            font-size: 14px;
+            display: block;
+        }
+
+        .view {
+            /* padding + border = 3px */
+            padding: 2px;
+            border: 1px solid black;
+        }
+
+        .edit {
+            /* replace padding with border (still 3px not to shift the contents) */
+            border: 3px solid blue;
+            padding: 0px;
+        }
+
+        .edit:focus {
+            /* remove focus border in Safari */
+            outline: none;
+        }
+    </style>
+</head>
+
+<body style="border:1px solid red;">
+    <form name="my">
+        <input name="one" value="1">
+        <input name="two" value="2">
+
+        <select id="select">
+            <option value="apple">Apple</option>
+            <option value="pear">Pear</option>
+            <option value="banana">Banana</option>
+        </select>
+
+        <select id="genres">
+            <option value="rock">Rock</option>
+            <option value="blues" selected>Blues</option>
+        </select>
+
+        <ul>
+            <li>Click the div to edit.</li>
+            <li>Enter or blur saves the result.</li>
+        </ul>
+
+        HTML is allowed.
+
+        <div id="view" class="view">Text</div>
+
+    </form>
+
+    Your email please: <input type="email" id="emailInput">
+    <input type="text" style="width:220px" placeholder="make email invalid and try to focus here">
+
+    <div tabindex="-1" id="dvFocus">FOCUS</div>
+</body>

@@ -22,12 +22,39 @@ function getRequiredHTMLElements<ID extends string>(...ids: ID[]): Readonly<Reco
     return requiredElements;
 }
 
+function getRequiredNamedForm(name: string): HTMLFormElement {
+    const form = document.forms.namedItem(name);
+    if (form === null)
+        throw Error(`Missing required named form: '${name}'.`);
+    return form;
+}
+
 function queryElements<TagName extends keyof HTMLElementTagNameMap>(
     parentNode: ParentNode,
     tagName: TagName,
     attributeSelector: string
 ): NodeListOf<HTMLElementTagNameMap[TagName]> {
     return parentNode.querySelectorAll<HTMLElementTagNameMap[TagName]>(`${tagName}[${attributeSelector}]`)
+}
+
+function queryElement<TagName extends keyof HTMLElementTagNameMap>(
+    parentNode: ParentNode,
+    tagName: TagName,
+    idSelector: string
+): HTMLElementTagNameMap[TagName] | null {
+    return parentNode.querySelector<HTMLElementTagNameMap[TagName]>(`${tagName}#${idSelector}`)
+}
+
+function queryRequiredElement<TagName extends keyof HTMLElementTagNameMap>(
+    parentNode: ParentNode,
+    tagName: TagName,
+    idSelector: string
+): HTMLElementTagNameMap[TagName] {
+    const selector = `${tagName}#${idSelector}`;
+    const htmlElement = parentNode.querySelector<HTMLElementTagNameMap[TagName]>(selector)
+    if (htmlElement === null)
+        throw Error(`Missing required HTML element '${selector}'.`);
+    return htmlElement;
 }
 
 function findClosestTarget(eventTarget: unknown, htmlElementSelector: string): HTMLElement | null {
@@ -40,9 +67,26 @@ function findClosestTarget(eventTarget: unknown, htmlElementSelector: string): H
     return null;
 }
 
+function maxZIndex(): number {
+    let maxZ = 0;
+    for (const element of document.body.querySelectorAll("*")) {
+        const zIndex = window.getComputedStyle(element).zIndex;
+        if (zIndex === "auto")
+            continue;
+        const z = window.parseFloat(zIndex);
+        if (Number.isFinite(z) && z > maxZ)
+            maxZ = z;
+
+    }
+    return maxZ;
+}
+
 export {
     getOptionalHTMLElements,
     getRequiredHTMLElements,
+    getRequiredNamedForm,
     queryElements,
-    findClosestTarget
+    queryRequiredElement,
+    findClosestTarget,
+    maxZIndex
 };
