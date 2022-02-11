@@ -94,6 +94,7 @@ function getPointerHandler() {
                 const textarea = editor.getElementsByTagName("textarea")[0];
                 if (textarea) {
                     textarea.value = target.innerHTML;
+                    setTimeout(() => { textarea.focus(); });
                 }
                 //console.log(ev.type);
             }
