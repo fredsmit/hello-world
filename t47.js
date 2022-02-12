@@ -20,15 +20,16 @@ const interest = getRequiredNamedFormControl(form, "interest", isInputFormContro
 const { "height-after": heightAfter } = getRequiredHTMLElements("height-after");
 // console.log(heightAfter);
 calcHeight();
-money.addEventListener("input", function (ev) {
-    calcHeight();
-});
-months.addEventListener("input", function (ev) {
-    calcHeight();
-});
-interest.addEventListener("input", function (ev) {
-    calcHeight();
-});
+// money.addEventListener("input", function (this: HTMLInputElement, ev: Event): void {
+//     calcHeight();
+// });
+// months.addEventListener("input", function (this: HTMLSelectElement, ev: Event): void {
+//     calcHeight();
+// });
+// interest.addEventListener("input", function (this: HTMLInputElement, ev: Event): void {
+//     calcHeight();
+// });
+form.addEventListener("input", calcHeight);
 function calcHeight() {
     const initial = window.parseFloat(money.value);
     const years = window.parseFloat(months.value) / 12;
