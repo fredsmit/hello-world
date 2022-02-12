@@ -32,7 +32,26 @@ document.body.addEventListener("keydown", function (ev) {
             }
         }
     }
+    else if (ev.code === "Escape") {
+        hideCover();
+        promptFormContainer.style.display = "none";
+    }
 });
+// Show a half-transparent DIV to "shadow" the page
+// (the form is not inside, but near it, because it shouldn't be half-transparent)
+function showCover() {
+    const coverDiv = document.createElement('div');
+    coverDiv.id = 'cover-div';
+    // make the page unscrollable while the modal form is open
+    document.body.style.overflowY = 'hidden';
+    document.body.append(coverDiv);
+}
+function hideCover() {
+    const coverDiv = document.getElementById('cover-div');
+    if (coverDiv)
+        coverDiv.remove();
+    document.body.style.overflowY = '';
+}
 btnShowForm.addEventListener("pointerdown", function (ev) {
     console.log(ev);
     //btnShowForm.setPointerCapture(ev.pointerId);
@@ -41,6 +60,7 @@ btnShowForm.addEventListener("pointerdown", function (ev) {
     });
 });
 function showPrompt(text, callback) {
+    showCover();
     promptFormContainer.style.display = "block";
     const { "prompt-message": promptMessageDiv } = getRequiredHTMLElements("prompt-message");
     promptMessageDiv.innerHTML = text;
@@ -51,6 +71,7 @@ function showPrompt(text, callback) {
         promptForm.addEventListener("submit", function (ev) {
             ev.preventDefault();
             promptFormContainer.style.display = "none";
+            hideCover();
             console.log(ev);
             console.log("ev.submitter:", ev.submitter);
             setTimeout(() => {
@@ -65,7 +86,7 @@ function showPrompt(text, callback) {
         //     });
         // });
         btnCancel.addEventListener("click", function (ev) {
-            //ev.preventDefault();
+            hideCover();
             promptFormContainer.style.display = "none";
         });
     }

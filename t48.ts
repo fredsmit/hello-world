@@ -44,8 +44,29 @@ document.body.addEventListener("keydown", function (this: HTMLElement, ev: Keybo
                 return;
             }
         }
+    } else if (ev.code === "Escape") {
+        hideCover();
+        promptFormContainer.style.display = "none";
     }
 });
+
+
+
+// Show a half-transparent DIV to "shadow" the page
+// (the form is not inside, but near it, because it shouldn't be half-transparent)
+function showCover() {
+    const coverDiv = document.createElement('div');
+    coverDiv.id = 'cover-div';
+    // make the page unscrollable while the modal form is open
+    document.body.style.overflowY = 'hidden';
+    document.body.append(coverDiv);
+}
+
+function hideCover() {
+    const coverDiv = document.getElementById('cover-div');
+    if (coverDiv) coverDiv.remove();
+    document.body.style.overflowY = '';
+}
 
 
 btnShowForm.addEventListener("pointerdown", function (this: HTMLElement, ev: PointerEvent): void {
@@ -58,6 +79,7 @@ btnShowForm.addEventListener("pointerdown", function (this: HTMLElement, ev: Poi
 });
 
 function showPrompt(text: string, callback: (value: string) => void) {
+    showCover();
     promptFormContainer.style.display = "block";
     const { "prompt-message": promptMessageDiv } = getRequiredHTMLElements("prompt-message");
     promptMessageDiv.innerHTML = text;
@@ -66,9 +88,11 @@ function showPrompt(text: string, callback: (value: string) => void) {
     });
 
     if (promptFormContainer.dataset.h !== "1") {
+
         promptForm.addEventListener("submit", function (this: HTMLElement, ev: SubmitEvent): void {
             ev.preventDefault();
             promptFormContainer.style.display = "none";
+            hideCover();
             console.log(ev);
 
             console.log("ev.submitter:", ev.submitter);
@@ -87,8 +111,7 @@ function showPrompt(text: string, callback: (value: string) => void) {
         // });
 
         btnCancel.addEventListener("click", function (this: HTMLInputElement, ev: MouseEvent): void {
-            //ev.preventDefault();
-
+            hideCover();
             promptFormContainer.style.display = "none";
         });
     }
