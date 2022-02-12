@@ -25,6 +25,12 @@ function getRequiredNamedForm(name) {
         throw Error(`Missing required named form: '${name}'.`);
     return form;
 }
+function getRequiredNamedFormControl(form, name, typeTest) {
+    const control = form.elements.namedItem(name);
+    if (control !== null && typeTest(control))
+        return control;
+    throw Error(`Missing required named form control: '${name}'.`);
+}
 function queryElements(parentNode, tagName, attributeSelector) {
     return parentNode.querySelectorAll(`${tagName}[${attributeSelector}]`);
 }
@@ -59,4 +65,4 @@ function maxZIndex() {
     }
     return maxZ;
 }
-export { getOptionalHTMLElements, getRequiredHTMLElements, getRequiredNamedForm, queryElements, queryRequiredElement, findClosestTarget, maxZIndex };
+export { getOptionalHTMLElements, getRequiredHTMLElements, getRequiredNamedForm, getRequiredNamedFormControl, queryElements, queryRequiredElement, findClosestTarget, maxZIndex };

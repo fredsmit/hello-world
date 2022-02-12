@@ -1,0 +1,39 @@
+import { getRequiredHTMLElements, getRequiredNamedForm, getRequiredNamedFormControl } from "./pageUtils.js";
+const form = getRequiredNamedForm("calculator");
+// console.log(form);
+// const money = getRequiredNamedFormControl(form, "money", (c): c is HTMLInputElement => c instanceof HTMLInputElement);
+// const months = getRequiredNamedFormControl(form, "months", (c): c is HTMLSelectElement => c instanceof HTMLSelectElement);
+// const interest = getRequiredNamedFormControl(form, "interest", (c): c is HTMLInputElement => c instanceof HTMLInputElement);
+function isInputFormControl(control) {
+    return control instanceof HTMLInputElement;
+}
+function isSelectFormControl(control) {
+    return control instanceof HTMLSelectElement;
+}
+const money = getRequiredNamedFormControl(form, "money", isInputFormControl);
+const months = getRequiredNamedFormControl(form, "months", isSelectFormControl);
+const interest = getRequiredNamedFormControl(form, "interest", isInputFormControl);
+// console.log(money, months, interest);
+// console.log(money instanceof HTMLInputElement);
+// console.log(months instanceof HTMLSelectElement);
+// console.log(interest instanceof HTMLInputElement);
+const { "height-after": heightAfter } = getRequiredHTMLElements("height-after");
+// console.log(heightAfter);
+calcHeight();
+money.addEventListener("input", function (ev) {
+    calcHeight();
+});
+months.addEventListener("input", function (ev) {
+    calcHeight();
+});
+interest.addEventListener("input", function (ev) {
+    calcHeight();
+});
+function calcHeight() {
+    const initial = window.parseFloat(money.value);
+    const years = window.parseFloat(months.value) / 12;
+    const interestPerYear = window.parseFloat(interest.value);
+    const result = Math.round(initial * (1 + interestPerYear / 100) ** years);
+    console.log(initial, years, interestPerYear, result);
+    heightAfter.style.height = Math.round(100 * result / initial) + "px";
+}

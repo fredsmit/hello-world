@@ -29,6 +29,15 @@ function getRequiredNamedForm(name: string): HTMLFormElement {
     return form;
 }
 
+function getRequiredNamedFormControl<T extends Element | RadioNodeList>(
+    form: HTMLFormElement, name: string, typeTest: (control: Element | RadioNodeList) => control is T
+): T {
+    const control = form.elements.namedItem(name);
+    if (control !== null && typeTest(control))
+        return control;
+    throw Error(`Missing required named form control: '${name}'.`);
+}
+
 function queryElements<TagName extends keyof HTMLElementTagNameMap>(
     parentNode: ParentNode,
     tagName: TagName,
@@ -85,6 +94,7 @@ export {
     getOptionalHTMLElements,
     getRequiredHTMLElements,
     getRequiredNamedForm,
+    getRequiredNamedFormControl,
     queryElements,
     queryRequiredElement,
     findClosestTarget,

@@ -1,8 +1,16 @@
 import { getRequiredHTMLElements } from "./pageUtils.js";
-const { mouse } = getRequiredHTMLElements("mouse");
+const { mouse, makeEditable, dvResult } = getRequiredHTMLElements("mouse", "makeEditable", "dvResult");
 mouse.tabIndex = 0;
 mouse.style.position = "fixed";
 mouse.addEventListener("pointerdown", getMouseHandler());
+makeEditable.addEventListener("pointerdown", function (ev) {
+    this.contentEditable = "true";
+    //this.setAttribute("contentEditable", "");
+});
+makeEditable.addEventListener("input", function (ev) {
+    dvResult.innerHTML = makeEditable.innerHTML;
+    console.log(makeEditable.innerText);
+});
 function getMouseHandler() {
     const arrows = [
         "ArrowRight",
