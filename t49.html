@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Train</title>
+    <script type="module" src="t49.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("DOM ready!");
+        });
+    </script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <script>
+        window.onload = function () { // can also use window.addEventListener('load', (event) => {
+            console.log('Page loaded');
+            // image is loaded at this time
+            // console.log(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
+        };
+    </script>
+
+    <!-- <img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0"> -->
+
+    <script defer>
+        function preloadImages(sources, callback) {
+            let totalLoaded = 0;
+            let widthSum = 0;
+            for (let i = 0; i < sources.length; i++) {
+                const img = document.createElement('img');
+                console.log("preload", sources[i]);
+                img.onload = function () {
+                    console.log("preloaded", totalLoaded);
+                    ++totalLoaded;
+                };
+                img.onerror = function () {
+                    console.log("preload error", totalLoaded);
+                    ++totalLoaded;
+                };
+                img.src = sources[i];
+                widthSum += img.width;
+            }
+            console.log("preloadImages.widthSum:", widthSum);
+            const intervalId = setInterval(() => {
+                console.log("check", totalLoaded, "of", sources.length);
+                if (totalLoaded === sources.length) {
+                    clearInterval(intervalId);
+                    callback();
+                }
+            }, 100);
+        }
+
+        // ---------- The test ----------
+
+        let sources = [
+            "https://en.js.cx/images-load/1.jpg",
+            "https://en.js.cx/images-load/2.jpg",
+            "https://en.js.cx/images-load/3.jpg",
+            "https://en.js.cx/clipart/train.gif?speed=1&cache=0"
+            //"https://en.js.cx/clipart/train.gif"
+        ];
+
+        // add random characters to prevent browser caching
+        for (let i = 0; i < sources.length; i++) {
+            const op = sources[i].includes("?") ? "&" : "?";
+            sources[i] += op + "t=" + Math.random();
+        }
+
+        // for each image,
+        // let's create another img with the same src and check that we have its width immediately
+        function testLoaded() {
+            let widthSum = 0;
+            for (let i = 0; i < sources.length; i++) {
+                const img = document.createElement('img');
+                console.log("test", sources[i]);
+                img.src = sources[i];
+                console.log("img.width:", img.width);
+                widthSum += img.width;
+            }
+            console.log("widthSum:", widthSum);
+        }
+
+        // every image is 100x100, the total width should be 300
+        preloadImages(sources, testLoaded);
+    </script>
+</body>
