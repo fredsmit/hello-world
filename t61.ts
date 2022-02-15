@@ -1,11 +1,14 @@
 import { getRequiredNamedForm, getRequiredNamedFormControl, queryRequiredElement } from "./pageUtils.js";
 
+let abortController = new AbortController();
+
 const htmlForm = getRequiredNamedForm("publish");
 PublishForm(htmlForm, "http://localhost:8080/publish");
 
 // random url parameter to avoid any caching issues
 const subscribeEl = queryRequiredElement(document.body, "div", "subscribe");
 SubscribePane(subscribeEl, 'http://localhost:8080/subscribe?random=' + Math.random());
+
 
 // Sending messages, a simple POST
 function PublishForm(form: HTMLFormElement, url: string) {
@@ -23,7 +26,12 @@ function PublishForm(form: HTMLFormElement, url: string) {
         const message = messageField.value;
         if (message) {
             messageField.value = "";
-            sendMessage(message);
+            if (message === "stop") {
+                abortController.abort();
+                abortController = new AbortController();
+            }
+            else
+                sendMessage(message);
         }
         return false;
     };
@@ -38,26 +46,31 @@ function SubscribePane(messagesEl: HTMLElement, url: string) {
         messagesEl.append(div);
     }
 
-    async function subscribe() {
-        const response = await fetch(url);
-
-        if (response.status == 502) {
-            // Connection timeout
-            // happens when the connection was pending for too long
-            // let's reconnect
-            await subscribe();
-        } else if (response.status != 200) {
-            // Show Error
-            showMessage(response.statusText);
-            // Reconnect in one second
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            await subscribe();
-        } else {
-            // Got message
-            const message = await response.text();
-            showMessage(message);
-            await subscribe();
+    async function subscribe(): Promise<void> {
+        try {
+            const response = await fetch(url, { signal: abortController.signal });
+            if (response.status == 502) {
+                // Connection timeout
+                // happens when the connection was pending for too long
+                // let's reconnect
+                //await subscribe();
+            } else if (response.status != 200) {
+                // Show Error
+                showMessage(response.statusText);
+                // Reconnect in one second
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                //await subscribe();
+            } else {
+                // Got message
+                const message = await response.text();
+                showMessage(message);
+                //await subscribe();
+            }
+        } catch (error) {
+            showMessage("Error:" + String(error));
         }
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        await subscribe();
     }
 
     subscribe();
