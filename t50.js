@@ -34,10 +34,30 @@ let observer2 = new MutationObserver(mutations => {
 observer2.observe(highlightDemo, { childList: true, subtree: true });
 // dynamically insert content with code snippets
 highlightDemo.innerHTML = `A code snippet is below:
-  <pre class="language-typescript"><code> let hello = "world!"; </code></pre>
-  <div>Another one:</div>
-  <div>
-    <pre class="language-css"><code>.class { margin: 5px; } </code></pre>
-  </div>
+<pre class="language-typescript"><code>import { getRequiredHTMLElements } from "./pageUtils.js";
+
+declare const Prism: any;
+
+console.log(Prism);
+
+const { p } = getRequiredHTMLElements("p");
+
+const range = new Range();
+if (p.firstChild) {
+    range.setStart(p.firstChild, 2);
+    range.setEnd(p.firstChild, 4);
+}
+
+console.log(range);
+// toString of a range returns its content as text
+console.log(range.toString()); // ll
+
+export { };
+</code></pre>
+<div contenteditable>Another one:</div>
+<div>
+<pre class="language-css"><code>.class { margin: 5px; color: red; }
+</code></pre>
+</div>
 `;
 console.log(Prism);

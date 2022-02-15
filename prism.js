@@ -1,5 +1,5 @@
 /* PrismJS 1.26.0
-https://prismjs.com/download.html#themes=prism-tomorrow&languages=clike+javascript+typescript+typoscript */
+https://prismjs.com/download.html#themes=prism-tomorrow&languages=css+clike+javascript+typescript */
 /// <reference lib="WebWorker"/>
 
 var _self = (typeof window !== 'undefined')
@@ -1264,6 +1264,71 @@ if (typeof global !== 'undefined') {
  * @public
  */
 ;
+(function (Prism) {
+
+	var string = /(?:"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n])*')/;
+
+	Prism.languages.css = {
+		'comment': /\/\*[\s\S]*?\*\//,
+		'atrule': {
+			pattern: /@[\w-](?:[^;{\s]|\s+(?![\s{]))*(?:;|(?=\s*\{))/,
+			inside: {
+				'rule': /^@[\w-]+/,
+				'selector-function-argument': {
+					pattern: /(\bselector\s*\(\s*(?![\s)]))(?:[^()\s]|\s+(?![\s)])|\((?:[^()]|\([^()]*\))*\))+(?=\s*\))/,
+					lookbehind: true,
+					alias: 'selector'
+				},
+				'keyword': {
+					pattern: /(^|[^\w-])(?:and|not|only|or)(?![\w-])/,
+					lookbehind: true
+				}
+				// See rest below
+			}
+		},
+		'url': {
+			// https://drafts.csswg.org/css-values-3/#urls
+			pattern: RegExp('\\burl\\((?:' + string.source + '|' + /(?:[^\\\r\n()"']|\\[\s\S])*/.source + ')\\)', 'i'),
+			greedy: true,
+			inside: {
+				'function': /^url/i,
+				'punctuation': /^\(|\)$/,
+				'string': {
+					pattern: RegExp('^' + string.source + '$'),
+					alias: 'url'
+				}
+			}
+		},
+		'selector': {
+			pattern: RegExp('(^|[{}\\s])[^{}\\s](?:[^{};"\'\\s]|\\s+(?![\\s{])|' + string.source + ')*(?=\\s*\\{)'),
+			lookbehind: true
+		},
+		'string': {
+			pattern: string,
+			greedy: true
+		},
+		'property': {
+			pattern: /(^|[^-\w\xA0-\uFFFF])(?!\s)[-_a-z\xA0-\uFFFF](?:(?!\s)[-\w\xA0-\uFFFF])*(?=\s*:)/i,
+			lookbehind: true
+		},
+		'important': /!important\b/i,
+		'function': {
+			pattern: /(^|[^-a-z0-9])[-a-z0-9]+(?=\()/i,
+			lookbehind: true
+		},
+		'punctuation': /[(){};:,]/
+	};
+
+	Prism.languages.css['atrule'].inside.rest = Prism.languages.css;
+
+	var markup = Prism.languages.markup;
+	if (markup) {
+		markup.tag.addInlined('style', 'css');
+		markup.tag.addAttribute('style', 'css');
+	}
+
+}(Prism));
+
 Prism.languages.clike = {
 	'comment': [
 		{
@@ -1511,87 +1576,6 @@ Prism.languages.js = Prism.languages.javascript;
 	});
 
 	Prism.languages.ts = Prism.languages.typescript;
-
-}(Prism));
-
-(function (Prism) {
-
-	var keywords = /\b(?:ACT|ACTIFSUB|CARRAY|CASE|CLEARGIF|COA|COA_INT|CONSTANTS|CONTENT|CUR|EDITPANEL|EFFECT|EXT|FILE|FLUIDTEMPLATE|FORM|FRAME|FRAMESET|GIFBUILDER|GMENU|GMENU_FOLDOUT|GMENU_LAYERS|GP|HMENU|HRULER|HTML|IENV|IFSUB|IMAGE|IMGMENU|IMGMENUITEM|IMGTEXT|IMG_RESOURCE|INCLUDE_TYPOSCRIPT|JSMENU|JSMENUITEM|LLL|LOAD_REGISTER|NO|PAGE|RECORDS|RESTORE_REGISTER|TEMPLATE|TEXT|TMENU|TMENUITEM|TMENU_LAYERS|USER|USER_INT|_GIFBUILDER|global|globalString|globalVar)\b/;
-
-	Prism.languages.typoscript = {
-		'comment': [
-			{
-				// multiline comments /* */
-				pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
-				lookbehind: true
-			},
-			{
-				// double-slash comments - ignored when backslashes or colon is found in front
-				// also ignored whenever directly after an equal-sign, because it would probably be an url without protocol
-				pattern: /(^|[^\\:= \t]|(?:^|[^= \t])[ \t]+)\/\/.*/,
-				lookbehind: true,
-				greedy: true
-			},
-			{
-				// hash comments - ignored when leading quote is found for hex colors in strings
-				pattern: /(^|[^"'])#.*/,
-				lookbehind: true,
-				greedy: true
-			}
-		],
-		'function': [
-			{
-				// old include style
-				pattern: /<INCLUDE_TYPOSCRIPT:\s*source\s*=\s*(?:"[^"\r\n]*"|'[^'\r\n]*')\s*>/,
-				inside: {
-					'string': {
-						pattern: /"[^"\r\n]*"|'[^'\r\n]*'/,
-						inside: {
-							'keyword': keywords,
-						},
-					},
-					'keyword': {
-						pattern: /INCLUDE_TYPOSCRIPT/,
-					},
-				},
-			},
-			{
-				// new include style
-				pattern: /@import\s*(?:"[^"\r\n]*"|'[^'\r\n]*')/,
-				inside: {
-					'string': /"[^"\r\n]*"|'[^'\r\n]*'/,
-				},
-			}
-		],
-		'string': {
-			pattern: /^([^=]*=[< ]?)(?:(?!\]\n).)*/,
-			lookbehind: true,
-			inside: {
-				'function': /\{\$.*\}/, // constants include
-				'keyword': keywords,
-				'number': /^\d+$/,
-				'punctuation': /[,|:]/,
-			}
-		},
-		'keyword': keywords,
-		'number': {
-			// special highlighting for indexes of arrays in tags
-			pattern: /\b\d+\s*[.{=]/,
-			inside: {
-				'operator': /[.{=]/,
-			}
-		},
-		'tag': {
-			pattern: /\.?[-\w\\]+\.?/,
-			inside: {
-				'punctuation': /\./,
-			}
-		},
-		'punctuation': /[{}[\];(),.:|]/,
-		'operator': /[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/,
-	};
-
-	Prism.languages.tsconfig = Prism.languages.typoscript;
 
 }(Prism));
 

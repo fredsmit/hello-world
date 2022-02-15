@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Upload progress</title>
+    <script type="module" src="t60.js"></script>
+    <script type="module" src="uploader.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <form name="upload" method="POST" enctype="multipart/form-data" action="/upload">
+        <input type="file" name="myfile">
+        <input type="submit" name="submit" value="Upload (Resumes automatically)">
+    </form>
+
+    <button id="btnStop">Stop upload</button>
+
+
+    <div id="progress">Progress indication</div>
+
+</body>
