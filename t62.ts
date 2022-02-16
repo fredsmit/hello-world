@@ -65,7 +65,8 @@ async function toOrigin() {
     }
 }
 
-const socket = new WebSocket("ws://localhost:8080", ["p1", "p2"]);
+//const socket = new WebSocket("ws://localhost:8080", ["p1", "p2"]);
+const socket = new WebSocket("ws://localhost:8080/chat", ["p1", "p2"]);
 toOrigin();
 toOrigin2();
 

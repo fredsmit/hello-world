@@ -57,6 +57,7 @@
     // "t38.ts",
     // "t39.ts"
     //"uploader.ts",
-    "t62.ts"
+    "t62.ts",
+    "chatClient.ts"
   ]
 }

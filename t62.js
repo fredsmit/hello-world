@@ -19,6 +19,16 @@ async function toOrigin2() {
         // ['last-modified', 'Wed, 26 Jan 2022 21:27:30 GMT']
         // ['vary', 'Origin']
         const response = await fetch("./data.json"); // OK
+        // Fetched: http://127.0.0.1:5500/data.json
+        // ['accept-ranges', 'bytes']
+        // ['access-control-allow-credentials', 'true']
+        // ['cache-control', 'public, max-age=0']
+        // ['content-length', '30']
+        // ['content-type', 'application/json; charset=UTF-8']
+        // ['date', 'Wed, 16 Feb 2022 10:19:36 GMT']
+        // ['etag', 'W/"1e-17e984955db"']
+        // ['last-modified', 'Wed, 26 Jan 2022 21:27:30 GMT']
+        // ['vary', 'Origin']
         console.log("Fetched:", response.url);
         for (const header of response.headers) {
             console.log("header:", header);
@@ -43,7 +53,8 @@ async function toOrigin() {
         console.error(error);
     }
 }
-const socket = new WebSocket("ws://localhost:8080", ["p1", "p2"]);
+//const socket = new WebSocket("ws://localhost:8080", ["p1", "p2"]);
+const socket = new WebSocket("ws://localhost:8080/chat", ["p1", "p2"]);
 toOrigin();
 toOrigin2();
 console.log("WebSocket.CONNECTING, OPEN, CLOSING, CLOSED:", WebSocket.CONNECTING, WebSocket.OPEN, WebSocket.CLOSING, WebSocket.CLOSED);
@@ -81,3 +92,24 @@ socket.onerror = function (ev) {
     console.log(`[error] ${ev}`);
 };
 export {};
+// 1000	Normal Closure
+// 1001	Going Away
+// 1002	Protocol error
+// 1003	Unsupported Data
+// 1004	Reserved
+// 1005	No Status Rcvd
+// 1006	Abnormal Closure
+// 1007	Invalid frame payload data
+// 1008	Policy Violation
+// 1009	Message Too Big
+// 1010	Mandatory Ext.
+// 1011	Internal Error
+// 1012	Service Restart
+// 1013	Try Again Later
+// 1014	The server was acting as a gateway or proxy and received an invalid response from the upstream server.
+//      This is similar to 502 HTTP Status Code.
+// 1015	TLS handshake
+// 1016-2999
+// 3000	Unauthorized
+// 3001-3999 Unassigned
+// 4000-4999 Reserved for Private Use
