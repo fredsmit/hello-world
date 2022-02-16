@@ -14,13 +14,13 @@ function start() {
     eventSource.onopen = function (e) {
         log("Event: open");
     };
-    eventSource.onerror = function (e) {
-        log("Event: error");
+    eventSource.onerror = function (ev) {
+        //log(Object.prototype.toString.call(ev));
         if (this.readyState == EventSource.CONNECTING) {
-            log(`Reconnecting (readyState=${this.readyState})...`);
+            log(`Reconnecting (readyState=${this.readyState})... ` + new Date());
         }
         else {
-            log("Error has occured.");
+            log("Error has occured. readyState:" + this.readyState);
         }
     };
     eventSource.addEventListener('bye', function (ev) {
@@ -32,7 +32,8 @@ function start() {
         }
     });
     eventSource.onmessage = function (ev) {
-        log("Event: message, data: " + ev.data);
+        log(`Event: message, data: ${ev.data} ${ev.lastEventId}`);
+        window.localStorage.setItem(ev.lastEventId, ev.data);
     };
 }
 function stop() {

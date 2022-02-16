@@ -21,12 +21,12 @@ function start() { // when "Start" button pressed
     log("Event: open");
   };
 
-  eventSource.onerror = function (e) {
-    log("Event: error");
+  eventSource.onerror = function (ev: Event) {
+    //log(Object.prototype.toString.call(ev));
     if (this.readyState == EventSource.CONNECTING) {
-      log(`Reconnecting (readyState=${this.readyState})...`);
+      log(`Reconnecting (readyState=${this.readyState})... ` + new Date());
     } else {
-      log("Error has occured.");
+      log("Error has occured. readyState:" + this.readyState);
     }
   };
 
@@ -39,7 +39,8 @@ function start() { // when "Start" button pressed
   });
 
   eventSource.onmessage = function (ev: MessageEvent) {
-    log("Event: message, data: " + ev.data);
+    log(`Event: message, data: ${ev.data} ${ev.lastEventId}`);
+    window.localStorage.setItem(ev.lastEventId, ev.data);
   };
 }
 
