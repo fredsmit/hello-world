@@ -1,3 +1,5 @@
+import { queryRequiredElement } from "./pageUtils.js"
+
 class TimeFormatted extends HTMLDivElement { // (1)
 
     constructor() {
@@ -192,6 +194,48 @@ clock?.addEventListener("tick", function (ev: Event): void {
 
 setTimeout(() => {
     clock?.remove();
-}, 10000);
+}, 5000);
+
+customElements.define('show-hello', class extends HTMLElement {
+    connectedCallback() {
+        const shadow = this.attachShadow({ mode: 'open' });
+        shadow.innerHTML = `<span>Hello, ${this.getAttribute('name')}</span>`;
+    }
+});
+
+customElements.define('show-hello2', class extends HTMLElement {
+    connectedCallback() {
+        const shadow = this.attachShadow({ mode: 'closed' });
+        shadow.innerHTML = `
+        <style> span { font-weight: bold; } </style>
+        <span>Hello2, ${this.getAttribute('name2')}</span>
+        `;
+    }
+});
+
+
+const btnFromTheShadows = queryRequiredElement(document.body, "div", "btnFromTheShadows");
+btnFromTheShadows.addEventListener("click", function (ev: MouseEvent): void {
+    const t1 = document.getElementById("t1");
+    const t2 = document.getElementById("t2");
+    if (t1 instanceof HTMLTemplateElement && t2 instanceof HTMLTemplateElement) {
+
+        const shadowRoot = btnFromTheShadows.attachShadow({ mode: 'open' });
+
+        shadowRoot.append(t2.content.cloneNode(true));
+        const messageEl = shadowRoot.getElementById('message');
+        if (messageEl) {
+            messageEl.innerText = "Hello from the shadows!";
+        }
+
+        // console.log("t1:", t1.content);
+        document.body.append(t1.content.cloneNode(true));
+        document.body.append(t1.content.cloneNode(true));
+        document.body.append(t1.content.cloneNode(true));
+    }
+
+});
+
+
 
 export { };

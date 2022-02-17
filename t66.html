@@ -22,5 +22,30 @@
     <span is="clock-span" id="clock"></span>
 
     <input type="range">
+    <show-hello name="John" style="border:1px solid red;"></show-hello>
+    <show-hello2 name2="John2" style="border:1px solid green;"></show-hello2>
+
+    <template id="t1">
+        <style>
+            p {
+                font-weight: bold;
+            }
+        </style>
+        <script>
+            console.log(hw);
+        </script>
+        <p class="message" id="hw">Hello, world!</p>
+    </template>
+
+    <template id="t2">
+        <style>
+            p {
+                font-weight: bold;
+            }
+        </style>
+        <p id="message"></p>
+    </template>
+
+    <div id="btnFromTheShadows">Click from the shadows</div>
 
 </body>
