@@ -59,8 +59,9 @@
     //"uploader.ts",
     // "t62.ts",
     // "chatClient.ts",
-    "eventSourceClient.ts",
-    "t63.ts",
-    "t64.ts",
+    // "eventSourceClient.ts",
+    // "t63.ts",
+    // "t64.ts",
+    "t66.ts",
   ]
 }

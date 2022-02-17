@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Custom elements</title>
+    <script type="module" src="t66.js"></script>
+    <style>
+        /* make the slider track red */
+        input::-webkit-slider-runnable-track {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div is="time-formatted" datetime="2019-12-01" year="numeric" month="long" day="numeric" hour="numeric"
+        minute="numeric" second="numeric" time-zone-name="short" x="11">
+    </div> -->
+
+    <span is="clock-span" id="clock"></span>
+
+    <input type="range">
+
+</body>
