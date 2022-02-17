@@ -44,7 +44,7 @@
   //   "node_modules"
   // ],
   "files": [
-    //"pageUtils.ts",
+    "pageUtils.ts",
     //"commonColors.ts",
     //"t03.ts",
     //"t06.ts",
@@ -62,6 +62,7 @@
     // "eventSourceClient.ts",
     // "t63.ts",
     // "t64.ts",
-    "t66.ts",
+    "t67.ts",
+    "t68.ts",
   ]
 }

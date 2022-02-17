@@ -44,6 +44,13 @@ function queryRequiredElement(parentNode, tagName, idSelector) {
         throw Error(`Missing required HTML element '${selector}'.`);
     return htmlElement;
 }
+function queryRequiredElementByClassSelector(parentNode, tagName, classSelector) {
+    const selector = `${tagName}.${classSelector}`;
+    const htmlElements = parentNode.querySelectorAll(selector);
+    if (htmlElements.length !== 1)
+        throw Error(`Missing required HTML element '${selector}'.`);
+    return htmlElements[0];
+}
 function findClosestTarget(eventTarget, htmlElementSelector) {
     if (eventTarget instanceof Element) {
         const closestTarget = eventTarget.closest(htmlElementSelector);
@@ -65,4 +72,4 @@ function maxZIndex() {
     }
     return maxZ;
 }
-export { getOptionalHTMLElements, getRequiredHTMLElements, getRequiredNamedForm, getRequiredNamedFormControl, queryElements, queryRequiredElement, findClosestTarget, maxZIndex };
+export { getOptionalHTMLElements, getRequiredHTMLElements, getRequiredNamedForm, getRequiredNamedFormControl, queryElements, queryRequiredElement, queryRequiredElementByClassSelector, findClosestTarget, maxZIndex };

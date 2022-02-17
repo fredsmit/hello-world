@@ -66,6 +66,18 @@ function queryRequiredElement<TagName extends keyof HTMLElementTagNameMap>(
     return htmlElement;
 }
 
+function queryRequiredElementByClassSelector<TagName extends keyof HTMLElementTagNameMap>(
+    parentNode: ParentNode,
+    tagName: TagName,
+    classSelector: string
+): HTMLElementTagNameMap[TagName] {
+    const selector = `${tagName}.${classSelector}`;
+    const htmlElements = parentNode.querySelectorAll<HTMLElementTagNameMap[TagName]>(selector)
+    if (htmlElements.length !== 1)
+        throw Error(`Missing required HTML element '${selector}'.`);
+    return htmlElements[0];
+}
+
 function findClosestTarget(eventTarget: unknown, htmlElementSelector: string): HTMLElement | null {
     if (eventTarget instanceof Element) {
         const closestTarget = eventTarget.closest<Element>(htmlElementSelector);
@@ -97,6 +109,7 @@ export {
     getRequiredNamedFormControl,
     queryElements,
     queryRequiredElement,
+    queryRequiredElementByClassSelector,
     findClosestTarget,
     maxZIndex
 };

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Named slots</title>
+    <script type="module" src="t67.js"></script>
+    <style>
+        .dvClass {
+            border: 1px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <user-card>
+        <span slot="username">John Smith</span>
+        <span slot="birthday">01.01.2001</span>
+        <div class="dvClass">I like to swim.</div>
+        <div>...And play volleyball too!</div>
+        <div>...And play football too!</div>
+    </user-card>
+
+    <template id="menu-template">
+        <style>
+            ul {
+                margin: 0;
+                list-style: none;
+                padding-left: 20px;
+            }
+
+            ::slotted([slot="title"]) {
+                font-size: 18px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            ::slotted([slot="title"])::before {
+                content: '📂';
+                font-size: 14px;
+            }
+
+            .closed ::slotted([slot="title"])::before {
+                content: '📁';
+            }
+
+            .closed ul {
+                display: none;
+            }
+        </style>
+        <div class="menu">
+            <slot name="title"></slot>
+            <ul>
+                <slot name="item"></slot>
+            </ul>
+        </div>
+    </template>
+
+    <custom-menu id="oldMenu">
+        <span slot="title">Candy menu</span>
+        <li slot="item">Lollipop</li>
+        <li slot="item">Fruit Toast</li>
+        <li slot="item">Cup Cake</li>
+    </custom-menu>
+
+    <custom-menu>
+        <span slot="title">Stasės menu</span>
+        <li slot="item">Barščiai</li>
+        <li slot="item">Kompotas</li>
+        <li slot="item" style="color:orange;">Pyragėlis</li>
+    </custom-menu>
+
+
+</body>
+
+</html>

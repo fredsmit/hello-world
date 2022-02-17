@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shadow host styling</title>
+    <script type="module" src="t68.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <template id="tmpl">
+        <style>
+            :host([centered]) {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                border-color: blue;
+            }
+
+            /* the style will be applied from inside to the custom-dialog element */
+            :host {
+                display: inline-block;
+                border: 1px solid red;
+                background-color: aqua;
+                padding: 10px;
+            }
+        </style>
+        <slot></slot>
+    </template>
+
+    <custom-dialog>
+        Hello! Hello! Hello!
+    </custom-dialog>
+
+    <custom-dialog centered>
+        Centered!
+    </custom-dialog>
+
+    <style>
+        span {
+            font-weight: bold
+        }
+    </style>
+
+    <user-card>
+        <div slot="username"><span>John Smith</span></div>
+        <div slot="username"><span>John Smith II</span></div>
+    </user-card>
+
+</body>
+
+</html>
