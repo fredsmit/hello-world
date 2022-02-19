@@ -187,4 +187,61 @@ for (const r of str.matchAll(regexp)) {
 for (const r of str.matchAll(regexp2)) {
     console.log(r[0]);
 }
+str = "  123 ";
+//console.log(str.replace(/\s*(.*)\s*/, "$1"));
+console.log(/(?<=\s*)\S+(?=\s*)/[Symbol.match]("   1234   ")?.[0] ?? "");
+console.log(/(?<=\s*)\S+(?=\s*)/[Symbol.match]("      ")?.[0] ?? "");
+console.log('<style> <styler> <style test="...">'.match(/\<style(|\s+[^\>]*)\>/g));
+console.log('<style> <styler> <style test="...">'.match(/\<style(\s+[^\>]*)?\>/g));
+str = "2 turkeys cost 60€";
+console.log(str.match(/\d+\b(?!€)/g)); // 2 (the price is not matched)
+console.log(str.match(/\d+\b/g)); // 2 (the price is not matched)
+str = "2 turkeys cost 60€ 1 turkeys cost 30$";
+for (const r of str.matchAll(/\d+(?=(?<currency>[€$]))/g)) {
+    console.log(r);
+}
+for (const r of str.matchAll(/\d+(?=(?<currency>(€|\$)))/g)) {
+    console.log(r);
+}
+str = "0 12 -5 123 -18";
+for (const r of str.matchAll(/(?<![-\d])\d+/g)) {
+    console.log(r);
+}
+console.log("-------------------");
+regexp = /(?<=<body style="height: 200px">)/gm;
+str = `
+<html>
+  <body style="height: 200px">
+  ...
+  </body>
+</html>
+`;
+for (const r of str.matchAll(regexp)) {
+    console.log(r);
+}
+str = str.replace(regexp, `<h1>Hello</h1>`);
+console.log(str);
+regexp = /^(\d+\b)*$/;
+str = "012345678901234567890123456789a";
+//str = "012345678901234567890123456a";
+// will take a very long time (careful!)
+console.log(regexp.test(str));
+//regexp = /^(\w+\s?)*$/;
+regexp = /^(\w+\s)*\w+$/;
+str = "An input string that takes a long time or even makes this regexp hang!";
+// will take a very long time
+console.log(regexp.test(str));
+console.log("******************");
+// parentheses are named ?<word>, referenced as \k<word>
+regexp = /^((?=(?<word>\w+))\k<word>\s?)*$/g;
+regexp = /^((?=(?<word>\w+))\k<word>[\s\?]?)*$/g;
+regexp = /^((?=(?<word>\w+))\k<word>[\s\p{Po}]?)*$/ug;
+str = "An input string that takes a long time or even makes this regex hang?";
+for (const r of str.matchAll(regexp)) {
+    console.log(r);
+}
+str = "A correct string";
+for (const r of str.matchAll(regexp)) {
+    console.log(r);
+}
 export {};
