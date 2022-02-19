@@ -325,5 +325,70 @@ for (const r of str.matchAll(regexp)) {
     console.log(r);
 }
 
+console.log("==================================");
+
+// var strx:string;
+// const reArray = /\w+/g.exec(strx! || "") || "";
+// console.log("reArray:", reArray[0]);
+
+str = `   let varName = "value" `;
+let re = /\w+|=/y;
+
+// console.log("reArray:", re.exec(str), re.lastIndex);
+// console.log("reArray:", re.exec(str), re.lastIndex);
+// console.log("reArray:", re.exec(str), re.lastIndex);
+// console.log("reArray:", re.exec(str), re.lastIndex);
+// console.log("reArray:", re.exec(str), re.lastIndex);
+
+let reArray: RegExpExecArray | null | undefined;
+re.lastIndex = 7;
+console.log("re.lastIndex", re.lastIndex);
+
+while (reArray = re.exec(str)) {
+    console.log("reArray:", reArray, ++re.lastIndex);
+}
+
+console.log("------------------------------");
+
+
+str = "John Smith";
+
+let rresult = str.replace(/(?<name>\w+) (?<surname>\w+)/, (substring, ...match) => {
+    console.log("substring:", substring);
+    console.log("match.length:", match.length);
+    match.forEach((el, idx) => console.log(idx, ":", el));
+
+    let groups = match.pop();
+
+    console.log("match.length:", match.length);
+    match.forEach((el, idx) => console.log(idx, ":", el));
+
+    return `${groups.surname}, ${groups.name}`;
+});
+
+console.log(rresult); // Smith, John
+
+console.log("------------------------------");
+
+function replacer(substring: string, ...args: any[]): string {
+    console.log("substring:", substring);
+    console.log("args:", args);
+    return substring;
+};
+
+rresult = str.replace(/(?<name>\w+) (?<surname>\w+)/, replacer);
+
+console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+regexp = /javascript/g;  // (regexp just created: regexp.lastIndex=0)
+
+console.log(regexp.lastIndex, regexp.source, regexp.test("javascript")); // true (regexp.lastIndex=10 now)
+console.log(regexp.lastIndex, regexp.source, regexp.test("javascript")); // false
+
+regexp = RegExp("javascript", "g");  // (regexp just created: regexp.lastIndex=0)
+
+console.log(regexp.lastIndex, regexp.source, regexp.test("javascript")); // true (regexp.lastIndex=10 now)
+console.log(regexp.lastIndex, regexp.source, regexp.test("javascript")); // false
+
+console.log(/^((?=(?<word>\w+))\k<word>[\s\p{Po}]?)*$/ug.source);
 
 export { };
