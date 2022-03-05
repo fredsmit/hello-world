@@ -22,7 +22,7 @@
     //"noLib": true,
     //"target": "esNext",
     //"target": "es2021",
-    "target": "es2020",
+    "target": "es2021",
     //"target": "es2019",
     //"target": "es2018",
     //"target": "es2017",
@@ -44,7 +44,7 @@
   //   "node_modules"
   // ],
   "files": [
-    "pageUtils.ts",
+    //"pageUtils.ts",
     // "commonColors.ts",
     // "t03.ts",
     // "t06.ts",
@@ -65,6 +65,10 @@
     // "t67.ts",
     // "t68.ts",
     // "t69.ts",
-    "css01.ts"
+    //"css01.ts"
+    // "t70.ts",
+    // "t71.ts",
+    "t72.ts",
+    "t73.ts",
   ]
 }
