@@ -23,6 +23,15 @@ You typically obtain a Git repository in one of two ways:
 In either case, you end up with a Git repository on your local machine, ready for work.
 `;
 
+`
+> git status
+On branch 'master'
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean.
+`;
+
 
 
 export { };
