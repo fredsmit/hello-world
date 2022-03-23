@@ -32,6 +32,26 @@ Your branch is ahead of 'origin/master' by 1 commit.
 nothing to commit, working tree clean.
 `;
 
+`Every time you perform a commit, you’re recording a snapshot of your project that you can revert to or compare to later.`;
+
+
+`
+freda173@D750:~/tgit$ echo 'test content' | git hash-object -w --stdin
+d670460b4b4aece5915caf5c68d12f560a9fe3e4
+freda173@D750:~/tgit$
+
+
+freda173@D750:~/tgit$  echo 'test content 2' | git hash-object -w --stdin
+b13c288e945d00a4d16f195b33bf003b53d73dac
+freda173@D750:~/tgit$
+`;
+
+
+`
+C# has a language-level asynchronous programming model, which allows for easily writing asynchronous code
+without having to juggle completion callbacks or conform to a library that supports asynchrony.
+It follows what is known as the Task-based Asynchronous Pattern (TAP).
+`;
 
 
 export { };
