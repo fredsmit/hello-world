@@ -53,5 +53,10 @@ without having to juggle completion callbacks or conform to a library that suppo
 It follows what is known as the Task-based Asynchronous Pattern (TAP).
 `;
 
+`
+With LINQ, a query is a first-class language construct, just like classes, methods, events.
+You write queries against strongly typed collections of objects by using language keywords
+and familiar operators.
+`;
 
 export { };
