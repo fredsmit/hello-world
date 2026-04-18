@@ -3,9 +3,14 @@ const commonForeColors = getCommonColorNames();
 const commonBackColors = Array.from(commonForeColors).reverse();
 const btnStart = document.getElementById("btnStart");
 const btnStop = document.getElementById("btnStop");
-document["clockStart"] = clockStart;
-document["clockStop"] = clockStop;
-document["sortPeople"] = sortPeople;
+// (document as any)["clockStart"] = clockStart;
+// (document as any)["clockStop"] = clockStop;
+// (document as any)["sortPeople"] = sortPeople;
+const globalDocument = document;
+//const f = { clockStart, clockStop, sortPeople };
+globalDocument.clockStart = clockStart;
+globalDocument.clockStop = clockStop;
+globalDocument.sortPeople = sortPeople;
 let timerId;
 function clockStart(_this) {
     if (timerId)

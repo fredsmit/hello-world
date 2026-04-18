@@ -1,3 +1,5 @@
+console.log(document.body.className); // main page article
+console.log("document.body.classList:", ...document.body.classList);
 document.body.classList.add('article');
 console.log(document.body.className); // main page article
 console.log("document.body.classList:", ...document.body.classList);
@@ -25,20 +27,23 @@ console.log("computedStyle.color:", computedStyle.color); // rgb(255, 0, 0)
 console.dir(computedStyle);
 console.log("computedStyle:", ...computedStyle);
 function showNotification({ top = 0, right = 0, className, html }) {
-    let dvNotification = document.querySelector("span.notification");
-    if (dvNotification === null) {
-        dvNotification = document.createElement("span");
-        dvNotification.style.top = String(top) + "px";
-        dvNotification.style.right = String(right) + "px";
-        dvNotification.className = "notification";
-        className = (className ?? "").trim();
+    //let dvNotification = document.querySelector("span.notification") as HTMLElement;
+    let span = document.querySelector("span.notification");
+    if (span === null) {
+        span = document.createElement("span");
+        span.style.top = String(top) + "px";
+        span.style.right = String(right) + "px";
+        span.className = "notification";
+        //className = (className ?? "").trim();
+        className = className?.trim() ?? "";
         if (className) {
-            dvNotification.classList.add(className);
+            span.classList.add(className);
         }
-        document.body.prepend(dvNotification);
+        document.body.prepend(span);
     }
-    dvNotification.textContent = (html ?? "").trim();
-    dvNotification.hidden = !dvNotification.hidden;
+    //span.textContent = (html ?? "").trim();
+    span.textContent = html?.trim() ?? "";
+    span.hidden = !span.hidden;
 }
 // test it
 let i = 1;

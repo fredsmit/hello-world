@@ -1,7 +1,7 @@
-document.body.classList.add('article');
-
 console.log(document.body.className); // main page article
-
+console.log("document.body.classList:", ...document.body.classList);
+document.body.classList.add('article');
+console.log(document.body.className); // main page article
 console.log("document.body.classList:", ...document.body.classList);
 
 const div = document.createElement("div");
@@ -45,20 +45,23 @@ function showNotification(
         html?: string;
     }
 ): void {
-    let dvNotification = document.querySelector("span.notification") as HTMLElement;
-    if (dvNotification === null) {
-        dvNotification = document.createElement("span");
-        dvNotification.style.top = String(top) + "px";
-        dvNotification.style.right = String(right) + "px";
-        dvNotification.className = "notification";
-        className = (className ?? "").trim();
+    //let dvNotification = document.querySelector("span.notification") as HTMLElement;
+    let span = document.querySelector<HTMLSpanElement>("span.notification");
+    if (span === null) {
+        span = document.createElement("span");
+        span.style.top = String(top) + "px";
+        span.style.right = String(right) + "px";
+        span.className = "notification";
+        //className = (className ?? "").trim();
+        className = className?.trim() ?? "";
         if (className) {
-            dvNotification.classList.add(className);
+            span.classList.add(className);
         }
-        document.body.prepend(dvNotification);
+        document.body.prepend(span);
     }
-    dvNotification.textContent = (html ?? "").trim();
-    dvNotification.hidden = !dvNotification.hidden;
+    //span.textContent = (html ?? "").trim();
+    span.textContent = html?.trim() ?? "";
+    span.hidden = !span.hidden;
 }
 
 // test it
