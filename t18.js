@@ -5,7 +5,7 @@ const textNodes = [];
 if (ul) {
     for (const node of document.body.childNodes) {
         if (node.nodeType === Node.TEXT_NODE && node instanceof Text) {
-            const text = (node.textContent ?? "").trim();
+            const text = node.textContent?.trim() ?? "";
             if (text.includes(expandArrow) && text.includes(collapseArrow)) {
                 textNodes.push([node, text]);
             }

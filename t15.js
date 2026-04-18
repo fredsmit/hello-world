@@ -109,6 +109,7 @@ if (blockquote) {
         if (ev.target instanceof HTMLDivElement) {
             const div = ev.target;
             if (div.classList.contains("note")) {
+                div.style.borderWidth = "2px";
                 div.style.backgroundColor = "beige";
                 div.style.borderColor = "darkgreen";
                 ev.stopPropagation();
