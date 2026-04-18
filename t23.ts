@@ -1,7 +1,3 @@
-import { getRequiredHTMLElements } from "./pageUtils.js"
-
-const { menu: menuElement } = getRequiredHTMLElements("menu");
-
 class Menu {
 
     constructor(private readonly htmlElement: HTMLElement) {
@@ -87,6 +83,8 @@ class Menu {
     }
 }
 
+import { getRequiredHTMLElements } from "./pageUtils.js"
+const { menu: menuElement } = getRequiredHTMLElements("menu");
 const menu = new Menu(menuElement);
 await menu.load();
 

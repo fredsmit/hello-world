@@ -1,6 +1,5 @@
-import { getRequiredHTMLElements } from "./pageUtils.js";
-const { menu: menuElement } = getRequiredHTMLElements("menu");
 class Menu {
+    htmlElement;
     constructor(htmlElement) {
         this.htmlElement = htmlElement;
         const eventListenerObject = this.getEventListenerObject();
@@ -80,5 +79,7 @@ class Menu {
         });
     }
 }
+import { getRequiredHTMLElements } from "./pageUtils.js";
+const { menu: menuElement } = getRequiredHTMLElements("menu");
 const menu = new Menu(menuElement);
 await menu.load();
