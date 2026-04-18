@@ -1,5 +1,8 @@
-/// <reference lib="dom" />
+// /// <reference lib="dom" />
 import { getRequiredHTMLElements } from "./pageUtils.js";
+const _field = getRequiredHTMLElements("field");
+console.log(_field);
+console.dir(_field);
 const { field } = getRequiredHTMLElements("field");
 const fw = field.clientWidth;
 const fh = field.clientHeight;

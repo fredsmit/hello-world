@@ -10,7 +10,6 @@ const ballSrc = "./img/ball.svg";
 
 (async () => {
     try {
-
         const ball: HTMLImageElement = document.createElement("img");
         ball.src = ballSrc;
 
@@ -44,24 +43,27 @@ const ballSrc = "./img/ball.svg";
         console.log("document.body.clientHeight:", document.body.clientHeight);
         console.log("document.documentElement.clientHeight:", document.documentElement.clientHeight);
 
-        const message = createMessageUnder(ball, "Ball");
-        document.body.append(message);
-        setTimeout(() => message.remove(), 5000);
+        const messageDiv = createMessageUnder(ball, "Ball");
+        document.body.append(messageDiv);
+        setTimeout(() => messageDiv.textContent += "*", 3000);
+        setTimeout(() => messageDiv.textContent += "*", 6000);
+        setTimeout(() => messageDiv.textContent += "*", 9000);
+        setTimeout(() => messageDiv.remove(), 12000);
 
     } catch (error) {
         console.error("Error:", error);
     }
 })();
 
-function createMessageUnder(elem: HTMLElement, text: string) {
-    const message = document.createElement('div');
+function createMessageUnder(elem: HTMLElement, text: string): HTMLDivElement {
+    const div = document.createElement('div');
     // better to use a css class for the style here
-    message.style.cssText = "position:fixed; color: red";
-    const coords = elem.getBoundingClientRect();
-    message.style.left = coords.left + "px";
-    message.style.top = coords.bottom + "px";
-    message.textContent = text;
-    return message;
+    div.style.cssText = "position:fixed; color: red";
+    const rect = elem.getBoundingClientRect();
+    div.style.left = rect.left + "px";
+    div.style.top = rect.bottom + "px";
+    div.textContent = text;
+    return div;
 }
 
 export { };
