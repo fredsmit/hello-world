@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>requestLocation</title>
+    <!-- <link rel="stylesheet" href="index.css"> -->
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #example {
+            width: 320px;
+            height: 220px;
+            overflow: auto;
+            border: 25px solid #E8C48F;
+            padding: 21px 22px 23px 24px;
+        }
+        .key {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+    <!-- <script type="module" src="t12.js"></script> -->
+</head>
+<body>
+<h2>Geolocation Test</h2>
+<button type="button" onclick="getLocation()">Request Location</button>
+<p id="out"></p>
+
+<script>
+function getLocation() {
+    navigator.geolocation.getCurrentPosition(
+        pos => document.getElementById('out').textContent =
+            `Lat: ${pos.coords.latitude}, Lon: ${pos.coords.longitude}`,
+        err => document.getElementById('out').textContent =
+            `Error: ${err.message}`
+    );
+}
+</script>
+</body>
+</html>

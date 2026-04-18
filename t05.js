@@ -1,5 +1,6 @@
-const nodes = document.querySelectorAll('li');
-for (const li of document.querySelectorAll('li')) {
+const liNodes = document.body.querySelectorAll('li');
+console.dir(liNodes);
+for (const li of document.body.querySelectorAll('li')) {
     // get the title from the text node
     const wholeText = Array.from(li.childNodes.values())
         .filter(childNode => childNode instanceof Text)

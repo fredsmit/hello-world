@@ -1,8 +1,9 @@
-// string
 const div = document.getElementById("div");
 const input = document.getElementById("checkboxInput");
 show();
-document.documentElement.addEventListener("click", (ev) => {
+const html = document.documentElement;
+console.dir(html);
+html.addEventListener("click", (ev) => {
     const div = document.getElementById("div");
     const input = document.getElementById("checkboxInput");
     if (div && input && input instanceof HTMLInputElement) {

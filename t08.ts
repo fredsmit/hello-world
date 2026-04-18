@@ -1,5 +1,5 @@
 import { getCommonColors } from "./commonColors.js";
-let commonColors = getCommonColors();
+const commonColors: Readonly<Uint32Array> = getCommonColors();
 
 document.documentElement.addEventListener("dblclick", dblclickListener);
 

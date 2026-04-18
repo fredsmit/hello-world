@@ -1,3 +1,11 @@
 {
-    "typescript.tsdk": "node_modules\\typescript\\lib"
+  "js/ts.tsdk.path": "node_modules\\typescript\\lib",
+  "liveServer.settings.host": "localhost",
+  "liveServer.settings.port": 5501,
+  "liveServer.settings.https": {
+    "enable": true,
+    "cert": "C:\\certs\\_wildcard.local.dev+4.pem",
+    "key": "C:\\certs\\_wildcard.local.dev+4-key.pem",
+    "passphrase": ""
+  }
 }

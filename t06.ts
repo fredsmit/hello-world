@@ -1,12 +1,12 @@
-// string
-
 const div = document.getElementById("div");
 const input = document.getElementById("checkboxInput");
 
 show();
 
+const html = document.documentElement;
+console.dir(html);
 
-document.documentElement.addEventListener("click", (ev: MouseEvent) => {
+html.addEventListener("click", (ev: MouseEvent) => {
 
     const div = document.getElementById("div");
     const input = document.getElementById("checkboxInput");
@@ -88,6 +88,7 @@ function dblclickListener(this: HTMLElement, ev: MouseEvent): void {
         //div.insertAdjacentHTML("afterbegin", "<strong>Hi there!&nbsp;</strong>");
         div.append(hi);
     }, 1000);
+
     setTimeout(() => {
         //const hi2 = hi.cloneNode();
         //hi2.appendChild(document.createElement("li")).appendChild(document.createTextNode("KUKU"));

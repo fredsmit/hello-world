@@ -56,7 +56,4 @@ setTimeout((html: any) => {
     }, 2000, html);
 }
 
-
-
-
 export { };

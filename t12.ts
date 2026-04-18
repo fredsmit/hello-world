@@ -25,7 +25,6 @@ for (const category in props) {
             html += " ";
         } else {
             html += "<br/>";
-
         }
     }
 }

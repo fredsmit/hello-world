@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "module": "es2022",
     //"module": "es2020",
     //"module": "es2015",
     //"module": "CommonJS",
     //"moduleResolution": "classic",
-    "moduleResolution": "node",
+    //"moduleResolution": "node",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     //"noUnusedLocals":true,
@@ -22,7 +23,8 @@
     //"noLib": true,
     //"target": "esNext",
     //"target": "es2021",
-    "target": "es2021",
+    "target": "es2022",
+    //"target": "es2021",
     //"target": "es2019",
     //"target": "es2018",
     //"target": "es2017",
@@ -31,7 +33,7 @@
     //"target": "es5",
     //"target": "es3",
     "alwaysStrict": true,
-    "downlevelIteration": true,
+    //"downlevelIteration": true,
     "noEmitOnError": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
@@ -46,8 +48,15 @@
   "files": [
     //"pageUtils.ts",
     // "commonColors.ts",
-    // "t03.ts",
-    // "t06.ts",
+    //"module-duplicate-check.ts",
+    //"t01.ts",
+    // "t02.ts",
+    //"t03.ts",
+    //"t04.ts",
+    //"t05.ts",
+    //"t06.ts",
+    //"t07.ts",
+    "t08.ts",
     // "t14.ts",
     //
     // "t27.ts",
@@ -70,6 +79,6 @@
     // "t71.ts",
     // "t72.ts",
     // "t73.ts",
-    "t74.ts",
+    //"t74.ts",
   ]
 }

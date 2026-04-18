@@ -4,26 +4,7 @@
 <head data-cool="cool-Head" data-cool2="cool-Head2">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>documentBody</title>
-
-    <!-- <script type="module">
-        for (let node of document.body.childNodes) {
-            if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "SCRIPT") {
-                continue;
-            }
-            if (node.nodeType === Node.COMMENT_NODE) {
-                continue;
-            }
-            if (node.nodeType === Node.TEXT_NODE) {
-                if ((node.textContent ?? "").trim().length === 0)
-                    continue;
-            }
-            //console.dir(node.nodeType);
-            console.dir(node);
-        }
-        //console.dir("From HEAD: " + document.body); // null, there's no <body> yet
-    </script> -->
-    <title>documentBody</title>
+    <title>t01</title>
     <script type="module">
         console.dir(document.head.dataset);
         console.log("*** document.html ***")
@@ -61,8 +42,23 @@
         </tr>
     </table>
 
+    <!-- Added: global error handler to surface duplicate-module exceptions -->
+    <!-- <script type="module">
+        // Show module load/runtime errors (including thrown InvalidOperationException)
+        window.addEventListener('error', (ev) => {
+            console.error('Global error caught:', ev.error ?? ev.message);
+        });
+        window.addEventListener('unhandledrejection', (ev) => {
+            console.error('Unhandled promise rejection:', ev.reason);
+        });
+    </script> -->
 
-    <script type="module" src="./t01.js"></script>
+    <!-- Ensure crossorigin is set so fetch(import.meta.url) can succeed when needed -->
+    <!-- <script type="module" src="./module-duplicate-check.js"></script>
+    <script type="module" src="./module-duplicate-check copy.js"></script> -->
+    <script data-throwIfSeen="false" type="module" src="./t01.js" crossorigin="anonymous"></script>
+    <script data-throwIfSeen="false" type="module" src="./t01 copy.js" crossorigin="anonymous"></script>
+    <p>mkcert localhost 127.0.0.1 app.local ::1</p>
 </body>
 
 </html>

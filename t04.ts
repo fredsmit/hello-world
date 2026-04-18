@@ -3,7 +3,8 @@ console.log("ageTable:", ageTable);
 
 const labels: HTMLCollectionOf<HTMLLabelElement> | undefined = ageTable?.getElementsByTagName("label");
 console.log("labels:", labels);
-const list: NodeListOf<Element> = document.querySelectorAll('#age-table label')
+const listOfLabels: NodeListOf<Element> = document.body.querySelectorAll('#age-table label')
+console.dir(listOfLabels);
 
 if (ageTable instanceof HTMLTableElement) {
     const cells = Array.from(ageTable.rows).flatMap(row => Array.from(row.cells));

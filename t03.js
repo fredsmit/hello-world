@@ -4,6 +4,8 @@ const buffer = new Uint8Array(buffer_LENGTH);
 const commonColors = getCommonColors();
 const commonColors_LENGTH = commonColors.length;
 class DataSet {
+    htmlElement;
+    _dataset;
     constructor(htmlElement) {
         this.htmlElement = htmlElement;
         this._dataset = htmlElement.dataset;

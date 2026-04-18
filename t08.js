@@ -1,5 +1,5 @@
 import { getCommonColors } from "./commonColors.js";
-let commonColors = getCommonColors();
+const commonColors = getCommonColors();
 document.documentElement.addEventListener("dblclick", dblclickListener);
 async function dblclickListener(ev) {
     console.log("Wait:", Date.now());

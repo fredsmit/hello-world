@@ -1,0 +1,3127 @@
+PowerShell 7.6.0
+PS C:\Users\Alfredas> cd \cs14
+PS C:\cs14> dir
+
+    Directory: C:\cs14
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----            4/8/2026 12:00 PM                apiDocs
+d----            4/7/2026  4:31 PM                wwwroot
+-a---           3/26/2026  5:18 PM            127 appsettings.Development.json
+-a---            4/8/2026 11:59 AM            396 appsettings.json
+-a---            4/7/2026  4:30 PM            194 dotnet-tools.json
+-a---            4/8/2026 12:00 PM            545 web.config
+-a---            4/7/2026  4:20 PM         836495 WebApi03_PathsWalker
+-a---            4/8/2026 12:00 PM         927371 WebApi03_PathsWalker.exe
+-a---            4/8/2026 12:00 PM          52236 WebApi03_PathsWalker.pdb
+-a---            4/7/2026  4:31 PM          14629 WebApi03_PathsWalker.staticwebassets.endpoints.json
+
+PS C:\cs14> .
+ParserError:
+Line |
+   1 |  .
+     |  ~
+     | Missing expression after '.' in pipeline element.
+PS C:\cs14> .\WebApi03_PathsWalker.exe
+
+*** builder.Build() ***  ** Now use
+
+
+*** app.Run ***************
+
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: https://localhost:7072
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\cs14
+==> constructor.HomeGuardMiddleware
+==> constructor.timestamp:5522144514
+==> homeMetadata.Name:HTTP: GET /home/{v?}/{**catchall}
+==> Single._homeEndpoint HTTP: GET /home/{v?}/{**catchall}
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+watch ===============================================
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /favicon.ico
+segmentCount:1
+/favicon.ico pathMatch_home:False
+isDevTool:False /favicon.ico
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /favicon.ico
+v:12524847919
+catchall:
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /.well-known/appspecific/com.chrome.devtools.json
+segmentCount:3
+/.well-known/appspecific/com.chrome.devtools.json pathMatch_home:False
+isDevTool:True /.well-known/appspecific/com.chrome.devtools.json
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /favicon.ico
+segmentCount:1
+/favicon.ico pathMatch_home:False
+isDevTool:False /favicon.ico
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /favicon.ico
+v:13440036177
+catchall:
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /.well-known/appspecific/com.chrome.devtools.json
+segmentCount:3
+/.well-known/appspecific/com.chrome.devtools.json pathMatch_home:False
+isDevTool:True /.well-known/appspecific/com.chrome.devtools.json
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /.well-known/appspecific/com.chrome.devtools.json
+segmentCount:3
+/.well-known/appspecific/com.chrome.devtools.json pathMatch_home:False
+isDevTool:True /.well-known/appspecific/com.chrome.devtools.json
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /favicon.ico
+segmentCount:1
+/favicon.ico pathMatch_home:False
+isDevTool:False /favicon.ico
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /favicon.ico
+v:18615561918
+catchall:
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /.well-known/appspecific/com.chrome.devtools.json
+segmentCount:3
+/.well-known/appspecific/com.chrome.devtools.json pathMatch_home:False
+isDevTool:True /.well-known/appspecific/com.chrome.devtools.json
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /favicon.ico
+segmentCount:1
+/favicon.ico pathMatch_home:False
+isDevTool:False /favicon.ico
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /favicon.ico
+v:19751477105
+catchall:
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /.well-known/appspecific/com.chrome.devtools.json
+segmentCount:3
+/.well-known/appspecific/com.chrome.devtools.json pathMatch_home:False
+isDevTool:True /.well-known/appspecific/com.chrome.devtools.json
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /favicon.ico
+segmentCount:1
+/favicon.ico pathMatch_home:False
+isDevTool:False /favicon.ico
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /favicon.ico
+v:26959941334
+catchall:
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /.well-known/appspecific/com.chrome.devtools.json
+segmentCount:3
+/.well-known/appspecific/com.chrome.devtools.json pathMatch_home:False
+isDevTool:True /.well-known/appspecific/com.chrome.devtools.json
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /favicon.ico
+segmentCount:1
+/favicon.ico pathMatch_home:False
+isDevTool:False /favicon.ico
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /favicon.ico
+v:348120751949
+catchall:
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /favicon.ico
+segmentCount:1
+/favicon.ico pathMatch_home:False
+isDevTool:False /favicon.ico
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /favicon.ico
+v:348419515049
+catchall:
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /.well-known/appspecific/com.chrome.devtools.json
+segmentCount:3
+/.well-known/appspecific/com.chrome.devtools.json pathMatch_home:False
+isDevTool:True /.well-known/appspecific/com.chrome.devtools.json
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /.well-known/appspecific/com.chrome.devtools.json
+segmentCount:3
+/.well-known/appspecific/com.chrome.devtools.json pathMatch_home:False
+isDevTool:True /.well-known/appspecific/com.chrome.devtools.json
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /favicon.ico
+segmentCount:1
+/favicon.ico pathMatch_home:False
+isDevTool:False /favicon.ico
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /favicon.ico
+v:600607422539
+catchall:
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /
+segmentCount:1
+/ pathMatch_home:False
+isDevTool:False /
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /
+v:600668243778
+catchall:
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /.well-known/appspecific/com.chrome.devtools.json
+segmentCount:3
+/.well-known/appspecific/com.chrome.devtools.json pathMatch_home:False
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /favicon.ico
+segmentCount:1
+/favicon.ico pathMatch_home:False
+isDevTool:False /favicon.ico
+isDevTool:True /.well-known/appspecific/com.chrome.devtools.json
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /favicon.ico
+v:600668744642
+catchall:
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /.well-known/appspecific/com.chrome.devtools.json
+segmentCount:3
+/.well-known/appspecific/com.chrome.devtools.json pathMatch_home:False
+isDevTool:True /.well-known/appspecific/com.chrome.devtools.json
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /favicon.ico
+segmentCount:1
+/favicon.ico pathMatch_home:False
+isDevTool:False /favicon.ico
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /favicon.ico
+v:606589933810
+catchall:
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /
+segmentCount:1
+/ pathMatch_home:False
+isDevTool:False /
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /
+v:606754153985
+catchall:
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /.well-known/appspecific/com.chrome.devtools.json
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /favicon.ico
+segmentCount:1
+/favicon.ico pathMatch_home:False
+isDevTool:False /favicon.ico
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /favicon.ico
+segmentCount:3
+v:606754643735
+catchall:
+/.well-known/appspecific/com.chrome.devtools.json pathMatch_home:False
+isDevTool:True /.well-known/appspecific/com.chrome.devtools.json
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v2
+segmentCount:1
+/v2 pathMatch_home:False
+=====> Executing: HTTP: GET /v2
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+load.fileName.exists:apiJsonWithRef.json
+Error:Responses must contain at least one response [#/paths/~1anything~1strings/post/responses]
+specsCollector.ApiEndpoints =======================================
+GET (route: "/1") USER []
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+GET (route: "/v2") USER []
+GET (route: "/weather") USER []
+specsCollector.ApiEndpointsSet =======================================
+GET (route: "/1") USER []
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+GET (route: "/v2") USER []
+GET (route: "/weather") USER []
+=======================================
+GET (route: "/1") USER []
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+GET (route: "/v2") USER []
+GET (route: "/weather") USER []
+POST (route: "/anything/strings") USER [String support]
+PUT (route: "/anything/strings") USER [`format` data types]
+POST (route: "/anything/strings/top-level-payloads") USER [Top-level payloads]
+PATCH (route: "/anything/strings/top-level-payloads") USER [Top-level payloads (JSON)]
+POST (route: "/anything/numbers") USER [Number support]
+PUT (route: "/anything/numbers") USER [`format` data types]
+PATCH (route: "/anything/numbers") USER [Top-level payloads]
+POST (route: "/anything/booleans") USER [Boolean support]
+PATCH (route: "/anything/booleans") USER [Top-level payloads]
+POST (route: "/anything/arrays") USER [Array support]
+POST (route: "/anything/arrays/top-level-payloads") USER [Top-level payloads (objects)]
+PATCH (route: "/anything/arrays/top-level-payloads") USER [Top-level payloads (primitives)]
+POST (route: "/anything/objects") USER [Object support]
+POST (route: "/anything/null") USER [Null support]
+POST (route: "/anything/mixed") USER [Mixed support]
+POST (route: "/anything/circular") USER [Nested circular $ref]
+PATCH (route: "/anything/circular") USER [Top-level circular $ref]
+POST (route: "/anything/raw_body/top-level-payloads") USER [Top-level RAW_BODY (string)]
+PATCH (route: "/anything/raw_body/top-level-payloads") USER [Top-level RAW_BODY (JSON)]
+POST (route: "/anything/quirks") USER [Missing schema type]
+POST (route: "/anything/quirks/polymorphism") USER [Incompatible nested allOf schemas]
+PUT (route: "/anything/quirks/polymorphism") USER [Incompatible allOf schemas on a root requestBody]
+PATCH (route: "/anything/quirks/polymorphism") USER [Incompatible allOf schemas on a root requestBody (with other schema properties)]
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /.well-known/appspecific/com.chrome.devtools.json
+segmentCount:3
+/.well-known/appspecific/com.chrome.devtools.json pathMatch_home:False
+isDevTool:True /.well-known/appspecific/com.chrome.devtools.json
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /favicon.ico
+segmentCount:1
+/favicon.ico pathMatch_home:False
+isDevTool:False /favicon.ico
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /favicon.ico
+v:606861378528
+catchall:
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /
+segmentCount:1
+/ pathMatch_home:False
+isDevTool:False /
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /
+v:642175470302
+catchall:
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /favicon.ico
+==> InvokeAsync: /.well-known/appspecific/com.chrome.devtools.json
+segmentCount:3
+/.well-known/appspecific/com.chrome.devtools.json pathMatch_home:False
+segmentCount:1
+/favicon.ico pathMatch_home:False
+isDevTool:False /favicon.ico
+isDevTool:True /.well-known/appspecific/com.chrome.devtools.json
+=====> SetEndpoint:HTTP: GET /home/{v?}/{**catchall} /favicon.ico
+v:642176918089
+catchall:
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+REQUIRED 8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+FORBIDDEN 9: GET (route: "/hello/{name}", User-Agent: string, name: string) USER []
+
+         10: GET (route: "/v2") USER []
+
+         11: GET (route: "/weather") USER []
+
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...
+PS C:\cs14> .\WebApi03_PathsWalker.exe
+
+*** builder.Build() ***  ** Now use
+
+
+*** app.Run ***************
+
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: https://localhost:7072
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\cs14
+==> constructor.HomeGuardMiddleware
+==> constructor.timestamp:1137649202294
+==> homeMetadata.Name:HTTP: GET /home/{v?}/{**catchall}
+==> Single._homeEndpoint HTTP: GET /home/{v?}/{**catchall}
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:cn=cv;
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+watch ===============================================
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+         8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+         9: GET (route: "/v2") USER []
+
+         10: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:cn=cv;
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+         8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+         9: GET (route: "/v2") USER []
+
+         10: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:cn=cv;
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+         8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+         9: GET (route: "/v2") USER []
+
+         10: GET (route: "/weather") USER []
+
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /.well-known/appspecific/com.chrome.devtools.json
+segmentCount:3
+/.well-known/appspecific/com.chrome.devtools.json pathMatch_home:False
+isDevTool:True /.well-known/appspecific/com.chrome.devtools.json
+*.json file changed!
+watch ===============================================
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...
+PS C:\cs14> .\WebApi03_PathsWalker.exe
+
+*** builder.Build() ***  ** Now use
+
+
+*** app.Run ***************
+
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: https://localhost:7072
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\cs14
+==> constructor.HomeGuardMiddleware
+==> constructor.timestamp:1162853567473
+==> homeMetadata.Name:HTTP: GET /home/{v?}/{**catchall}
+==> Single._homeEndpoint HTTP: GET /home/{v?}/{**catchall}
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /hello/fred
+segmentCount:2
+/hello/fred pathMatch_home:False
+=====> Executing: HTTP: GET /hello/{name}
+userAgent:cn=cv;
+==> InvokeAsync: HomeGuardMiddleware
+==> InvokeAsync: /v1
+segmentCount:1
+/v1 pathMatch_home:False
+=====> Executing: HTTP: GET /v1
+watch ===============================================
+load.fileName.exists:WebApi03_PathsWalker_specs.json
+Error:Declared path parameter "pB" needs to be defined as a path parameter at either thepath or operation level [#/paths/~1a00~1{p}/get/parameters/0/in]
+specs-gen =======================================
+GET (route: "/a00/{p}", pB: string) USER []
+GET (route: "/a00") USER [r1,r2,r33]
+PUT (route: "/a00") USER []
+GET (route: "/a1") USER []
+GET (route: "/a2") USER []
+GET (route: "/a3") USER []
+gen-specs =======================================
+GET (route: "/hello") USER []
+         0: GET (route: "/1") USER []
+
+REQUIRED 1: GET (route: "/a00") USER [r1,r2,r33]
+
+REQUIRED 2: PUT (route: "/a00") USER []
+
+REQUIRED 3: GET (route: "/a00/{p}", pB: string) USER []
+
+REQUIRED 4: GET (route: "/a1") USER []
+
+REQUIRED 5: GET (route: "/a2") USER []
+
+REQUIRED 6: GET (route: "/a3") USER []
+
+FORBIDDEN 7: GET (route: "/hello") USER []
+
+         8: GET (route: "/hello/{name}", Cookie: string, name: string) USER []
+
+         9: GET (route: "/v2") USER []
+
+         10: GET (route: "/weather") USER []

@@ -2,6 +2,8 @@ const ageTable = document.getElementById('age-table');
 console.log("ageTable:", ageTable);
 const labels = ageTable?.getElementsByTagName("label");
 console.log("labels:", labels);
+const listOfLabels = document.body.querySelectorAll('#age-table label');
+console.dir(listOfLabels);
 if (ageTable instanceof HTMLTableElement) {
     const cells = Array.from(ageTable.rows).flatMap(row => Array.from(row.cells));
     console.log("cells:", cells);
@@ -15,6 +17,7 @@ console.log("searchForms:", searchForms);
 console.log("searchForms.length:", searchForms.length);
 if (searchForms.length > 0) {
     const inputs = searchForms[0].getElementsByTagName("input");
+    // form.querySelector('input')
     // const x: HTMLCollectionOf<HTMLElement> = searchForms[0].getElementsByTagName("input");
     // console.log("x:", x.item(0)); // null
     // console.log("x[0]:", x[0]); // undefined
@@ -23,4 +26,5 @@ if (searchForms.length > 0) {
         console.log(inputs[0], inputs[inputs.length - 1]);
     }
 }
+console.log("document.querySelector('form[name=\"search\"]')", document.querySelector('form[name="search"]'));
 export {};

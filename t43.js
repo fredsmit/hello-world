@@ -1,3 +1,10 @@
+
+{
+    "salt": "F+2UKXmjRW32Pppp30PJCQ==",
+     "iv": "ercuR0mF+Kq6wi2F",
+      "data": "202subgKDI24KDZUS12pB8zGtQ=="
+}
+
 import { getRequiredHTMLElements, getRequiredNamedForm, queryRequiredElement } from "./pageUtils.js";
 const { dvFocus, view } = getRequiredHTMLElements("dvFocus", "view");
 const form = getRequiredNamedForm("my");
