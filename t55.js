@@ -6,8 +6,8 @@
     // create <img> for it
     let img = document.createElement('img');
     // @ts-ignore
-    img.style = 'position:fixed;top:10px;left:10px;width:100px';
-    //img.setAttribute("style", 'position:fixed;top:10px;left:10px;width:100px');
+    // img.style = 'position:fixed;top:10px;left:10px;width:100px';
+    img.setAttribute("style", 'position:fixed;top:10px;left:10px;width:100px');
     img.alt = "";
     document.body.append(img);
     // show it

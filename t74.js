@@ -16,12 +16,12 @@ console.log(cats3);
 class Base {
 }
 class Derived extends Base {
+    someProperty = true;
     constructor() {
         // error!
         // have to call 'super()' first because it needs to initialize 'someProperty'.
         doSomeStuff();
         super();
-        this.someProperty = true;
     }
 }
 function doSomeStuff() {

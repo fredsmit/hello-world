@@ -6,7 +6,7 @@ const xhr = new XMLHttpRequest();
 
 //const url = "https://javascript.info/article/xmlhttprequest/example/load";
 //const url = "https://javascript.info/xmlhttprequest";
-const url = "./data.json";
+const url = "./t59_data.json";
 // 2. Configure it: GET-request for the URL /article/.../load
 xhr.open('GET', url);
 //xhr.open('POST', url);
@@ -16,7 +16,11 @@ xhr.onload = function () {
     if (xhr.status !== 200) { // analyze HTTP status of the response
         console.log(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
     } else { // show the result
-        console.log(`Done, got ${xhr.response.length} bytes`); // response is the server response
+        const msg = `Done, got ${xhr.response.length} bytes`;
+        console.log(msg); // response is the server response
+        const div = document.createElement("div")
+        div.textContent = msg;
+        document.body.appendChild(div);
     }
 };
 

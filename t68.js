@@ -13,7 +13,7 @@ customElements.define('user-card', class extends HTMLElement {
         // event path for closed
         // [user-card, body, html, document, Window]
         // [div, user-card, body, html, document, Window]
-        const shadowRoot = this.attachShadow({ mode: "open" });
+        const shadowRoot = this.attachShadow({ mode: "closed" });
         shadowRoot.innerHTML = `
         <style>
           <!-- span { background: red; } -->

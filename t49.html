@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/ball.svg">
     <title>Train</title>
     <script type="module" src="t49.js"></script>
     <script>
@@ -17,7 +18,8 @@
 
 <body>
     <script>
-        window.onload = function () { // can also use window.addEventListener('load', (event) => {
+        window.onload = function () {
+            // can also use window.addEventListener('load', (event) => {
             console.log('Page loaded');
             // image is loaded at this time
             // console.log(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
@@ -51,7 +53,7 @@
                     clearInterval(intervalId);
                     callback();
                 }
-            }, 100);
+            }, 1000);
         }
 
         // ---------- The test ----------
@@ -60,8 +62,8 @@
             "https://en.js.cx/images-load/1.jpg",
             "https://en.js.cx/images-load/2.jpg",
             "https://en.js.cx/images-load/3.jpg",
-            "https://en.js.cx/clipart/train.gif?speed=1&cache=0"
-            //"https://en.js.cx/clipart/train.gif"
+            "https://en.js.cx/clipart/train.gif?speed=1&cache=0",
+            "https://en.js.cx/clipart/train.gif"
         ];
 
         // add random characters to prevent browser caching
@@ -80,6 +82,7 @@
                 img.src = sources[i];
                 console.log("img.width:", img.width);
                 widthSum += img.width;
+                document.body.appendChild(img);
             }
             console.log("widthSum:", widthSum);
         }

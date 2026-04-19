@@ -15,7 +15,8 @@ class Uploader {
   }
 
   private async getUploadedBytes(): Promise<number> {
-    const response = await fetch('http://localhost:8080/status', {
+    //const response = await fetch(window.origin + '/status', {
+    const response = await fetch(window.origin + '/', {
       referrerPolicy: "no-referrer",
       headers: {
         'X-File-Id': this.fileId
@@ -44,7 +45,8 @@ class Uploader {
 
     const xhr = new XMLHttpRequest();
     //xhr.open("POST", "upload", true);
-    xhr.open("POST", "http://localhost:8080/upload", true);
+    //xhr.open("POST", "http://localhost:8080/upload", true);
+    xhr.open("POST", window.origin + "/upload", true);
 
     // send file id, so that the server knows which file to resume
     xhr.setRequestHeader('X-File-Id', this.fileId);

@@ -27,8 +27,8 @@ function addMouseDownListener(ball) {
     function onMouseMove(ev) {
         // ball.style.left = ev.pageX - ball.offsetWidth / 2 + 'px';
         // ball.style.top = ev.pageY - ball.offsetHeight / 2 + 'px';
-        ball.style.left = ev.pageX - shiftX + 'px';
-        ball.style.top = ev.pageY - shiftY + 'px';
+        ball.style.left = Math.round(ev.pageX - shiftX) + 'px';
+        ball.style.top = Math.round(ev.pageY - shiftY) + 'px';
     }
     function onMouseUp(ev) {
         document.removeEventListener("mousemove", onMouseMove);

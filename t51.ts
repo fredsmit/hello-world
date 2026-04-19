@@ -1,7 +1,6 @@
 import { getRequiredHTMLElements, queryRequiredElement } from "./pageUtils.js";
 
 declare const Prism: any;
-
 console.log(Prism);
 
 const {
@@ -60,14 +59,14 @@ queueMicrotask(() => {
 n = 123;
 
 console.log("n1:", n);
-
 console.log("--- module end ---");
 
 
 btnOpen.addEventListener("click", function (this: HTMLElement, ev: MouseEvent): void {
     const params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=600,height=300,left=100,top=100`;
     //const url = "about:blank";
-    const url = "http://localhost:5500/t38.html";
+    //const url = "https://localhost:5501/t30.html";
+    const url = window.origin + "/t30.html";
     const newWin = window.open(url, "hello", params);
     if (newWin) {
         // newWin.document.write(
@@ -101,7 +100,5 @@ frame1.onload = function () {
 
     frame1.onload = null; // clear the handler, not to run it after the location change
 };
-
-
 
 export { };

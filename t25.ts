@@ -54,9 +54,9 @@ function normalizeTree(tree: HTMLElement) {
 function getHandler() {
     return function (this: HTMLElement, ev: MouseEvent): void {
         if (ev.type === "mouseenter") {
-            this.style.border = "1px solid green";
+            this.style.border = "3px solid green";
         } else if (ev.type === "mouseleave") {
-            this.style.border = "1px solid silver";
+            this.style.border = "3px solid burlywood";
         } else if (ev.type === "click") {
             const target = ev.target;
 

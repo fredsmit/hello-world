@@ -1,17 +1,16 @@
-const link = document.createElement('a');
-link.download = 'hello.txt';
+const a: HTMLAnchorElement = document.createElement('a');
+a.download = 'hello.txt';
 
 const blob = new Blob(['Hello, world!'], { type: 'text/plain' });
 
 const objectUrl = URL.createObjectURL(blob);
 console.log("objectUrl:", objectUrl);
 
-link.href = objectUrl;
+a.href = objectUrl;
 
-//link.click();
-
-//URL.revokeObjectURL(link.href);
-console.log("link.href:", link.href);
+//a.click();
+//URL.revokeObjectURL(a.href);
+console.log("a.href:", a.href);
 
 const response = await fetch(objectUrl);
 const text = await response.text();

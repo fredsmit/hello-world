@@ -22,7 +22,7 @@ async function toOrigin2() {
         // ['last-modified', 'Wed, 26 Jan 2022 21:27:30 GMT']
         // ['vary', 'Origin']
 
-        const response: Response = await fetch("./data.json"); // OK
+        const response: Response = await fetch("./t62_data.json"); // OK
         // Fetched: http://127.0.0.1:5500/data.json
         // ['accept-ranges', 'bytes']
         // ['access-control-allow-credentials', 'true']

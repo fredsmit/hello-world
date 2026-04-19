@@ -7,6 +7,7 @@ function getHandler(list) {
         ev.preventDefault();
     }
     lis.forEach(li => {
+        // ul.onmousedown = function () { return false; };
         li.addEventListener("selectstart", preventDefault);
         li.addEventListener("mouseenter", () => { li.classList.add("highlight"); });
         li.addEventListener("mouseleave", () => { li.classList.remove("highlight"); });

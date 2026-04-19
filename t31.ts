@@ -73,7 +73,5 @@ btnGenerate.addEventListener("click", function (this: HTMLElement, ev: MouseEven
 //     composed?: boolean;
 // }
 
-
-
 export { };
 

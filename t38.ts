@@ -77,8 +77,6 @@ document.addEventListener('mousedown', function (ev: MouseEvent) {
             //console.log("document.documentElement.clientHeight:", document.documentElement.clientHeight);
             //console.log("document.documentElement.getBoundingClientRect()", document.documentElement.getBoundingClientRect());
 
-
-
             // below the window? let's scroll the page
             if (newBottom > bottomLimit) {
                 // window-relative coordinate of document end

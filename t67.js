@@ -22,6 +22,7 @@ customElements.define('user-card', class extends HTMLElement {
     }
 });
 window.customElements.define('custom-menu', class extends HTMLElement {
+    menuTemplate;
     constructor() {
         super();
         this.menuTemplate = queryRequiredElement(document.body, "template", "menu-template");

@@ -45,7 +45,8 @@ console.log("--- module end ---");
 btnOpen.addEventListener("click", function (ev) {
     const params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=600,height=300,left=100,top=100`;
     //const url = "about:blank";
-    const url = "http://localhost:5500/t38.html";
+    //const url = "https://localhost:5501/t30.html";
+    const url = window.origin + "/t30.html";
     const newWin = window.open(url, "hello", params);
     if (newWin) {
         // newWin.document.write(

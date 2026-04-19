@@ -1,5 +1,13 @@
 import { getRequiredHTMLElements } from "./pageUtils.js";
 const { dvTablo } = getRequiredHTMLElements("dvTablo");
+dvTablo.addEventListener("click", removePaneListener);
+const createRemoveButton = get_createRemoveButton();
+const paneCollection = dvTablo.querySelectorAll("*.pane");
+for (const pane of paneCollection) {
+    const removeButton = createRemoveButton();
+    removeButton.style.float = "right";
+    pane.prepend(removeButton);
+}
 function removePaneListener(ev) {
     if (this instanceof HTMLDivElement &&
         ev.target instanceof HTMLButtonElement &&
@@ -19,15 +27,7 @@ function removePaneListener(ev) {
         }
     }
 }
-dvTablo.addEventListener("click", removePaneListener);
-const cloneRemoveButton = get_cloneRemoveButton();
-const paneCollection = dvTablo.querySelectorAll("*.pane");
-for (const pane of paneCollection) {
-    const removeButtonCopy = cloneRemoveButton();
-    removeButtonCopy.style.float = "right";
-    pane.prepend(removeButtonCopy);
-}
-function get_cloneRemoveButton() {
+function get_createRemoveButton() {
     const button = document.createElement("button");
     //button.textContent = "X";
     button.textContent = "Remove";

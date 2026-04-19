@@ -3,8 +3,9 @@ const text = window.localStorage.getItem("text");
 const area = queryRequiredElement(document.body, "textarea", "area");
 const btnSave = queryRequiredElement(document.body, "button", "btnSave");
 btnSave.addEventListener("click", function (ev) {
-    // const newText = area.value ?? "";
-    // window.localStorage.setItem("text", newText);
+    const newText = area.value ?? "";
+    window.localStorage.setItem("text", newText);
+    window.localStorage.setItem("text2", newText + "-2");
     area.dispatchEvent(new Event("input"));
 });
 area.addEventListener("input", function (ev) {

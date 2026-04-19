@@ -48,8 +48,6 @@ canvas.toBlob(function (blob: Blob | null): void {
     const objectUrl = URL.createObjectURL(blob);
     img.src = objectUrl;
     //URL.revokeObjectURL(objectUrl);
-
-
 }, 'image/png');
 
 export { };

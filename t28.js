@@ -55,4 +55,4 @@ function getTooltipHandler(htmlElement) {
         }
     };
 }
-export { addTooltipHandler };
+export {};

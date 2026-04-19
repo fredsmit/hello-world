@@ -1,32 +1,30 @@
 import { getRequiredHTMLElements } from "./pageUtils.js";
+const { dv, highlightDemo } = getRequiredHTMLElements("dv", "highlightDemo");
+//declare const Prism: any;
+declare const Prism: { highlightElement: Function };
+console.log("Prism:", Prism);
 
-declare const Prism: any;
-
-function observerCallback(mutations: MutationRecord[], observer: MutationObserver): void {
-    //console.log("mutations:", mutations, "observer:", observer);
+function dvObserverCallback(mutations: MutationRecord[], observer: MutationObserver): void {
+    console.log("mutations:", mutations, "observer:", observer);
     for (const mutation of mutations) {
-        console.log(mutation);
+        console.log('dv.mutation:', mutation);
     }
 }
 
-const observer = new MutationObserver(observerCallback);
-
-const { dv1, highlightDemo } = getRequiredHTMLElements("dv1", "highlightDemo");
+const dvObserver = new MutationObserver(dvObserverCallback);
 
 // observe everything except attributes
-observer.observe(dv1, {
+dvObserver.observe(dv, {
     childList: true, // observe direct children
     subtree: true, // and lower descendants too
     characterDataOldValue: true // pass old data to callback
 });
 
 
-let observer2 = new MutationObserver(mutations => {
-
-    for (let mutation of mutations) {
+const highlightDemoObserver = new MutationObserver((mutations: MutationRecord[]) => {
+    for (const mutation of mutations) {
         // examine new nodes, is there anything to highlight?
-
-        for (let node of mutation.addedNodes) {
+        for (const node of mutation.addedNodes) {
             // we track only elements, skip other nodes (e.g. text nodes)
             if (!(node instanceof HTMLElement)) continue;
 
@@ -36,7 +34,7 @@ let observer2 = new MutationObserver(mutations => {
             }
 
             // or maybe there's a code snippet somewhere in its subtree?
-            for (let elem of node.querySelectorAll('pre[class*="language-"]')) {
+            for (const elem of node.querySelectorAll('pre[class*="language-"]')) {
                 Prism.highlightElement(elem);
             }
         }
@@ -44,8 +42,7 @@ let observer2 = new MutationObserver(mutations => {
 
 });
 
-observer2.observe(highlightDemo, { childList: true, subtree: true });
-
+highlightDemoObserver.observe(highlightDemo, { childList: true, subtree: true });
 
 // dynamically insert content with code snippets
 highlightDemo.innerHTML = `A code snippet is below:
@@ -75,7 +72,5 @@ export { };
 </code></pre>
 </div>
 `;
-
-console.log(Prism);
 
 export { };

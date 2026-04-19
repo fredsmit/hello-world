@@ -1,10 +1,10 @@
 import { getRequiredNamedForm, getRequiredNamedFormControl, queryRequiredElement } from "./pageUtils.js";
 let abortController = new AbortController();
 const htmlForm = getRequiredNamedForm("publish");
-PublishForm(htmlForm, "http://localhost:8080/publish");
+PublishForm(htmlForm, window.origin + "/publish");
 // random url parameter to avoid any caching issues
 const subscribeEl = queryRequiredElement(document.body, "div", "subscribe");
-SubscribePane(subscribeEl, 'http://localhost:8080/subscribe?random=' + Math.random());
+SubscribePane(subscribeEl, window.origin + '/subscribe?random=' + Math.random());
 // Sending messages, a simple POST
 function PublishForm(form, url) {
     const messageField = getRequiredNamedFormControl(form, "message", (c) => c instanceof HTMLInputElement);

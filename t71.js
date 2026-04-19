@@ -33,10 +33,8 @@ function onMessage(ev) {
         port1.postMessage('3 Clone Message back from the IFrame');
         port1.postMessage('4 Clone Message back from the IFrame');
         port1.postMessage('5 Clone Message back from the IFrame');
-        const text2 = { txt: "TEXT" };
-        const port2Clone = window.structuredClone(port1, { transfer: [port1, o2.buffer, o.buffer, text2.txt] });
+        const port2Clone = window.structuredClone(port1, { transfer: [port1, o2.buffer, o.buffer] });
         //const port2Clone = window.structuredClone(port1, [port1, o2.buffer, o.buffer]);
-        console.log("==> port2Clone.text:", text2);
         console.log("==> port2Clone.o:", o);
         console.log("==> port2Clone.o2:", o2);
         port2Clone.onmessage = (ev) => {

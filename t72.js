@@ -15,8 +15,7 @@ async function onIFrameLoad(ev) {
         console.log("channel.port2 before  transfer:", channel.port2, channel);
         channel.port1.postMessage('xxxxxx1');
         await new Promise(resolve => setTimeout(() => resolve(0), 1000));
-        //const port2Clone = window.structuredClone(channel.port2, { transfer: [channel.port2] });
-        const port2Clone = window.structuredClone(channel.port2, { transfer: [] });
+        const port2Clone = window.structuredClone(channel.port2, { transfer: [channel.port2] });
         console.log("channel.port2 after transfer:", channel.port2, channel);
         channel.port1.postMessage('xxxxxxxxxxxxxxx2');
         // port2Clone.onmessage = function XXX(e) {

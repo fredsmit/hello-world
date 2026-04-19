@@ -1,4 +1,7 @@
 class Uploader {
+    file;
+    onProgress;
+    fileId;
     constructor(file, onProgress) {
         this.file = file;
         this.onProgress = onProgress;
@@ -9,7 +12,8 @@ class Uploader {
         this.fileId = file.name + '-' + file.size + '-' + file.lastModified;
     }
     async getUploadedBytes() {
-        const response = await fetch('http://localhost:8080/status', {
+        //const response = await fetch(window.origin + '/status', {
+        const response = await fetch(window.origin + '/', {
             referrerPolicy: "no-referrer",
             headers: {
                 'X-File-Id': this.fileId
@@ -32,7 +36,8 @@ class Uploader {
         const startByte = await this.getUploadedBytes();
         const xhr = new XMLHttpRequest();
         //xhr.open("POST", "upload", true);
-        xhr.open("POST", "http://localhost:8080/upload", true);
+        //xhr.open("POST", "http://localhost:8080/upload", true);
+        xhr.open("POST", window.origin + "/upload", true);
         // send file id, so that the server knows which file to resume
         xhr.setRequestHeader('X-File-Id', this.fileId);
         // send the byte we're resuming from, so the server knows we're resuming
@@ -71,6 +76,7 @@ class Uploader {
         });
         return await promise;
     }
+    activeXhr;
     stop() {
         if (this.activeXhr) {
             this.activeXhr.abort();

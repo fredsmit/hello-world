@@ -14,7 +14,7 @@ console.log("window.origin:", window.origin);
 const url = 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits?per_page=100';
 const response = await fetch(url, {
     signal,
-    method: "GETx",
+    method: "GET",
     referrerPolicy: "no-referrer",
     cache: "reload",
     headers: {

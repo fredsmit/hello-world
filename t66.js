@@ -4,6 +4,7 @@ class TimeFormatted extends HTMLDivElement {
         super();
         //this.setAttribute("datetime", "2000-01-01");
     }
+    rendered;
     connectedCallback() {
         if (!this.rendered) {
             this.render();
@@ -104,6 +105,8 @@ class ClockElement extends HTMLSpanElement {
     constructor() {
         super();
     }
+    rendered;
+    timer;
     connectedCallback() {
         if (!this.rendered) {
             this.render();

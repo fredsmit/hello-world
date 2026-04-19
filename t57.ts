@@ -22,9 +22,7 @@ formElem.onsubmit = async (e: SubmitEvent) => {
             //const blob = new Blob([fileBuffer]);
             console.log("blob.type:", blob.type);
 
-
             formData.append("file", blob);
-
         }
     }
 

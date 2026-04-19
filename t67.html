@@ -2,12 +2,13 @@
 <html lang="en">
 
 <!--My -- co>>m<<ment
- test-->  <!---->
+ test--> <!---->
 
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/ball.svg">
     <title>Named slots</title>
     <script type="module" src="t67.js"></script>
     <style>
@@ -63,9 +64,11 @@
 
     <custom-menu id="oldMenu">
         <span slot="title">Candy menu</span>
-        <li slot="item">Lollipop</li>
-        <li slot="item">Fruit Toast</li>
-        <li slot="item">Cup Cake</li>
+        <ul>
+            <li slot="item">Lollipop</li>
+            <li slot="item">Fruit Toast</li>
+            <li slot="item">Cup Cake</li>
+        </ul>
     </custom-menu>
 
     <custom-menu>
@@ -73,6 +76,8 @@
         <li slot="item">Barščiai</li>
         <li slot="item">Kompotas</li>
         <li slot="item" style="color:orange;">Pyragėlis</li>
+        <ul>
+        </ul>
     </custom-menu>
 
 

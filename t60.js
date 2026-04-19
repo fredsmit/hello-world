@@ -25,6 +25,7 @@ formUpload.onsubmit = async function (e) {
         let file = myFile.files?.[0];
         if (!file)
             return;
+        console.log("file.name:", file.name);
         console.log("file.size:", file.size);
         uploader = new Uploader(file, onProgress);
         try {
