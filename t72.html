@@ -7,13 +7,25 @@
     <link rel="icon" href="img/ball.svg">
     <title>Message channels</title>
     <script type="module" src="t72.js"></script>
-    <style></style>
+    <style>
+        #dv-lastMessage {
+            background-color: lightgreen;
+        }
+
+        .message {
+            color: navy;
+        }
+
+        .message-red {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Channel messaging demo</h1>
-    <p class="output" id="p1">My body</p>
-    <iframe src="t73.html" id="f1" width='480' height='320'></iframe>
+    <div id="dv-lastMessage"></div>
+    <iframe src="t73.html" id="f1" title="f1" width='480' height='320'></iframe>
 </body>
 
 </html>
