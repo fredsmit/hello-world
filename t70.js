@@ -1,57 +1,71 @@
 import { queryRequiredElement } from "./pageUtils.js";
-console.log("main: window === window.parent:", window === window.parent);
-window["A1"] = "aa-window-" + Date.now();
-console.log("main.window:", window);
+const lastMessageView = queryRequiredElement(document.body, "p", "lastMessageView");
+const desk = queryRequiredElement(document.body, "ul", "desk");
+const iframe = queryRequiredElement(document.body, "iframe", "f1");
+const btnStart = queryRequiredElement(document.body, "button", "btnStart");
+btnStart.addEventListener("click", (e) => {
+    console.log("t70::btnStart clicked.", e.target);
+    port1.start();
+    btnStart.disabled = true;
+    let n = 0;
+    window.setInterval(() => {
+        port1.postMessage('X*Message ' + n++);
+    }, 1000);
+}, { once: true });
 const channel = new MessageChannel();
-//const output = document.querySelector('.output');
-//const iframe = document.querySelector('iframe');
-const f1 = queryRequiredElement(document.body, "iframe", "f1");
-const p1 = queryRequiredElement(document.body, "p", "p1");
-// Listen for messages on port1
-channel.port1.onmessage = onMessage;
+const port1 = channel.port1;
+const port2 = channel.port2;
+console.log("t70::Listening for messages on port1...");
+port1.addEventListener("message", (e) => {
+    const li = document.createElement("li");
+    li.style.border = "1px solid green";
+    li.textContent = String(e.data);
+    desk.appendChild(li);
+});
+//port1.start();
+window.addEventListener("load", (e) => {
+    console.log("t70::window.load:", e);
+    //port2.postMessage('Message from the t70.html page on window.onload');
+});
 // Wait for the iframe to load
-f1.addEventListener("load", onIFrameLoad);
-function onIFrameLoad(ev) {
+iframe.addEventListener("load", frameLoad);
+function frameLoad(e) {
+    console.log("t70::iframe.load:", e);
+    // Listen for messages on port1
+    // port1.onmessage = onMessage;
+    // port1.onmessage = null; // Remove the onmessage handler to demonstrate addEventListener working 
+    //    console.log("t70::Listening for messages on port1...");
+    port1.addEventListener("message", lastMessage);
     // Transfer port2 to the iframe
-    const contentWindow = f1.contentWindow;
-    if (contentWindow) {
-        contentWindow["A1"] = "aa-contentWindow-" + Date.now();
-        Object.assign(channel.port2, { kuku: 123 });
-        channel.port2.onmessage = (ev) => {
-            console.log("channel.port2.onmessage::KUKU:", ev);
-            const div = document.createElement("div");
-            div.style.border = "1px solid green";
-            div.innerText = String(ev.data);
-            p1.append(div);
-        };
-        console.log("before transfer:: channel.port2:", channel.port2);
-        channel.port1.postMessage("1-KUKU from channel.port1");
-        console.log("f1.contentWindow:", contentWindow);
-        console.log("after transfer:: channel.port2:", channel.port2);
-        contentWindow.postMessage('Hello Again', '*');
-        channel.port1.postMessage("70-2-KUKU from channel.port1");
-        contentWindow.postMessage('Hello from the main page!', '*', [channel.port2]);
-        setTimeout(() => {
-            channel.port1.postMessage("70-3-KUKU from channel.port1");
-            channel.port1.postMessage("70-4-KUKU from channel.port1");
-        }, 1000);
-    }
+    console.log("t70::Transferring port2 to the iframe...");
+    iframe.contentWindow?.postMessage(
+    //"iframe.contentWindow?.postMessage::A message from the t70.html page!",
+    "xstart", "*", [port2]);
+    //port1.start(); // Start the port to send messages
+    port1.postMessage('start*Message');
+    let n = 0;
+    window.setInterval(() => {
+        port1.postMessage('Y*Message ' + n++);
+    }, 1000);
 }
 // Handle messages received on port1
-function onMessage(ev) {
-    //ev.data;
-    /** Returns the last event ID string, for server-sent events. */
-    //ev.lastEventId: string;
-    /** Returns the origin of the message, for server-sent events and cross-document messaging. */
-    //ev.origin: string;
-    /** Returns the MessagePort array sent with the message, for cross-document messaging and channel messaging. */
-    //ev.ports: ReadonlyArray<MessagePort>;
-    /** Returns the WindowProxy of the source window, for cross-document messaging, and the MessagePort being attached, in the connect event fired at SharedWorkerGlobalScope objects. */
-    //ev.source: MessageEventSource | null;
-    const text = `timeStamp:${ev.timeStamp.toFixed(1)}, ev.type:${ev.type}, data:${ev.data}, lastEventId:${ev.lastEventId}, origin:${ev.origin}, ports:${ev.ports}, source:${ev.source}`;
-    const div = document.createElement("div");
-    div.innerText = text;
-    p1.append(div);
-    console.log("main:", ev);
-    console.log("2: after transfer:: channel.port2:", channel.port2);
+function lastMessage(e) {
+    //console.log("message:", e.type);
+    lastMessageView.textContent = String(e.data);
 }
+/*
+t70::Listening for messages on port1...
+
+t71::window.addEventListener('message', onWindowMessage):
+t71::window.load: Event {type: 'load', target: document,
+
+t70::iframe.load: Event {type: 'load', target: iframe#f1,
+t70::Transferring port2 to the iframe...
+t70::window.load: Event {type: 'load', target: document,
+
+t71::iframe_port_transfer: MessageEvent {data: 'xstart', ev.ports[0]:
+port = ev.ports[0];
+
+t70::btnStart clicked.
+t71::iframe_btnStart clicked. ==> port?.start();
+*/

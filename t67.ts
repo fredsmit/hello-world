@@ -69,6 +69,9 @@ window.customElements.define('custom-menu', class extends HTMLElement {
 
 
 const { oldMenu } = getRequiredHTMLElements("oldMenu");
+//const oldMenu = document.getElementById("oldMenu");
+//if (oldMenu === null)
+//    throw Error(`Missing required HTML element 'oldMenu'.`);
 setTimeout(() => {
     oldMenu.insertAdjacentHTML('beforeend', '<li slot="item">Lollipop 2</li>')
 }, 1000);

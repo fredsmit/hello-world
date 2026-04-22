@@ -7,13 +7,21 @@
     <link rel="icon" href="img/ball.svg">
     <title>Message channels</title>
     <script type="module" src="t70.js"></script>
-    <style></style>
+    <style>
+        .output {
+            background-color: lightgreen;
+            font-family: monospace;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Channel messaging demo</h1>
-    <p class="output" id="p1">My body</p>
-    <iframe src="t71.html" id="f1" width='480' height='320'></iframe>
+    <p class="output" id="lastMessageView">t70 lastMessageView</p>
+    <iframe src="t71.html" title="t71 frame" id="f1" width='480' height='320'></iframe>
+    <br>
+    <button type="button" id="btnStart">Start</button>
+    <ul id="desk"></ul>
 </body>
 
 </html>

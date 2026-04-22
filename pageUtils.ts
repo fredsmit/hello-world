@@ -66,6 +66,18 @@ function queryRequiredElement<TagName extends keyof HTMLElementTagNameMap>(
     return htmlElement;
 }
 
+function queryRequiredElement1<TagName extends keyof HTMLElementTagNameMap>(
+    tagName: TagName,
+    idSelector: string,
+    parentNode: ParentNode = document.body
+): HTMLElementTagNameMap[TagName] {
+    const selector = `${tagName}#${idSelector}`;
+    const htmlElement = parentNode.querySelector<HTMLElementTagNameMap[TagName]>(selector)
+    if (htmlElement === null)
+        throw Error(`Missing required HTML element '${selector}'.`);
+    return htmlElement;
+}
+
 function queryRequiredElementByClassSelector<TagName extends keyof HTMLElementTagNameMap>(
     parentNode: ParentNode,
     tagName: TagName,
@@ -108,7 +120,7 @@ export {
     getRequiredNamedForm,
     getRequiredNamedFormControl,
     queryElements,
-    queryRequiredElement,
+    queryRequiredElement, queryRequiredElement1,
     queryRequiredElementByClassSelector,
     findClosestTarget,
     maxZIndex

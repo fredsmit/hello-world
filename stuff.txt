@@ -1,0 +1,7 @@
+declare global {
+    interface Window {
+        //structuredClone<T>(value: T, transfer?: Transferable[]): T;
+        //structuredClone<T>(value: T, options?: StructuredSerializeOptions): T;
+        structuredClone<T>(value: T, options?: { transfer?: Transferable[]; }): T;
+    }
+}

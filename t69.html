@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/ball.svg">
+    <title>Origin</title>
+    <script type="module" src="t69.js"></script>
+    <style>
+        .image_svg {
+            border: 2px solid transparent;
+        }
+
+        code {
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Origin</h1>
+    <p>Here’s the cheatsheet for URL components:</p>
+    <img src="/t69_href.svg" class="image_svg" alt="" width="698" height="246">
+    <ul>
+        <li><code>href</code> is the full url, same as <code>url.toString()</code></li>
+        <li><code>protocol</code> ends with the colon character <code>:</code></li>
+        <li><code>search</code> – a string of parameters, starts with the question mark <code>?</code></li>
+        <li><code>hash</code> starts with the hash character <code>#</code></li>
+        <li>there may be also <code>user</code> and <code>password</code>
+            properties if HTTP authentication is present:<br>
+            <code>http://login:password@site.com</code>
+            (not painted above, rarely used).
+        </li>
+    </ul>
+</body>
+
+</html>

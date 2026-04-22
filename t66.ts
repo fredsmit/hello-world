@@ -93,7 +93,8 @@ class TimeFormatted extends HTMLDivElement { // (1)
     }
 }
 
-window.customElements.define("time-formatted", TimeFormatted, { extends: "div" }); // (2)
+const customElementOptions: ElementDefinitionOptions = { extends: "div" };
+window.customElements.define("time-formatted", TimeFormatted, customElementOptions); // (2)
 
 // <time-formatted datetime="2019-12-01"
 // year="numeric"

@@ -1,15 +1,45 @@
+/*
+As mentioned previously, regular expressions are integrated
+with string methods.
+
+The method str.match(regexp) finds all matches of regexp
+in the string str.
+
+Regular expressions may have flags that affect the search.
+There are only 6 of them in JavaScript:
+
+i - With this flag the search is case-insensitive:
+    no difference between A and a (see the example below).
+g - With this flag the search looks for all matches,
+    without it – only the first match is returned.
+m - Multiline mode (covered in the chapter Multiline mode
+    of anchors ^ $, flag "m").
+s - Enables “dotall” mode, that allows a dot . to match newline
+    character \n (covered in the chapter Character classes).
+u - Enables full Unicode support. The flag enables correct processing
+    of surrogate pairs. More about that in the chapter Unicode:
+    flag "u" and class \p{...}.
+y - “Sticky” mode: searching at the exact position in the text.
+
+It has 3 working modes:
+1. If the regular expression has flag g,
+   it returns an array of all matches:
+2. If there’s no such flag it returns only the first match
+   in the form of an array, with the full match at index 0
+   and some additional details in properties:
+*/
+//-----------------------------------------------------------------------
 let str = "We will, we will rock you";
 let result = str.match(/we/i) ?? []; // without flag g
 //if (result && result.length > 0) {
 console.log(result[0]); // We (1st match)
 console.log(result.length); // 1
-// Details:
-//console.log(result.index);  // 0 (position of the match)
-//console.log(result.input);  // We will, we will rock you (source string)
-console.log(result);
-//}
+result = str.match(/we/ig) ?? []; // without flag g
+console.log("--------------------------------");
 console.log("I love HTML".replace(/HTML/, "$& and JavaScript"));
 console.log(/ku/i.test("KUKU"));
+console.log("--------------------------------");
+//-----------------------------------------------------------------------
 let str2 = "+7(903)-123-45-67";
 let regexp = /\d/g;
 const result2 = str2.match(regexp);
@@ -52,10 +82,10 @@ console.log(regexp2.test('01:32:54:67:89:ZZ')); // false (ZZ at the end)
 console.log("--------------");
 //regexp = /#\p{Hex_Digit}{3}(?:\p{Hex_Digit}{3})?\b/ug;
 regexp = /#\p{Hex_Digit}{3}(\p{Hex_Digit}{3})?\b/ug;
-str = "color: #3f3; background-color: #AA00ef; and: #abcd";
-r = str.match(regexp); // #3f3 #AA00ef
+let str4 = "color: #3f3; background-color: #AA00ef; and: #abcd";
+r = str4.match(regexp); // #3f3 #AA00ef
 console.log(r, "\nlength:", r?.length, "\nindex:", r?.index, "\ngroups:", r?.groups, "\ninput:", r?.input);
-rall = str.matchAll(regexp); // #3f3 #AA00ef
+rall = str4.matchAll(regexp); // #3f3 #AA00ef
 for (const r of rall) {
     console.log(r, r.length);
 }
@@ -250,10 +280,6 @@ console.log("==================================");
 // console.log("reArray:", reArray[0]);
 str = `   let varName = "value" `;
 let re = /\w+|=/y;
-// console.log("reArray:", re.exec(str), re.lastIndex);
-// console.log("reArray:", re.exec(str), re.lastIndex);
-// console.log("reArray:", re.exec(str), re.lastIndex);
-// console.log("reArray:", re.exec(str), re.lastIndex);
 // console.log("reArray:", re.exec(str), re.lastIndex);
 let reArray;
 re.lastIndex = 7;

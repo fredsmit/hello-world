@@ -44,6 +44,13 @@ function queryRequiredElement(parentNode, tagName, idSelector) {
         throw Error(`Missing required HTML element '${selector}'.`);
     return htmlElement;
 }
+function queryRequiredElement1(tagName, idSelector, parentNode = document.body) {
+    const selector = `${tagName}#${idSelector}`;
+    const htmlElement = parentNode.querySelector(selector);
+    if (htmlElement === null)
+        throw Error(`Missing required HTML element '${selector}'.`);
+    return htmlElement;
+}
 function queryRequiredElementByClassSelector(parentNode, tagName, classSelector) {
     const selector = `${tagName}.${classSelector}`;
     const htmlElements = parentNode.querySelectorAll(selector);
@@ -72,4 +79,4 @@ function maxZIndex() {
     }
     return maxZ;
 }
-export { getOptionalHTMLElements, getRequiredHTMLElements, getRequiredNamedForm, getRequiredNamedFormControl, queryElements, queryRequiredElement, queryRequiredElementByClassSelector, findClosestTarget, maxZIndex };
+export { getOptionalHTMLElements, getRequiredHTMLElements, getRequiredNamedForm, getRequiredNamedFormControl, queryElements, queryRequiredElement, queryRequiredElement1, queryRequiredElementByClassSelector, findClosestTarget, maxZIndex };

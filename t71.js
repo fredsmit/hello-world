@@ -1,53 +1,56 @@
 import { queryRequiredElement } from "./pageUtils.js";
-console.log("iframe: window === window.parent:", window === window.parent);
-console.log("iframe.window:", window);
-console.log("iframe.window.parent:", window.parent);
-const p2 = queryRequiredElement(document.body, "p", "p2");
-window.addEventListener('message', onMessage);
-let port1;
-function onMessage(ev) {
-    const text = `timeStamp:${ev.timeStamp.toFixed(1)}, ev.type:${ev.type}, data:${ev.data}, lastEventId:${ev.lastEventId}, origin:${ev.origin}, ports:${ev.ports}, source:${ev.source}`;
-    const div = document.createElement("div");
-    div.innerText = text;
-    p2.append(div);
-    console.log("iframe:", ev);
-    // Use the transfered port to post a message back to the main frame
-    if (ev.ports[0]) {
-        ev.ports[0].addEventListener("message", function (ev) {
-            const div = document.createElement("div");
-            div.style.border = "1px solid red";
-            div.innerText = text;
-            p2.append(div);
-        });
-        port1 = ev.ports[0];
-        const o = Uint16Array.of(1, 2, 3, 4, 5);
-        const o2 = Uint16Array.of(11, 12, 13, 14, 17, 18, 19);
-        console.log("port2Clone.o:", o);
-        console.log("port2Clone.o2:", o2);
-        // const port2Clone = window.structuredClone({ x: 123 }, { transfer: [o2.buffer, o.buffer] });
-        // console.log("==> port2Clone.o:", o);
-        // console.log("==> port2Clone.o2:", o2);
-        // console.log("==> port2Clone:", port2Clone);
-        port1.postMessage('1 Message back from the IFrame');
-        port1.postMessage('2 Clone Message back from the IFrame');
-        port1.postMessage('3 Clone Message back from the IFrame');
-        port1.postMessage('4 Clone Message back from the IFrame');
-        port1.postMessage('5 Clone Message back from the IFrame');
-        const port2Clone = window.structuredClone(port1, { transfer: [port1, o2.buffer, o.buffer] });
-        //const port2Clone = window.structuredClone(port1, [port1, o2.buffer, o.buffer]);
-        console.log("==> port2Clone.o:", o);
-        console.log("==> port2Clone.o2:", o2);
-        port2Clone.onmessage = (ev) => {
-            console.log("channel.port2.onmessage::KUKU:", ev);
-            const div = document.createElement("div");
-            div.style.border = "1px solid blue";
-            div.innerText = String(ev.data);
-            p2.append(div);
-        };
-        port1.postMessage('11 Message back from the IFrame');
-        port1.postMessage('22 Clone Message back from the IFrame');
-        port1.postMessage('33 Clone Message back from the IFrame');
-        port1.postMessage('44 Clone Message back from the IFrame');
-        port1.postMessage('55 Clone Message back from the IFrame');
+// console.log("iframe: window === window.parent:", window === window.parent);
+// console.log("iframe.window:", window);
+// console.log("iframe.window.parent:", window.parent);
+const lastMessageView = queryRequiredElement(document.body, "p", "lastMessageView");
+const iframe_port_transfer = queryRequiredElement(document.body, "p", "iframe_port_transfer");
+const iframe_desk = queryRequiredElement(document.body, "ul", "iframe_desk");
+const iframe_btnStart = queryRequiredElement(document.body, "button", "iframe_btnStart");
+let started = false;
+iframe_btnStart.addEventListener("click", (e) => {
+    if (started) {
+        console.warn("t71::iframe_btnStart clicked.", "already started:", started);
     }
+    else {
+        console.log("t71::iframe_btnStart clicked.", e.target, "started:", started);
+    }
+    port?.start();
+    started = true;
+    iframe_btnStart.disabled = true;
+}, { once: false });
+window.addEventListener("load", (e) => {
+    console.log("t71::window.load:", e);
+});
+console.log("t71::window.addEventListener('message', onWindowMessage):");
+window.addEventListener('message', onWindowMessage);
+let port;
+function onWindowMessage(ev) {
+    const text = `timeStamp:${ev.timeStamp.toFixed(1)}, type:${ev.type}, data:${ev.data}, lastEventId:${ev.lastEventId}, origin:${ev.origin}, ports:${ev.ports}, source:${ev.source}, target:${ev.target}`;
+    if (ev.ports === null || ev.ports.length === 0) {
+        console.warn("t71::iframe_port_transfer: No ports received", ev);
+        return;
+    }
+    port = ev.ports[0];
+    console.log("t71::iframe_port_transfer:", ev, "ev.ports[0]:", port);
+    const li = document.createElement("li");
+    li.style.border = "1px solid red";
+    li.textContent = text;
+    iframe_port_transfer.append(li);
+    port.addEventListener("message", (e) => {
+        const li = document.createElement("li");
+        li.style.border = "1px solid red";
+        li.textContent = String(e.data);
+        iframe_desk.append(li);
+        lastMessageView.textContent = String(e.data);
+    });
+    // port.addEventListener("message", (e) => {
+    //     lastMessageView.textContent = String(e.data);
+    // });
+    port.postMessage('First Message (back) from the IFrame');
+    let n = 0;
+    window.setInterval(() => {
+        const msg = 'Message (back) from the IFrame ' + n++;
+        //console.log(msg);
+        port.postMessage(msg);
+    }, 1000);
 }
