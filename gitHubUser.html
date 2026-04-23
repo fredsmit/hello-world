@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/js-info.png">
+    <title>GitHub User</title>
+    <script type="module" src="gitHubUser.js"></script>
+    <style>
+        code {
+            font-size: 1.2em;
+            color: crimson;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <button type="button" id="btnGetUser">Get GitHub user</button>
+    <ul id="tablo"></ul>
+    <script type="module">
+        const btn = document.getElementById("btnGetUser");
+        if (!btn)
+            throw Error("Can't find button with id 'btnGetUser'.");
+        const tablo = document.getElementById("tablo");
+        if (!tablo)
+            throw Error("Can't find div with id 'tablo'.");
+
+        const mod = await import('./gitHubUser.js');
+        const defaultUrl = mod.defaultUrl;
+        console.log("Default URL:", defaultUrl);
+        const getData = mod.getData;
+
+        btn.addEventListener('click', async (e) => {
+            const data = await getData();
+            console.log(data);
+            const msg = JSON.stringify(data);
+            const li = document.createElement("li");
+            li.textContent = msg;
+            tablo.append(li);
+        });
+    </script>
+</body>
+
+</html>

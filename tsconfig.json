@@ -125,7 +125,8 @@
     // "t73.ts",
     // "t74.ts",
     //
-    "w900_Array.ts",
+    //"w900_Array.ts",
+    "gitHubUser.ts",
     // "uploader.ts",
     // "chatClient.ts",
     // "eventSourceClient.ts",
