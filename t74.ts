@@ -1,12 +1,11 @@
 //const cats: (string | null)[] = ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion', null];
 const cats = ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion', null, undefined, ""];
-//const cats2 = cats.filter((cat: string | null): cat is string => cat !== null);
 const cats2 = cats.filter((cat): cat is string =>
-    //cat !== null && cat !== void 0 && cat.length > 0
     cat !== null && cat !== void 0 && cat.length === 4
 );
 
-console.log(cats2);
+console.log('cats:', cats.join('; '));
+console.log('cats2:', cats2.join('; '));
 
 // A type predicate's type must be assignable to its parameter's type.
 // Type 'number' is not assignable to type 'string'.
@@ -19,7 +18,7 @@ const cats3 = cats.filter((cat): cat is "???" =>
     cat === "Lion"
 );
 
-console.log(cats3);
+console.log('cats3:', cats3.join('; '));
 
 class Base {
     // ...
@@ -50,7 +49,7 @@ type Action =
 function processAction(action: Action): void {
     if (action.kind === "NumberContents") {
         // `action.payload` is a number here.
-        let num = action.payload * 2
+        const num = action.payload * 2;
         // ...
     }
     else if (action.kind === "StringContents") {
@@ -63,11 +62,23 @@ function processAction(action: Action): void {
 function processAction2(action: Action): void {
     const { kind, payload } = action;
     if (kind === "NumberContents") {
-        let num = payload * 2
+        const num = payload * 2;
         // ...
     }
     else if (kind === "StringContents") {
         const str = payload.trim();
+        // ...
+    }
+}
+
+function processAction3(action: Action): void {
+    const { kind: actionKind, payload: cargo } = action;
+    if (actionKind === "NumberContents") {
+        const num = cargo * 2;
+        // ...
+    }
+    else if (actionKind === "StringContents") {
+        const str = cargo.trim();
         // ...
     }
 }
@@ -78,8 +89,6 @@ interface Foo<T> {
 
 declare let x: Foo<Foo<Foo<Foo<Foo<Foo<string>>>>>>;
 declare let y: Foo<Foo<Foo<Foo<Foo<string>>>>>;
-
-//x = y;
 
 interface TypeMap {
     "number": number;
@@ -107,7 +116,7 @@ processRecord({
     // 'val' used to implicitly have the type 'string | number | boolean',
     // but now is correctly inferred to just 'string'.
     f: val => {
-        console.log(val.toUpperCase());
+        console.log("val.toUpperCase() ==>", val.toUpperCase());
     }
 })
 
@@ -118,7 +127,7 @@ processRecord({
     // 'val' used to implicitly have the type 'string | number | boolean',
     // but now is correctly inferred to just 'string'.
     f: val => {
-        console.log(val * 2);
+        console.log("val * 2 ==>", val * 2);
     }
 })
 

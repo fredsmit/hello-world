@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/js-info.png">
+    <title>Miscellaneous TypeScript</title>
+    <script type="module" src="t74.js"></script>
+    <style>
+        code {
+            font-size: 1.2em;
+            color: crimson;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>IFrame</h1>
+    <code>not-yet-loaded === not-yet-built</code><br>
+    <code>dar-neįkeltas === dar-nepastatytas</code><br>
+
+    <div class="output" id="dv1">output body</div>
+    <iframe src="textContent.html" id="frame1" title="frame1" width='480' height='320'></iframe>
+    <p>
+        Upon its creation an iframe immediately has a document.
+        <br>
+        But that document is different from the one that loads into it!
+        <br>
+        So if we do something with the document immediately,
+        <br>
+        that will probably be lost.
+        <br>
+        How to detect the moment when the document is there?
+        <br>
+        The right document is definitely at place when iframe.onload triggers.
+        <br>
+        But it only triggers when the whole iframe with all resources is loaded.
+        <br>
+        We shouldn’t work with the document of a not-yet-loaded iframe,
+        <br>
+        because that’s the wrong document. If we set any event handlers on it,
+        <br>
+        they will be ignored.
+    </p>
+    <script>
+        const iniDoc = frame1.contentDocument;
+    </script>
+    <script>
+        // every 100 ms check if the document is the new one
+        const timer = setInterval(() => {
+            if (frame1.contentDocument == iniDoc) return;
+            console.log("New document is here!");
+            // cancel setInterval, don't need it any more
+            clearInterval(timer);
+        }, 100);
+    </script>
+    <script>
+        frame1.addEventListener('load', (e) => {
+            const newDoc = frame1.contentDocument;
+            // the loaded document is not the same as initial!
+            console.log("newDoc == iniDoc", newDoc == iniDoc, e.type, e.timeStamp); // false
+        }, { once: true });
+    </script>
+</body>
+
+</html>

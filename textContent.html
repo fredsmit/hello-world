@@ -9,21 +9,21 @@
 
 <body>
     <h3>Differences between innerText & textContent.</h3>
-    <p id="demo"> This element has extra spacing and contains
+    <p id="demo1"> This element has extra spacing and contains
         <span hidden>a span element</span>.
     </p>
 
-    <button onclick="getInnerText()">Get innerText</button>
-    <button onclick="getTextContent()">Get textContent</button>
+    <button type="button" onclick="getInnerText()">Get innerText</button>
+    <button type="button" onclick="getTextContent()">Get textContent</button>
 
-    <p id="demo"></p>
+    <p id="demo2"></p>
     <script>
         function getInnerText() {
-            console.log('  innerText:', document.getElementById("demo").innerText);
+            console.log('  innerText:', document.getElementById("demo1").innerText);
         }
 
         function getTextContent() {
-            console.log('textContent:', document.getElementById("demo").textContent);
+            console.log('textContent:', document.getElementById("demo1").textContent);
         }
     </script>
 </body>

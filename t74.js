@@ -1,10 +1,8 @@
 //const cats: (string | null)[] = ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion', null];
 const cats = ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion', null, undefined, ""];
-//const cats2 = cats.filter((cat: string | null): cat is string => cat !== null);
-const cats2 = cats.filter((cat) => 
-//cat !== null && cat !== void 0 && cat.length > 0
-cat !== null && cat !== void 0 && cat.length === 4);
-console.log(cats2);
+const cats2 = cats.filter((cat) => cat !== null && cat !== void 0 && cat.length === 4);
+console.log('cats:', cats.join('; '));
+console.log('cats2:', cats2.join('; '));
 // A type predicate's type must be assignable to its parameter's type.
 // Type 'number' is not assignable to type 'string'.
 // const cats3 = cats.filter((cat): cat is number =>
@@ -12,7 +10,7 @@ console.log(cats2);
 //     cat !== null && cat !== void 0 && cat.length === 4
 // );
 const cats3 = cats.filter((cat) => cat === "Lion");
-console.log(cats3);
+console.log('cats3:', cats3.join('; '));
 class Base {
 }
 class Derived extends Base {
@@ -32,7 +30,7 @@ console.log("derived:", derived);
 function processAction(action) {
     if (action.kind === "NumberContents") {
         // `action.payload` is a number here.
-        let num = action.payload * 2;
+        const num = action.payload * 2;
         // ...
     }
     else if (action.kind === "StringContents") {
@@ -44,11 +42,22 @@ function processAction(action) {
 function processAction2(action) {
     const { kind, payload } = action;
     if (kind === "NumberContents") {
-        let num = payload * 2;
+        const num = payload * 2;
         // ...
     }
     else if (kind === "StringContents") {
         const str = payload.trim();
+        // ...
+    }
+}
+function processAction3(action) {
+    const { kind: actionKind, payload: cargo } = action;
+    if (actionKind === "NumberContents") {
+        const num = cargo * 2;
+        // ...
+    }
+    else if (actionKind === "StringContents") {
+        const str = cargo.trim();
         // ...
     }
 }
@@ -62,7 +71,7 @@ processRecord({
     // 'val' used to implicitly have the type 'string | number | boolean',
     // but now is correctly inferred to just 'string'.
     f: val => {
-        console.log(val.toUpperCase());
+        console.log("val.toUpperCase() ==>", val.toUpperCase());
     }
 });
 processRecord({
@@ -71,7 +80,7 @@ processRecord({
     // 'val' used to implicitly have the type 'string | number | boolean',
     // but now is correctly inferred to just 'string'.
     f: val => {
-        console.log(val * 2);
+        console.log("val * 2 ==>", val * 2);
     }
 });
 export {};
